@@ -43,6 +43,9 @@
 
         // Register callback to initiate login
         $('.form-login').submit(login);
+
+        // Register callback on logout link
+        $('.logout').click(logout)
     }
 
     /**
