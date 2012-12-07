@@ -16,7 +16,7 @@
     <![endif]-->
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -24,34 +24,54 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
+                <a id="nav-org" class="brand" href="#machines">vCloud</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li class="active"><a href="#">Machines</a></li>
-                        <li><a href="#library">Library</a></li>
-                        <li><a href="#prefs">Preferences</a></li>
-                        <li><a class="logout" href="#logout">logout</a></li>
+                        <li class="active"><a href="#machines"><i class="icon-hdd icon-white"></i> Machines</a></li>
+                        <li><a href="#library"><i class="icon-book icon-white"></i> Library</a></li>
+                        <li><a href="#prefs"><i class="icon-cog icon-white"></i> Preferences</a></li>
                     </ul>
+                    <ul class="nav pull-right">
+                        <li><a class="nav-action" id="nav-logout" href="#logout"><i class="icon-off icon-white"></i> logout</a></li>
+                        <li><a class="nav-action" id="nav-refresh" href="#refresh"><i class="icon-repeat icon-white"></i> refresh</a></li>
+                    </ul>
+                    <span class="nav-user pull-right">Logged into <span class="org">org</span> as <span class="user">user</span></span>
+                    <progress id="nav-progress" max="100%" class="pull-right"></progress>
                 </div><!--/.nav-collapse -->
             </div>
         </div>
     </div><!-- /navbar -->
     <div class="container">
-        <form class="form-login">
+        <form id="login" class="form-login">
             <h2 class="form-login-heading">vCloud log-in</h2>
             <input name="org" type="text" class="input-block-level" placeholder="Organization name">
             <input name="usr" type="text" class="input-block-level" placeholder="User name">
             <input type="password" class="input-block-level" placeholder="Password">
             <button class="btn btn-large btn-primary" type="submit">Sign in</button>
         </form>
-        <div class="spinner centered"></div>
-        <div class="machines"></div>
-        <div class="prefs"></div>
-        <div class="library"></div>
+        <div id="workspace">
+            <div id="machines">
+                <a id="_machines"></a>
+                <h3>Machines</h3>
+            </div>
+            <hr/>
+            <div id="library">
+                <a id="_library"></a>
+                <h3>Library</h3>
+            </div>
+            <hr/>
+            <div id="prefs">
+                <a id="_prefs"></a>
+                <h3>Preferences</h3>
+            </div>
+        </div>
+        <progress id="spinner" max="100%"><progress>
     </div> <!-- /container -->
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
     <script src="js/lib/jquery.base64.min.js"></script>
     <script src="js/lib/vcloud-js-sdk.js"></script>
+    <script src="js/center.js"></script>
     <script src="js/vcloud.js"></script>
 </body>
 </html>

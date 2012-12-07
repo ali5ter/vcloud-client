@@ -9,6 +9,10 @@ body {
     padding-bottom: 40px;
     background-color: #f5f5f5;
 }
+#navbar, #login,
+#workspace, #spinner {
+    display: none;
+}
 .form-login {
     max-width: 300px;
     padding: 19px 29px 29px;
@@ -33,18 +37,22 @@ body {
     margin-bottom: 15px;
     padding: 7px 9px;
 }
-.spinner {
-    background-image: url('../img/spinner.gif');
-    height: 31px;
-    width: 31px;
+.nav-user {
+    display: block;
+    font-size: 12px;
+    font-style: italic;
+    padding: 10px 15px 10px;
 }
-.centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -100px;
+.nav-user span {
+    font-weight: bold;
 }
-.form-login, .navbar {
-    display:none;
+.nav-action {
+    font-size: 12px;
+}
+#nav-progress {
+    margin-top: 13px;
+    width: 30px;
+}
+.brand {
+    color: white !important;
 }

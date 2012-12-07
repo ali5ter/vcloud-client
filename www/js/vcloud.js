@@ -15,7 +15,7 @@
      * Bootstrap the SDK and authenticate with vCD cell
      */
     function init () {
-        $('.spinner').show();
+        $('#spinner').show().center();
 
         if (localStorage.server === null) {
             localStorage.server = (window.location.href).split('/').
@@ -32,8 +32,8 @@
         // Handle successful bootstrap - just once :)
         vcd.once(vmware.events.cloud.INITIALIZATION_COMPLETE, function() {
             console.log('SDK init complete');
-            $('.form-login').show();
-            $('.spinner').hide();
+            $('#login').show();
+            $('#spinner').hide();
             if (localStorage.loggedin == '1') vcd.confirmLoggedIn();
             else logout();
         });
@@ -52,10 +52,13 @@
         vcd.register(vmware.events.cloud.ERROR, function(e) { console.log('SDK error: '+ e.eventData); });
 
         // Register callback to initiate login
-        $('.form-login').submit(login);
+        $('#login').submit(login);
 
         // Register callback on logout link
-        $('.logout').click(logout)
+        $('#nav-logout').click(logout)
+
+        // Register callback on refresh link
+        $('#nav-refresh').click(refresh)
     }
 
     /**
@@ -68,7 +71,7 @@
             pwd = $('input:password').val();
         if (org !== '' && usr !== '' && pwd !== '') {
             vcd.login(usr, pwd, org);
-            $('.spinner').show();
+            $('#spinner').show().center();
         }
         return false; // prevent screen refresh
     }
@@ -86,7 +89,7 @@
             else {
                 console.log('Session still exists');
             }
-            $('.form-login').hide();
+            $('#login').hide();
             initWorkspace();
         }
         else {
@@ -99,7 +102,7 @@
                 $('input:password').val('');
             }
         }
-        $('.spinner').hide();
+        $('#spinner').hide();
     }
 
     /**
@@ -108,9 +111,10 @@
      */
     function logout () {
         localStorage.loggedin = '0';
-        $('.navbar').hide();
-        $('.machines').hide();
-        $('.form-login').show();
+        $('#navbar').hide();
+        $('#workspace').hide();
+        $('#spinner').hide();
+        $('#login').show();
     }
 
     /**
@@ -118,8 +122,10 @@
      * Initialise the authrnticated UI
      */
     function initWorkspace () {
-        $('.navbar').show();
-        $('.machines').show();
+        $('.nav-user span.org').text(vcd.getUserOrg());
+        $('.nav-user span.user').text(vcd.getUserName());
+        $('#navbar').show();
+        $('#workspace').show();
 
         // Restore vcd data model so we have some data to work with
         // while SDK is refreshing it
@@ -130,10 +136,20 @@
     }
 
     /**
+     * @method: refresh
+     * Tell the SDK to refresh the data model
+     */
+    function refresh () {
+        $('#nav-progress').show();
+        vcd.updateModels();
+    }
+
+    /**
      * @method: onRefresh
      * Store the data model and refresh data in the UI
      */
     function onRefresh () {
+        $('#nav-progress').hide();
         console.log('SDK refreshed data model');
 
         // Save this updated data model so we can restore it and not block
