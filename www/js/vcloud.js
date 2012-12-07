@@ -1,7 +1,7 @@
 /**
  * @file vcloud.js
- * Testing vcloud-js-sdk.js
- * @author Alister Lewis-Bowen <alister@vmware.com>
+ * Testing the VMware vcloud-js-sdk.js
+ * @author Alister Lewis-Bowen <alister@different.com>
  */
 
 !function ($) { // pass in jquery object
@@ -46,6 +46,7 @@
 
         // Register callback on logout link
         $('.logout').click(logout)
+        //$('.logout').click(function () { logout(); })
     }
 
     /**
@@ -98,6 +99,8 @@
      */
     function logout () {
         localStorage.loggedin = '0';
+        $('.navbar').hide();
+        $('.machines').hide();
         $('.form-login').show();
     }
 
