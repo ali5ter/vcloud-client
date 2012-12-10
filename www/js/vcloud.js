@@ -17,7 +17,8 @@
     function init () {
         $('#spinner').show().center();
 
-        if (localStorage.server === null) {
+        // TODO: Might be nice to edit this in the UI
+        if (localStorage.server === undefined) {
             localStorage.server = (window.location.href).split('/').
                 slice(0,3).join('/');
         }
@@ -41,8 +42,9 @@
         // Handler for SDK login method
         vcd.register(vmware.events.cloud.LOGIN, onLogin);
 
-        // Handler for SDK refresh of data model
+        // Handlers for SDK refresh of data model
         vcd.register(vmware.events.cloud.REFRESH_COMPLETE, onRefresh);
+        vcd.register(vmware.events.cloud.TEMPLATE_REFRESH, onRefresh);
 
         // Handler for SDK task start and completion
         vcd.register(vmware.events.cloud.TASK_START, function() { console.log('SDK task started'); });
@@ -55,10 +57,10 @@
         $('#login').submit(login);
 
         // Register callback on logout link
-        $('#nav-logout').click(logout)
+        $('#nav-logout').click(logout);
 
         // Register callback on refresh link
-        $('#nav-refresh').click(refresh)
+        $('#nav-refresh').click(refresh);
     }
 
     /**
@@ -140,8 +142,9 @@
      * Tell the SDK to refresh the data model
      */
     function refresh () {
-        $('#nav-progress').show();
+        $('#nav-progress').toggleClass('clear');
         vcd.updateModels();
+        vcd.getAllTemplates();
     }
 
     /**
@@ -149,7 +152,7 @@
      * Store the data model and refresh data in the UI
      */
     function onRefresh () {
-        $('#nav-progress').hide();
+        $('#nav-progress').toggleClass('clear');
         console.log('SDK refreshed data model');
 
         // Save this updated data model so we can restore it and not block
@@ -162,21 +165,77 @@
     /**
      * @method: updateWorkspace
      * Update the data in the UI
-     * TODO: Might be nice to use a MVC/MVVM pattern like that provided by
-     *       knockout.js
      */
     function updateWorkspace () {
         var vapps = vcd.getVApps(vcd.SORTBY.DATE),
+            templates = vcd.getCatalog(),
             tasks = vcd.taskHistory().slice(0, 10),
             metrics = vcd.metrics(),
-            vapp = {},
-            vm = {};
+            networks = vcd.getNetworks(),
+            vdcs = vcd.getVdcList();
+
+        console.log('Available VDCs : '+ vdcs);
+        console.log('Available Networks : '+ networks);
+
+        updateMachines(vapps);
+        updateLibrary(templates);
+
+    }
+
+    /**
+     * @method: updateWorkspace
+     * Update the machines table
+     * TODO: Might be nice to use a MVC/MVVM pattern like that provided by
+     *       knockout.js
+     */
+    function updateMachines (vapps) {
+        var vapp, vms, vm;
+
+        $('#machines table tbody').empty();
 
         for (var i=0; i<vapps.length; i++) {
             vapp = vapps[i];
-            console.log('vApp name: '+ vapp.getName() +' VMs: '+ vapp.getNumberOfVMs());
+            $('<tr rowspan="'+ vapp.getNumberOfVMs()
+                +'"><td class="name">'+ vapp.getName()
+                +'</td><td class="name">&ndash;</td>'
+                +'</td><td class="status">'+ vapp.getStatusMessage()
+                +'</td><td class="desc">'+ vapp.getDescription()
+                +'</td><td class="ip">&ndash;'
+                +'</td></tr>').appendTo('#machines table tbody');
+
+            vms = vapp.getChildren();
+            for (var j=0; j<vms.length; j++) {
+                vm = vms[j];
+                $('<tr><td class="name">&ndash;'
+                    +'</td><td class="name">'+ vm.getName()
+                    +'</td><td class="status">'+ vm.getStatusMessage()
+                    +'</td><td class="desc">'+ vm.getDescription()
+                    +'</td><td class="ip">'+ vm.getIP()
+                    +'</td></tr>').appendTo('#machines table tbody');
+            }
         }
     }
+
+    /**
+     * @method: updateLibrary
+     * Update the library table
+     * TODO: Might be nice to use a MVC/MVVM pattern like that provided by
+     *       knockout.js
+     */
+    function updateLibrary (templates) {
+        var tmpl, vms;
+
+        $('#library table tbody').empty();
+
+        for (var i=0; i<templates.length; i++) {
+            tmpl = templates[i];
+            $('<tr><td class="name">'+ tmpl.getName()
+                +'</td><td class="desc">'+ tmpl.getDescription()
+                +'</td><td class="featured"></td>'
+                +'</td><td class="downloads">'+ tmpl.getDownloads()
+                +'</td></tr>').appendTo('#library table tbody');
+            }
+        }
 
     init();
 

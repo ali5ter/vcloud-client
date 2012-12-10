@@ -10,9 +10,9 @@
 #
 TIMESTAMP=$(date +"%F-%H%M%S")
 #
-# SilverLining src directory
+# Document root
 #
-SL_SRC=www
+SRC=www
 #
 # Official Build war file name
 #
@@ -48,7 +48,7 @@ function _refreshSdk {
     echo -n 'Retrieving vCloud JS SDK... '
     git clone git://gitorious.eng.vmware.com/vcloud-js-sdk/vcloud-js-sdk.git \
 vcloud-js-sdk &>/dev/null
-    mv vcloud-js-sdk/vcloud-js-sdk*.js $SL_SRC/js/lib/
+    mv vcloud-js-sdk/vcloud-js-sdk*.js $SRC/js/lib/
     rm -fR vcloud-js-sdk
     echo 'done'
     echo
@@ -64,7 +64,7 @@ function _setSdkSrcDir {
 function _copySdk {
     echo -n 'Copying vCloud JS SDK... '
     [ ! -d $SDK_SRC ] && _failWith "Unable to find a SDK src tree directory at $SDK_SRC"
-    cp $SDK_SRC/vcloud-js-sdk*.js $SL_SRC/js/lib/
+    cp $SDK_SRC/vcloud-js-sdk*.js $SRC/js/lib/
     echo 'done'
     echo
 }
@@ -77,12 +77,12 @@ function _setVcdSrcDir {
 }
 
 function _installIntoP4Source {
-    echo -n 'Installing SilverLining into your src tree... '
+    echo -n 'Installing into your src tree... '
     ST_TARGET=$ST_BASE/$ST_TARGET
     [ ! -d $ST_TARGET ] && _failWith "Unable to find a src tree directory at $ST_TARGET"
     local dir=$ST_TARGET/vcloud-js-sdk-test
     _mkdir $dir
-    cp -r $SL_SRC/* $dir/
+    cp -r $SRC/* $dir/
     echo 'done'
     echo
 }

@@ -36,7 +36,7 @@
                         <li><a class="nav-action" id="nav-refresh" href="#refresh"><i class="icon-repeat icon-white"></i> refresh</a></li>
                     </ul>
                     <span class="nav-user pull-right">Logged into <span class="org">org</span> as <span class="user">user</span></span>
-                    <progress id="nav-progress" max="100%" class="pull-right"></progress>
+                    <progress id="nav-progress" max="100%" class="clear pull-right">Fetching data</progress>
                 </div><!--/.nav-collapse -->
             </div>
         </div>
@@ -53,11 +53,38 @@
             <div id="machines">
                 <a id="_machines"></a>
                 <h3>Machines</h3>
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <caption>Machines in my vCloud</caption>
+                    <thead>
+                        <tr>
+                            <th>App</th>
+                            <th>VM</th>
+                            <th>Status</th>
+                            <th>Description</th>
+                            <th>IP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
             <hr/>
             <div id="library">
                 <a id="_library"></a>
                 <h3>Library</h3>
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <caption>Templates in my vCloud</caption>
+                    <thead>
+                        <tr>
+                            <th>Template</th>
+                            <th>Description</th>
+                            <th>Featured</th>
+                            <th>Downloads</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
             <hr/>
             <div id="prefs">
@@ -65,7 +92,7 @@
                 <h3>Preferences</h3>
             </div>
         </div>
-        <progress id="spinner" max="100%"><progress>
+        <progress id="spinner" max="100%">Busy<progress>
     </div> <!-- /container -->
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>

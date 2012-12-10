@@ -53,6 +53,14 @@ body {
     margin-top: 13px;
     width: 30px;
 }
+.clear {
+    position: absolute;
+    left: -9999px;
+}
 .brand {
     color: white !important;
 }
+caption { display: none; }
+table td.name { width: 10em; }
+table td.status { width: 6em; }
+table td.ip { width: 5em; }
