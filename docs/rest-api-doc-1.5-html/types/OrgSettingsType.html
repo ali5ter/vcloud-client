@@ -1,0 +1,446 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>vCloud REST API - OrgSettings</title>
+    <script src="../dynamic-content.js" type="text/javascript"></script>
+    <script language="JavaScript" src="../commonRes.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="../doc-style.css">
+    <link rel="stylesheet" type="text/css" href="../xml-style.css">
+</head>
+<body>
+
+<table class="header-footer" cellSpacing="0" id="top">
+    <tr>
+    <td></td>
+                    <td><a href="#attributes">Attributes</a></td>
+                            <td><a href="#elements">Elements</a></td>
+                            <td>&nbsp;</td>
+                            <td><a href="#operations">Operations</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+<br>
+
+<h1>OrgSettings</h1>
+
+<dl>
+        <dt>Element:</dt>
+    <dd>OrgSettings</dd>
+        <dt>Type:</dt>
+    <dd>OrgSettingsType</dd>
+    <dt>Namespace:</dt>
+    <dd><a href="http://www.vmware.com/vcloud/v1.5">http://www.vmware.com/vcloud/v1.5</a></dd>
+    <dt>Description:</dt>
+    <dd>
+                Describes various settings for some organization.
+                This type establishes quotas and policies for the organization.
+                It also contains elements that specify the details of
+                how the organization connects to LDAP and email services.
+            </dd>
+    <dt>Since:</dt>
+    <dd>0.9</dd>
+    <dt>Schema:</dt>
+    <dd><a href="../etc/1.5/schemas/admin/vCloudEntities.xsd">vCloudEntities.xsd</a></dd>
+    <dt>Media type(s):</dt>
+    <dd>application/vnd.vmware.admin.orgSettings+xml<br></dd>
+    <dt>Extends:</dt>
+    <dd><a href="../types/ResourceType.html">ResourceType</a></dd>
+
+    <dt>XML Representation:</dt>
+    <dd><span class="xml_plain"></span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">OrgSettings</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name">xmlns</span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value">http://www.vmware.com/vcloud/v1.5</span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="Link">Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/OrgGeneralSettingsType.html" target="classFrame" title="OrgGeneralSettings">OrgGeneralSettings</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="Link">Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">CanPublishCatalogs</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">CanPublishCatalogs</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">DeployedVMQuota</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">DeployedVMQuota</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">StoredVmQuota</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">StoredVmQuota</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">UseServerBootSequence</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">UseServerBootSequence</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">DelayAfterPowerOnSeconds</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">DelayAfterPowerOnSeconds</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/OrgGeneralSettingsType.html" target="classFrame" title="OrgGeneralSettings">OrgGeneralSettings</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/OrgLeaseSettingsType.html" target="classFrame" title="VAppLeaseSettings">VAppLeaseSettings</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="Link">Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">DeleteOnStorageLeaseExpiration</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">DeleteOnStorageLeaseExpiration</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">DeploymentLeaseSeconds</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">DeploymentLeaseSeconds</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">StorageLeaseSeconds</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">StorageLeaseSeconds</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/OrgLeaseSettingsType.html" target="classFrame" title="VAppLeaseSettings">VAppLeaseSettings</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/OrgVAppTemplateLeaseSettingsType.html" target="classFrame" title="VAppTemplateLeaseSettings">VAppTemplateLeaseSettings</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="Link">Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">DeleteOnStorageLeaseExpiration</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">DeleteOnStorageLeaseExpiration</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">StorageLeaseSeconds</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">StorageLeaseSeconds</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/OrgVAppTemplateLeaseSettingsType.html" target="classFrame" title="VAppTemplateLeaseSettings">VAppTemplateLeaseSettings</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/OrgLdapSettingsType.html" target="classFrame" title="OrgLdapSettings">OrgLdapSettings</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="Link">Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">OrgLdapMode</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">OrgLdapMode</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">CustomUsersOu</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">CustomUsersOu</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/CustomOrgLdapSettingsType.html" target="classFrame" title="CustomOrgLdapSettings">CustomOrgLdapSettings</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">HostName</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">HostName</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Port</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Port</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">IsSsl</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">IsSsl</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">IsSslAcceptAll</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">IsSslAcceptAll</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Realm</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Realm</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">SearchBase</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">SearchBase</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">UserName</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">UserName</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Password</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Password</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">AuthenticationMechanism</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">AuthenticationMechanism</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">GroupSearchBase</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">GroupSearchBase</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">IsGroupSearchBaseEnabled</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">IsGroupSearchBaseEnabled</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">ConnectorType</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">ConnectorType</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/OrgLdapUserAttributesType.html" target="classFrame" title="UserAttributes">UserAttributes</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">ObjectClass</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">ObjectClass</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">ObjectIdentifier</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">ObjectIdentifier</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">UserName</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">UserName</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Email</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Email</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">FullName</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">FullName</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">GivenName</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">GivenName</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Surname</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Surname</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Telephone</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Telephone</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">GroupMembershipIdentifier</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">GroupMembershipIdentifier</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">GroupBackLinkIdentifier</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">GroupBackLinkIdentifier</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/OrgLdapUserAttributesType.html" target="classFrame" title="UserAttributes">UserAttributes</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/OrgLdapGroupAttributesType.html" target="classFrame" title="GroupAttributes">GroupAttributes</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">ObjectClass</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">ObjectClass</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">ObjectIdentifier</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">ObjectIdentifier</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">GroupName</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">GroupName</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Membership</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Membership</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">MembershipIdentifier</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">MembershipIdentifier</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">BackLinkIdentifier</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">BackLinkIdentifier</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/OrgLdapGroupAttributesType.html" target="classFrame" title="GroupAttributes">GroupAttributes</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/CustomOrgLdapSettingsType.html" target="classFrame" title="CustomOrgLdapSettings">CustomOrgLdapSettings</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/OrgLdapSettingsType.html" target="classFrame" title="OrgLdapSettings">OrgLdapSettings</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/OrgEmailSettingsType.html" target="classFrame" title="OrgEmailSettings">OrgEmailSettings</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="Link">Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">IsDefaultSmtpServer</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">IsDefaultSmtpServer</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">IsDefaultOrgEmail</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">IsDefaultOrgEmail</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">FromEmailAddress</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">FromEmailAddress</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">DefaultSubjectPrefix</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">DefaultSubjectPrefix</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">IsAlertEmailToAllAdmins</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">IsAlertEmailToAllAdmins</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">AlertEmailTo</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">AlertEmailTo</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/SmtpServerSettingsType.html" target="classFrame" title="SmtpServerSettings">SmtpServerSettings</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">IsUseAuthentication</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">IsUseAuthentication</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Host</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Host</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Username</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Username</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Password</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Password</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/SmtpServerSettingsType.html" target="classFrame" title="SmtpServerSettings">SmtpServerSettings</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/OrgEmailSettingsType.html" target="classFrame" title="OrgEmailSettings">OrgEmailSettings</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/OrgPasswordPolicySettingsType.html" target="classFrame" title="OrgPasswordPolicySettings">OrgPasswordPolicySettings</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="Link">Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">AccountLockoutEnabled</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">AccountLockoutEnabled</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">InvalidLoginsBeforeLockout</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">InvalidLoginsBeforeLockout</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">AccountLockoutIntervalMinutes</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">AccountLockoutIntervalMinutes</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/OrgPasswordPolicySettingsType.html" target="classFrame" title="OrgPasswordPolicySettings">OrgPasswordPolicySettings</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain"></span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">OrgSettings</span><span class="xml_tag_symbols">&gt;</span><br/>
+</dd>
+
+        <a id="attributes" name="attributes"></a>
+    <dt><p class="table-title">Attributes</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>Attribute</th>
+        <th>Type</th>
+        <th>Required</th>
+        <th>Modifiable</th>
+        <th>Since</th>
+        <th>Description</th>
+      </tr>
+                      <a name="href"></a>
+        <tr class="r1" >
+            <td>href</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#anyURI">anyURI</a></td>
+            <td>No</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                            Contains the URI to the entity.
+                        </td>
+        </tr>
+                              <a name="type"></a>
+        <tr class="r0" >
+            <td>type</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>No</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                            Contains the type of the entity.
+                        </td>
+        </tr>
+          </table>
+    </dd>
+    
+        <a id="elements" name="elements"></a>
+    <dt><p class="table-title">Elements</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>Element</th>
+        <th>Type</th>
+        <th>Occurrence</th>
+        <th>Modifiable</th>
+        <th>Since</th>
+        <th>Description</th>
+      </tr>
+                      <a name="VCloudExtension"></a>
+        <tr class="r1" >
+            <td>VCloudExtension</td>
+            <td><a href="../types/VCloudExtensionType.html">VCloudExtensionType</a></td>
+            <td>0..*</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                        An optional extension element that can contain an
+                        arbitrary number of elements and attributes.
+                    </td>
+        </tr>
+                              <a name="Link"></a>
+        <tr class="r0" >
+            <td>Link</td>
+            <td><a href="../types/LinkType.html">LinkType</a></td>
+            <td>0..*</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                                Optional link to an entity or operation associated
+                                with this object.
+                            </td>
+        </tr>
+                      <a name="OrgGeneralSettings"></a>
+        <tr class="r1" >
+            <td>OrgGeneralSettings</td>
+            <td><a href="../types/OrgGeneralSettingsType.html">OrgGeneralSettingsType</a></td>
+            <td>0..1</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                                Defines general org settings.
+                            </td>
+        </tr>
+                              <a name="VAppLeaseSettings"></a>
+        <tr class="r0" >
+            <td>VAppLeaseSettings</td>
+            <td><a href="../types/OrgLeaseSettingsType.html">OrgLeaseSettingsType</a></td>
+            <td>0..1</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                                Defines default lease durations and related policies.
+                            </td>
+        </tr>
+                      <a name="VAppTemplateLeaseSettings"></a>
+        <tr class="r1" >
+            <td>VAppTemplateLeaseSettings</td>
+            <td><a href="../types/OrgVAppTemplateLeaseSettingsType.html">OrgVAppTemplateLeaseSettingsType</a></td>
+            <td>0..1</td>
+            <td>always</td>
+            <td>1.5</td>
+            <td>
+                                Defines default lease policies for vAppTemplate on organization level.
+                            </td>
+        </tr>
+                              <a name="OrgLdapSettings"></a>
+        <tr class="r0" >
+            <td>OrgLdapSettings</td>
+            <td><a href="../types/OrgLdapSettingsType.html">OrgLdapSettingsType</a></td>
+            <td>0..1</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                                Defines the hostname and connection details for the organization
+                                s primary LDAP service.
+                            </td>
+        </tr>
+                      <a name="OrgEmailSettings"></a>
+        <tr class="r1" >
+            <td>OrgEmailSettings</td>
+            <td><a href="../types/OrgEmailSettingsType.html">OrgEmailSettingsType</a></td>
+            <td>0..1</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                                Defines the email settings for this organization.
+                            </td>
+        </tr>
+                              <a name="OrgPasswordPolicySettings"></a>
+        <tr class="r0" >
+            <td>OrgPasswordPolicySettings</td>
+            <td><a href="../types/OrgPasswordPolicySettingsType.html">OrgPasswordPolicySettingsType</a></td>
+            <td>0..1</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                                Defines the password policy settings for an organization. If
+                                not explicitly set, the organization inherits the system
+                                password policy settings.
+                            </td>
+        </tr>
+          </table>
+    </dd>
+    
+    
+        <a id="operations" name="operations"></a>
+    <dt><p class="table-title">Operations</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>CRUD</th>
+        <th>Operation</th>
+        <th>Description</th>
+        <th>Since</th>
+      </tr>
+
+                      <tr class="r1" >
+            <td nowrap="1">read</td>
+            <td nowrap="1"><a href="../operations/GET-OrgSettings.html">GET /admin/org/{id}/settings</a></td>
+                        <td>Gets organizational settings for this organization.</td>
+            <td></td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">update</td>
+            <td nowrap="1"><a href="../operations/PUT-OrgSettings.html">PUT /admin/org/{id}/settings</a></td>
+                        <td>Updates organizational settings for this organization.</td>
+            <td></td>
+        </tr>
+          </table>
+    </dd>
+    
+</dl>
+
+<br>
+<table class="header-footer" cellSpacing="0">
+    <tr>
+    <td><a href="#top">Top of page</a></td>
+                    <td><a href="#attributes">Attributes</a></td>
+                            <td><a href="#elements">Elements</a></td>
+                            <td>&nbsp;</td>
+                            <td><a href="#operations">Operations</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+
+<br>
+<script language="javascript">document.write(ID_Copyright);</script>
+<br>
+<script language="javascript">document.write(ID_VersionInformation);</script>
+</body>
+</html>

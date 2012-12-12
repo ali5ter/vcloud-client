@@ -1,0 +1,295 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>vCloud REST API - CloneMediaParams</title>
+    <script src="../dynamic-content.js" type="text/javascript"></script>
+    <script language="JavaScript" src="../commonRes.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="../doc-style.css">
+    <link rel="stylesheet" type="text/css" href="../xml-style.css">
+</head>
+<body>
+
+<table class="header-footer" cellSpacing="0" id="top">
+    <tr>
+    <td></td>
+                    <td><a href="#attributes">Attributes</a></td>
+                            <td><a href="#elements">Elements</a></td>
+                            <td>&nbsp;</td>
+                            <td><a href="#operations">Operations</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+<br>
+
+<h1>CloneMediaParams</h1>
+
+<dl>
+        <dt>Element:</dt>
+    <dd>CloneMediaParams</dd>
+        <dt>Type:</dt>
+    <dd>CloneMediaParamsType</dd>
+    <dt>Namespace:</dt>
+    <dd><a href="http://www.vmware.com/vcloud/v1.5">http://www.vmware.com/vcloud/v1.5</a></dd>
+    <dt>Description:</dt>
+    <dd>
+                Represents parameters for copying a media resource and optionally
+                deleting the source.
+            </dd>
+    <dt>Since:</dt>
+    <dd>0.9</dd>
+    <dt>Schema:</dt>
+    <dd><a href="../etc/1.5/schemas/vcloud/media.xsd">media.xsd</a></dd>
+    <dt>Media type(s):</dt>
+    <dd>application/vnd.vmware.vcloud.cloneMediaParams+xml<br></dd>
+    <dt>Extends:</dt>
+    <dd><a href="../types/ParamsType.html">ParamsType</a></dd>
+
+    <dt>XML Representation:</dt>
+    <dd><span class="xml_plain"></span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">CloneMediaParams</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name">xmlns</span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value">http://www.vmware.com/vcloud/v1.5</span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ParamsType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Description</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Description</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ReferenceType.html" target="classFrame" title="Source">Source</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">IsSourceDelete</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#boolean" target="classFrame" title="xs:boolean">xs:boolean</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">IsSourceDelete</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain"></span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">CloneMediaParams</span><span class="xml_tag_symbols">&gt;</span><br/>
+</dd>
+
+        <a id="attributes" name="attributes"></a>
+    <dt><p class="table-title">Attributes</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>Attribute</th>
+        <th>Type</th>
+        <th>Required</th>
+        <th>Modifiable</th>
+        <th>Since</th>
+        <th>Description</th>
+      </tr>
+                      <a name="name"></a>
+        <tr class="r1" >
+            <td>name</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>No</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                            A name as parameter.
+                        </td>
+        </tr>
+          </table>
+    </dd>
+    
+        <a id="elements" name="elements"></a>
+    <dt><p class="table-title">Elements</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>Element</th>
+        <th>Type</th>
+        <th>Occurrence</th>
+        <th>Modifiable</th>
+        <th>Since</th>
+        <th>Description</th>
+      </tr>
+                      <a name="VCloudExtension"></a>
+        <tr class="r1" >
+            <td>VCloudExtension</td>
+            <td><a href="../types/VCloudExtensionType.html">VCloudExtensionType</a></td>
+            <td>0..*</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                        An optional extension element that can contain an
+                        arbitrary number of elements and attributes.
+                    </td>
+        </tr>
+                              <a name="Description"></a>
+        <tr class="r0" >
+            <td>Description</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>0..1</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                                Optional description.
+                            </td>
+        </tr>
+                      <a name="Source"></a>
+        <tr class="r1" >
+            <td>Source</td>
+            <td><a href="../types/ReferenceType.html">ReferenceType</a></td>
+            <td>1</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                                The reference to media for clone.
+                            </td>
+        </tr>
+                              <a name="IsSourceDelete"></a>
+        <tr class="r0" >
+            <td>IsSourceDelete</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#boolean">boolean</a></td>
+            <td>0..1</td>
+            <td>always</td>
+            <td>1.0</td>
+            <td>
+                                Optional flag to delete the media after cloning.
+                            </td>
+        </tr>
+          </table>
+    </dd>
+    
+    
+        <a id="operations" name="operations"></a>
+    <dt><p class="table-title">Operations</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>CRUD</th>
+        <th>Operation</th>
+        <th>Description</th>
+        <th>Since</th>
+      </tr>
+
+                      <tr class="r1" >
+            <td nowrap="1">as input</td>
+            <td nowrap="1"><a href="../operations/POST-CloneMedia.html">POST /vdc/{id}/action/cloneMedia</a></td>
+                        <td>Clones a media into new one.</td>
+            <td>0.9</td>
+        </tr>
+          </table>
+    </dd>
+    
+</dl>
+
+<br>
+<table class="header-footer" cellSpacing="0">
+    <tr>
+    <td><a href="#top">Top of page</a></td>
+                    <td><a href="#attributes">Attributes</a></td>
+                            <td><a href="#elements">Elements</a></td>
+                            <td>&nbsp;</td>
+                            <td><a href="#operations">Operations</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+
+<br>
+<script language="javascript">document.write(ID_Copyright);</script>
+<br>
+<script language="javascript">document.write(ID_VersionInformation);</script>
+</body>
+</html>

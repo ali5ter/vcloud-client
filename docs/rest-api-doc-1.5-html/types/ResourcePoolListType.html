@@ -1,0 +1,326 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>vCloud REST API - ResourcePoolList</title>
+    <script src="../dynamic-content.js" type="text/javascript"></script>
+    <script language="JavaScript" src="../commonRes.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="../doc-style.css">
+    <link rel="stylesheet" type="text/css" href="../xml-style.css">
+</head>
+<body>
+
+<table class="header-footer" cellSpacing="0" id="top">
+    <tr>
+    <td></td>
+                    <td><a href="#attributes">Attributes</a></td>
+                            <td><a href="#elements">Elements</a></td>
+                            <td>&nbsp;</td>
+                            <td><a href="#operations">Operations</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+<br>
+
+<h1>ResourcePoolList</h1>
+
+<dl>
+        <dt>Element:</dt>
+    <dd>ResourcePoolList</dd>
+        <dt>Type:</dt>
+    <dd>ResourcePoolListType</dd>
+    <dt>Namespace:</dt>
+    <dd><a href="http://www.vmware.com/vcloud/extension/v1.5">http://www.vmware.com/vcloud/extension/v1.5</a></dd>
+    <dt>Description:</dt>
+    <dd>
+                Represents a list of available resource pools that have not been
+                assigned to any vDCs (provider or org).
+            </dd>
+    <dt>Since:</dt>
+    <dd>1.0</dd>
+    <dt>Schema:</dt>
+    <dd><a href="../etc/1.5/schemas/extension/vmwextensions.xsd">vmwextensions.xsd</a></dd>
+    <dt>Media type(s):</dt>
+    <dd>application/vnd.vmware.admin.resourcePoolList+xml<br></dd>
+    <dt>Extends:</dt>
+    <dd><a href="../types/ResourceType.html">ResourceType</a></dd>
+
+    <dt>XML Representation:</dt>
+    <dd><span class="xml_plain"></span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">ResourcePoolList</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name">xmlns</span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value">http://www.vmware.com/vcloud/extension/v1.5</span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name">xmlns:vcloud_v1.5</span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value">http://www.vmware.com/vcloud/v1.5</span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="vcloud_v1.5:Link">vcloud_v1.5:Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ResourcePoolType.html" target="classFrame" title="ResourcePool">ResourcePool</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/EntityType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/EntityType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="vcloud_v1.5:Link">vcloud_v1.5:Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Description</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Description</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/TasksInProgressType.html" target="classFrame" title="vcloud_v1.5:Tasks">vcloud_v1.5:Tasks</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/TaskType.html" target="classFrame" title="vcloud_v1.5:Task">vcloud_v1.5:Task</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/EntityType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/EntityType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#status" target="classFrame" title="status">status</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#operation" target="classFrame" title="operation">operation</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#operationName" target="classFrame" title="operationName">operationName</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#startTime" target="classFrame" title="startTime">startTime</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#dateTime" target="classFrame" title="xs:dateTime">xs:dateTime</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#endTime" target="classFrame" title="endTime">endTime</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#dateTime" target="classFrame" title="xs:dateTime">xs:dateTime</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#expiryTime" target="classFrame" title="expiryTime">expiryTime</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#dateTime" target="classFrame" title="xs:dateTime">xs:dateTime</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="vcloud_v1.5:Link">vcloud_v1.5:Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Description</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Description</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/TasksInProgressType.html" target="classFrame" title="vcloud_v1.5:Tasks">vcloud_v1.5:Tasks</a></span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="../types/TasksInProgressType.html" target="classFrame" title="vcloud_v1.5:TasksInProgressType">vcloud_v1.5:TasksInProgressType</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/TasksInProgressType.html" target="classFrame" title="vcloud_v1.5:Tasks">vcloud_v1.5:Tasks</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ReferenceType.html" target="classFrame" title="vcloud_v1.5:Owner">vcloud_v1.5:Owner</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ErrorType.html" target="classFrame" title="vcloud_v1.5:Error">vcloud_v1.5:Error</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ErrorType.html#message" target="classFrame" title="message">message</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ErrorType.html#majorErrorCode" target="classFrame" title="majorErrorCode">majorErrorCode</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ErrorType.html#minorErrorCode" target="classFrame" title="minorErrorCode">minorErrorCode</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ErrorType.html#vendorSpecificErrorCode" target="classFrame" title="vendorSpecificErrorCode">vendorSpecificErrorCode</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/ErrorType.html#stackTrace" target="classFrame" title="stackTrace">stackTrace</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ReferenceType.html" target="classFrame" title="vcloud_v1.5:User">vcloud_v1.5:User</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ReferenceType.html" target="classFrame" title="vcloud_v1.5:Organization">vcloud_v1.5:Organization</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Progress</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Progress</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Params</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain">...</span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Params</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/TaskType.html" target="classFrame" title="vcloud_v1.5:Task">vcloud_v1.5:Task</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/TasksInProgressType.html" target="classFrame" title="vcloud_v1.5:Tasks">vcloud_v1.5:Tasks</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">MoRef</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">MoRef</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">VimObjectType</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">VimObjectType</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/VimObjectRefsType.html" target="classFrame" title="DataStoreRefs">DataStoreRefs</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/VimObjectRefType.html" target="classFrame" title="VimObjectRef">VimObjectRef</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ReferenceType.html" target="classFrame" title="vcloud_v1.5:VimServerRef">vcloud_v1.5:VimServerRef</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">MoRef</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">MoRef</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">VimObjectType</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">VimObjectType</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/VimObjectRefType.html" target="classFrame" title="VimObjectRef">VimObjectRef</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/VimObjectRefsType.html" target="classFrame" title="DataStoreRefs">DataStoreRefs</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/ResourcePoolType.html" target="classFrame" title="ResourcePool">ResourcePool</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain"></span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">ResourcePoolList</span><span class="xml_tag_symbols">&gt;</span><br/>
+</dd>
+
+        <a id="attributes" name="attributes"></a>
+    <dt><p class="table-title">Attributes</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>Attribute</th>
+        <th>Type</th>
+        <th>Required</th>
+        <th>Modifiable</th>
+        <th>Since</th>
+        <th>Description</th>
+      </tr>
+                      <a name="href"></a>
+        <tr class="r1" >
+            <td>href</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#anyURI">anyURI</a></td>
+            <td>No</td>
+            <td>always</td>
+            <td>1.0</td>
+            <td>
+                            Contains the URI to the entity.
+                        </td>
+        </tr>
+                              <a name="type"></a>
+        <tr class="r0" >
+            <td>type</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>No</td>
+            <td>always</td>
+            <td>1.0</td>
+            <td>
+                            Contains the type of the entity.
+                        </td>
+        </tr>
+          </table>
+    </dd>
+    
+        <a id="elements" name="elements"></a>
+    <dt><p class="table-title">Elements</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>Element</th>
+        <th>Type</th>
+        <th>Occurrence</th>
+        <th>Modifiable</th>
+        <th>Since</th>
+        <th>Description</th>
+      </tr>
+                      <a name="VCloudExtension"></a>
+        <tr class="r1" >
+            <td>VCloudExtension</td>
+            <td><a href="../types/VCloudExtensionType.html">VCloudExtensionType</a></td>
+            <td>0..*</td>
+            <td>always</td>
+            <td>1.0</td>
+            <td>
+                        An optional extension element that can contain an
+                        arbitrary number of elements and attributes.
+                    </td>
+        </tr>
+                              <a name="Link"></a>
+        <tr class="r0" >
+            <td>Link</td>
+            <td><a href="../types/LinkType.html">LinkType</a></td>
+            <td>0..*</td>
+            <td>none</td>
+            <td>1.0</td>
+            <td>
+                                Optional link to an entity or operation associated
+                                with this object.
+                            </td>
+        </tr>
+                      <a name="ResourcePool"></a>
+        <tr class="r1" >
+            <td>ResourcePool</td>
+            <td><a href="../types/ResourcePoolType.html">ResourcePoolType</a></td>
+            <td>0..*</td>
+            <td>none</td>
+            <td>1.0</td>
+            <td>
+                                Free resource pool information.
+                            </td>
+        </tr>
+          </table>
+    </dd>
+    
+    
+        <a id="operations" name="operations"></a>
+    <dt><p class="table-title">Operations</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>CRUD</th>
+        <th>Operation</th>
+        <th>Description</th>
+        <th>Since</th>
+      </tr>
+
+                      <tr class="r1" >
+            <td nowrap="1">read</td>
+            <td nowrap="1"><a href="../operations/GET-AvailableResourcePools.html">GET /admin/extension/vimServer/{id}/resourcePoolList</a></td>
+                        <td>Lists free resource pools in a vSphere server.</td>
+            <td>1.0</td>
+        </tr>
+          </table>
+    </dd>
+    
+</dl>
+
+<br>
+<table class="header-footer" cellSpacing="0">
+    <tr>
+    <td><a href="#top">Top of page</a></td>
+                    <td><a href="#attributes">Attributes</a></td>
+                            <td><a href="#elements">Elements</a></td>
+                            <td>&nbsp;</td>
+                            <td><a href="#operations">Operations</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+
+<br>
+<script language="javascript">document.write(ID_Copyright);</script>
+<br>
+<script language="javascript">document.write(ID_VersionInformation);</script>
+</body>
+</html>

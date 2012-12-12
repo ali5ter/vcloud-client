@@ -1,0 +1,210 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>vCloud REST API - POST-CreateProviderVdc</title>
+    <script src="../dynamic-content.js" type="text/javascript"></script>
+    <script language="JavaScript" src="../commonRes.js"> type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="../doc-style.css">
+    <link rel="stylesheet" type="text/css" href="../xml-style.css">
+</head>
+<body>
+
+<table class="header-footer" cellSpacing="0" id="top">
+    <tr>
+    <td></td>
+                    <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td><a href="#examples">Examples</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+<br>
+
+<h1>POST /admin/extension/providervdcs</h1>
+
+<dl>
+    <dt>Operation:</dt>
+    <dd>POST /admin/extension/providervdcs</dd>
+    <dt>Description:</dt>
+    <dd>Creates a provider vDC.
+
+ To be able to do this you should have a new resource pool from VC which
+ is not a child or a sub child of an existing provider vDC. Also you should
+ specify a data store and the VC server on which all these resources exists.
+ The supplied information which you will need are the MoRefs of the resource
+ pool and data store.
+
+ The state of provider vDC resource which is returned is represented by
+ its attribute status and will be initially 0 - not ready. The
+ user of API should wait the task to be executed before continue to use
+ the provider vDC.
+
+ If there is an error while creating the vDC then the error description
+ will be described in the <TaskType>.
+
+ The resource pools and data stores which could be used could be found in
+ this operation: GET .../api/v1.0/admin/extension/vimServer/<vim-server-id>/resourcePoolList</dd>
+    <dt>Since:</dt>
+    <dd>0.9</dd>
+    <dt>Input parameters</dt>
+    <dd>
+                <dl>
+            <dt>Consume media type(s):</dt>
+            <dd>application/vnd.vmware.admin.vmwprovidervdc+xml<br></dd>
+            <dt>Input type:</dt>
+            <dd><a href="../types/VMWProviderVdcType.html">VMWProviderVdcType</a></dd>
+        </dl>
+    </dd>
+    <dt>Output parameters</dt>
+    <dd>
+                    VMWProviderVdcType The returned <VMWProviderVdc> element
+         will contain a <Task>, which
+         will point to the running asynchronous creation operation.<br><br>
+                <dl>
+            <dt>Produce media type(s):</dt>
+            <dd>application/vnd.vmware.admin.vmwprovidervdc+xml<br></dd>
+            <dt>Output type:</dt>
+            <dd><a href="../types/VMWProviderVdcType.html">VMWProviderVdcType</a></dd>
+        </dl>
+    </dd>
+    <dt>Examples</dt>
+    <a id="examples" name="examples"></a>
+    <dd>
+    <dl>
+        </dl>
+    </dd>
+</dl>
+
+<br>
+<table class="header-footer" cellSpacing="0">
+    <tr>
+    <td><a href="#top">Top of page</a></td>
+                    <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td><a href="#examples">Examples</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+
+<br>
+<script language="javascript">document.write(ID_Copyright);</script>
+<br>
+<script language="javascript">document.write(ID_VersionInformation);</script>
+</body>
+</html>

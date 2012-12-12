@@ -114,11 +114,15 @@ vmware.cloud = function(base, version) {
         vmware.rest.post(loginUrl)
             .done(function(xhr) {
             var loginEvent = {
-                success: true,
-                data: $.parseXML((xhr.xml ? xhr.xml : (new XMLSerializer())
-                    .serializeToString(xhr)))
-            };
-            that.user = new User(loginEvent.data.childNodes[0].getAttribute("user"), loginEvent.data.childNodes[0].getAttribute("org"));
+                    success: true,
+                    data: $.parseXML((xhr.xml ? xhr.xml : (new XMLSerializer())
+                        .serializeToString(xhr)))
+                },
+                user = loginEvent.data.childNodes[0].getAttribute("user"),
+                org = loginEvent.data.childNodes[0].getAttribute("org"),
+                adminUrl = $(loginEvent.data).find('Link[href*="/api/admin"]').attr('href'),
+                orgUrl = $(loginEvent.data).find('Link[name="'+ org +'"]').attr('href');
+            that.user = new User(user, org, orgUrl, adminUrl);
             that.begin();
             that.trigger(vmware.events.cloud.LOGIN, loginEvent);
         })
@@ -145,12 +149,16 @@ vmware.cloud = function(base, version) {
         vmware.rest.get(base.concat("session"))
             .done(function(xhr) {
             var loginEvent = {
-                success: true,
-                confirm: true,
-                data: $.parseXML((xhr.xml ? xhr.xml : (new XMLSerializer())
-                    .serializeToString(xhr)))
-            };
-            that.user = new User(loginEvent.data.childNodes[0].getAttribute("user"), loginEvent.data.childNodes[0].getAttribute("org"));
+                    success: true,
+                    confirm: true,
+                    data: $.parseXML((xhr.xml ? xhr.xml : (new XMLSerializer())
+                        .serializeToString(xhr)))
+                },
+                user = loginEvent.data.childNodes[0].getAttribute("user"),
+                org = loginEvent.data.childNodes[0].getAttribute("org"),
+                adminUrl = $(loginEvent.data).find('Link[href*="/api/admin"]').attr('href'),
+                orgUrl = $(loginEvent.data).find('Link[name="'+ org +'"]').attr('href');
+            that.user = new User(user, org, orgUrl, adminUrl);
             that.begin();
             that.trigger(vmware.events.cloud.LOGIN, loginEvent);
         })
@@ -515,15 +523,23 @@ vmware.cloud = function(base, version) {
      * Internal: User object
      */
     that.user = null;
-    var User = function(name, org) {
+    var User = function(name, org, orgUrl, adminUrl) {
         var name = name;
         var org = org;
+        var orgUrl = orgUrl;
+        var adminUrl = adminUrl;
         var that = {};
         that.getName = function() {
             return name;
         };
         that.getOrg = function() {
             return org;
+        };
+        that.getAdminUrl= function() {
+            return adminUrl
+        };
+        that.getOrgUrl= function() {
+            return orgUrl;
         };
         return that;
     };
@@ -541,6 +557,21 @@ vmware.cloud = function(base, version) {
      */
     that.getUserOrg = function() {
         return this.user.getOrg();
+    };
+
+    /*
+     * GetAdminUrl: Method to get the admin end-point URL if the
+     * authenticated User has administrator rights
+     */
+    that.getAdminUrl = function () {
+        return this.user.getAdminUrl();
+    };
+
+    /*
+     * GetUserOrgUrl: Method to get the authenticated User Organization REST URL
+     */
+    that.getUserOrgUrl = function() {
+        return this.user.getOrgUrl();
     };
 
     /*

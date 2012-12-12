@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
  * @file index.html
- * Testing the VMware vcloud-js-sdk.js
+ * Playing with the VMware vcloud-js-sdk.js
  * @author Alister Lewis-Bowen <alister@different.com>
 -->
 <html lang="en">
@@ -26,7 +26,7 @@
                 </a>
                 <a id="nav-org" class="brand" href="#machines">vCloud</a>
                 <div class="nav-collapse collapse">
-                    <ul class="nav">
+                    <ul id="nav-views" class="nav">
                         <li class="active"><a href="#machines"><i class="icon-hdd icon-white"></i> Machines</a></li>
                         <li><a href="#library"><i class="icon-book icon-white"></i> Library</a></li>
                         <li><a href="#prefs"><i class="icon-cog icon-white"></i> Preferences</a></li>
@@ -49,10 +49,8 @@
             <input type="password" class="input-block-level" placeholder="Password">
             <button class="btn btn-large btn-primary" type="submit">Sign in</button>
         </form>
-        <div id="workspace">
+        <div id="workspace" class="view">
             <div id="machines">
-                <a id="_machines"></a>
-                <h3>Machines</h3>
                 <table class="table table-striped table-bordered table-hover table-condensed">
                     <caption>Machines in my vCloud</caption>
                     <thead>
@@ -68,10 +66,7 @@
                     </tbody>
                 </table>
             </div>
-            <hr/>
-            <div id="library">
-                <a id="_library"></a>
-                <h3>Library</h3>
+            <div id="library" class="view">
                 <table class="table table-striped table-bordered table-hover table-condensed">
                     <caption>Templates in my vCloud</caption>
                     <thead>
@@ -86,16 +81,14 @@
                     </tbody>
                 </table>
             </div>
-            <hr/>
-            <div id="prefs">
-                <a id="_prefs"></a>
-                <h3>Preferences</h3>
+            <div id="prefs" class="view">
+                <p>Nothing to see here&hellip; yet</p>
             </div>
         </div>
         <progress id="spinner" max="100%">Busy<progress>
     </div> <!-- /container -->
     <script src="js/lib/jquery.min.js"></script>
-    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/bootstrap.js"></script>
     <script src="js/lib/jquery.base64.min.js"></script>
     <script src="js/lib/vcloud-js-sdk.js"></script>
     <script src="js/center.js"></script>

@@ -1,6 +1,6 @@
 /**
  * @file vcloud.js
- * Testing the VMware vcloud-js-sdk.js
+ * Playing with the VMware vcloud-js-sdk.js
  * @author Alister Lewis-Bowen <alister@different.com>
  */
 
@@ -8,13 +8,18 @@
 
     'use strict';
 
-    var vcd; // vCloud JS SDK obejct
+    var vcd = {},    // vCloud JS SDK obejct
+        user = {};   // Authenticated User details
 
     /**
      * @method: init
      * Bootstrap the SDK and authenticate with vCD cell
      */
     function init () {
+        $('#navbar').hide();
+        $('#nav-progress').removeClass('clear');
+        $('#workspace').hide();
+        $('#login').hide();
         $('#spinner').show().center();
 
         // TODO: Might be nice to edit this in the UI
@@ -27,12 +32,11 @@
         vcd = new vmware.cloud(localStorage.server+"/api/",
             vmware.cloudVersion.V5_1);
 
-        // TODO: /versions API call in SDK bootstrap can take over a minute to
-        // complete!! Can this be bypassed?
+        // TODO: Consider bypassing /versions API call in SDK bootstrap
 
         // Handle successful bootstrap - just once :)
         vcd.once(vmware.events.cloud.INITIALIZATION_COMPLETE, function() {
-            console.log('SDK init complete');
+            console.info('SDK init complete');
             $('#login').show();
             $('#spinner').hide();
             if (localStorage.loggedin == '1') vcd.confirmLoggedIn();
@@ -47,11 +51,11 @@
         vcd.register(vmware.events.cloud.TEMPLATE_REFRESH, onRefresh);
 
         // Handler for SDK task start and completion
-        vcd.register(vmware.events.cloud.TASK_START, function() { console.log('SDK task started'); });
-        vcd.register(vmware.events.cloud.TASK_COMPLETE, function() { console.log('SDK task complete'); });
+        vcd.register(vmware.events.cloud.TASK_START, function() { console.info('SDK task started'); });
+        vcd.register(vmware.events.cloud.TASK_COMPLETE, function() { console.info('SDK task complete'); });
 
         // Handler for SDK errors
-        vcd.register(vmware.events.cloud.ERROR, function(e) { console.log('SDK error: '+ e.eventData); });
+        vcd.register(vmware.events.cloud.ERROR, function(e) { console.error('SDK error: '+ e.eventData); });
 
         // Register callback to initiate login
         $('#login').submit(login);
@@ -85,22 +89,22 @@
     function onLogin (e) {
         if (e.eventData.success) {
             if (!e.eventData.confirm) {
-                console.log('Logged into '+ vcd.getUserOrg() +' as '+ vcd.getUserName());
+                console.info('Logged into '+ vcd.getUserOrg() +' as '+ vcd.getUserName());
                 localStorage.loggedin = '1';
             }
             else {
-                console.log('Session still exists');
+                console.warn('Session still exists');
             }
             $('#login').hide();
             initWorkspace();
         }
         else {
             if (e.eventData.confirm) {
-                console.log('Session expired');
+                console.warn('Session expired');
                 logout();
             }
             else {
-                console.log('Invalid credentials');
+                console.warn('Invalid credentials');
                 $('input:password').val('');
             }
         }
@@ -126,7 +130,10 @@
     function initWorkspace () {
         $('.nav-user span.org').text(vcd.getUserOrg());
         $('.nav-user span.user').text(vcd.getUserName());
+        $('#nav-views a').click(function() { showView($(this).attr('href')); });
         $('#navbar').show();
+        $('#nav-progress').addClass('clear');
+        showView('#machines');
         $('#workspace').show();
 
         // Restore vcd data model so we have some data to work with
@@ -135,6 +142,90 @@
             vcd.loadCache(localStorage.vcdData);
             updateWorkspace();
         }
+
+        fetchUserDetail(); //Example using the SDK make a vCD API query
+        fetchUserRole(); // Example using SDK to make vCD API admin calls
+    }
+
+    /**
+     * @method: fetchUserDetail
+     * Example using the SDK make a vCD API query
+     */
+    function fetchUserDetail () {
+        // @see http://www.vmware.com/pdf/vcd_15_api_guide.pdf
+
+        var url = vcd.base  // SDK stored end-point URL
+                + 'query?type=user&format=records&filter=name=='
+                + vcd.getUserName(),
+            user1 = user;
+        console.info('Custom vCD query: '+ url);
+
+        vcd.fetchURL(url, 'GET', '', function (xml) {
+            $(xml).find('UserRecord').each(function () {
+                $.each(this.attributes, function (i, attrib){
+                    user1[attrib.name] = attrib.value;
+                    // TODO: Be nice if this record contained the role name
+                });
+            });
+        });
+    }
+
+    /**
+     * @method: fetchUserRole
+     * Example using the SDK to make vCD API admin calls
+     */
+    function fetchUserRole () {
+        // @see http://www.vmware.com/pdf/vcd_15_api_guide.pdf
+        // Steps to retrieving the Users role
+        // 1. Extract the Org Id from the Org URL
+        // 2. GET /api/admin/org/{id} to get Organization object
+        // 3. Extract the User URL to make the following call...
+        // 4. GET /api/admin/user/{id} to get User object
+        // 5. Extract the role name
+
+        var adminUrl = vcd.getAdminUrl();
+
+        if (adminUrl !== undefined) { // check if user had admin rights
+
+            var orgUrl = vcd.getUserOrgUrl(),
+                orgId = orgUrl.substring(orgUrl.indexOf('/api/org/')+9, orgUrl.length),
+                url = adminUrl +'org/'+ orgId,
+                user1 = user;
+            console.info('Custom vCD call: '+ url);
+
+            vcd.fetchURL(url, 'GET', '', function (xml) {
+
+                var url = $(xml).find('UserReference[name='+ vcd.getUserName() +']').attr('href'),
+                    user2 = user1;
+                console.info('Custom vCD call: '+ url);
+
+                vcd.fetchURL(url, 'GET', '', function (xml) {
+                    user2['roleName'] = $(xml).find('Role').attr('name');
+                    $('#navbar span.nav-user').append(' ('+user2['roleName'] +')');
+                });
+            });
+        }
+        else {
+            console.warn('The authenticated User does not have admin rights.');
+        }
+    }
+
+    /**
+     * @method: showView
+     * Show the given view and hide other views
+     */
+    function showView (viewName) {
+        var views = ['#machines', '#library', '#prefs'];
+        for (var i=0; i<views.length;i++) {
+            if (viewName === views[i]) {
+                $('#nav-views a[href="'+ views[i] +'"]').parent().addClass('active');
+                $(views[i]).show();
+            }
+            else {
+                $('#nav-views a[href="'+ views[i] +'"]').parent().removeClass('active');
+                $(views[i]).hide();
+            }
+        }
     }
 
     /**
@@ -142,7 +233,7 @@
      * Tell the SDK to refresh the data model
      */
     function refresh () {
-        $('#nav-progress').toggleClass('clear');
+        $('#nav-progress').addClass('clear');
         vcd.updateModels();
         vcd.getAllTemplates();
     }
@@ -152,8 +243,8 @@
      * Store the data model and refresh data in the UI
      */
     function onRefresh () {
-        $('#nav-progress').toggleClass('clear');
-        console.log('SDK refreshed data model');
+        $('#nav-progress').removeClass('clear');
+        console.info('SDK refreshed data model');
 
         // Save this updated data model so we can restore it and not block
         // the UI logic from rendering the workspace
@@ -174,8 +265,12 @@
             networks = vcd.getNetworks(),
             vdcs = vcd.getVdcList();
 
-        console.log('Available VDCs : '+ vdcs);
-        console.log('Available Networks : '+ networks);
+        // Show what what we're not rendering to the UI...
+        console.debug('User...'); console.dir(user);
+        console.debug('Tasks...'); console.dir(tasks);
+        console.debug('Metrics...'); console.dir(metrics);
+        if (vdcs.length !== 0) {  console.debug('VDCs...'); console.dir(vdcs); }
+        if (networks.length !==0) {  console.debug('Networks...'); console.dir(networks); }
 
         updateMachines(vapps);
         updateLibrary(templates);

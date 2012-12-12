@@ -1,0 +1,753 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>vCloud REST API User Elements</title>
+    <script language="JavaScript" src="./commonRes.js"> type="text/javascript"></script>
+    <script src="dynamic-content.js" type="text/javascript"></script>
+    <script src="actb.js" type="text/javascript" language="javascript"></script>
+    <script src="common.js" type="text/javascript" language="javascript"></script>
+    <script>
+        var picklist = new Array('AdminAllocatedExternalAddressRecord','AdminCatalogItemRecord','AdminCatalogRecord','AdminGroupRecord','AdminMediaRecord','AdminOrgNetworkRecord','AdminShadowVMRecord','AdminTaskRecord','AdminUserRecord','AdminVAppNetworkRecord','AdminVAppRecord','AdminVAppTemplateRecord','AdminVMRecord','AdminVdcRecord','AdminVdcReference','AdminVdcReferences','AllEULAsAccepted','AllocatedExternalAddressRecord','BlockingTaskRecord','BlockingTaskReference','BlockingTaskReferences (v1.5)','CaptureVAppParams','Catalog','CatalogItem','CatalogItemRecord','CatalogItemReference','CatalogItemReferences','CatalogRecord','CatalogReference','CatalogReferences','CellRecord','CloneMediaParams','CloneVAppParams','CloneVAppTemplateParams','ComposeVAppParams','ControlAccessParams','CustomizationSection','DatastoreProviderVdcRelationRecord','DatastoreRecord','DatastoreReference','DatastoreReferences (v1.5)','DeployVAppParams','DhcpService','DvSwitchRecord','Entity','Error','EventRecord','File','FirewallService','GroupRecord','GroupReference','GroupReferences','GuestCustomizationSection','HostRecord','HostReference','HostReferences','InstantiateOvfParams','InstantiateVAppTemplateParams','IpsecVpnLocalPeer','IpsecVpnPeer','IpsecVpnRemotePeer','IpsecVpnService','IpsecVpnThirdPartyPeer','Item','LeaseSettingsSection','Link','Media','MediaInsertOrEjectParams','MediaRecord','MediaReference','MediaReferences','Metadata','MetadataValue','NatService','NetworkAssignment','NetworkConfigSection','NetworkConnection','NetworkConnectionSection','NetworkPoolRecord','NetworkPoolReference','NetworkPoolReferences','NetworkRecord','NetworkReference','NetworkReferences','NetworkService','Org','OrgList','OrgNetworkRecord','OrgNetworkReference','OrgNetworkReferences','OrgRecord','OrgReference','OrgReferences','OrgVdcRecord','OrgVdcReference','OrgVdcReferences','OrgVdcResourcePoolRelationRecord','Owner','PortgroupRecord','ProductSectionList','ProviderVdcResourcePoolRelationRecord','PublishCatalogParams','QueryList','QueryResultRecords','RasdItemsList','RecomposeVAppParams','Record','Reference','References','RelocateParams','ResourceEntity','ResourcePoolRecord','RightRecord','RightReference','RightReferences','RoleRecord','RoleReference','RoleReferences','RuntimeInfoSection','ScreenTicket','SerialPortConfigType','Session','ShadowVMReferences','StaticRoutingService','StrandedUserRecord','Task','TaskRecord','TaskReference','TaskReferences','TasksList','UndeployVAppParams','UploadVAppTemplateParams','UserRecord','UserReference','UserReferences','VApp','VAppNetwork','VAppNetworkRecord','VAppNetworkReference','VAppNetworkReferences','VAppOrgNetworkRelationRecord','VAppOrgNetworkRelationReference','VAppOrgNetworkRelationReferences','VAppRecord','VAppReference','VAppReferences','VAppTemplate','VAppTemplateRecord','VAppTemplateReference','VAppTemplateReferences','VMRecord','VMReference','VMReferences','VMWProviderVdcRecord','VMWProviderVdcReference','VMWProviderVdcReferences (v1.5)','Vdc','VirtualCenterRecord','VirtualCenterReference','VirtualCenterReferences','Vm','VmPendingQuestion','VmQuestionAnswer');
+        var urls = new Array();
+        urls['AdminAllocatedExternalAddressRecord'] = ['types/QueryResultAdminAllocatedExternalAddressRecordType.html'];urls['AdminCatalogItemRecord'] = ['types/QueryResultAdminCatalogItemRecordType.html'];urls['AdminCatalogRecord'] = ['types/QueryResultAdminCatalogRecordType.html'];urls['AdminGroupRecord'] = ['types/QueryResultAdminGroupRecordType.html'];urls['AdminMediaRecord'] = ['types/QueryResultAdminMediaRecordType.html'];urls['AdminOrgNetworkRecord'] = ['types/QueryResultAdminOrgNetworkRecordType.html'];urls['AdminShadowVMRecord'] = ['types/QueryResultAdminShadowVMRecordType.html'];urls['AdminTaskRecord'] = ['types/QueryResultAdminTaskRecordType.html'];urls['AdminUserRecord'] = ['types/QueryResultAdminUserRecordType.html'];urls['AdminVAppNetworkRecord'] = ['types/QueryResultAdminVAppNetworkRecordType.html'];urls['AdminVAppRecord'] = ['types/QueryResultAdminVAppRecordType.html'];urls['AdminVAppTemplateRecord'] = ['types/QueryResultAdminVAppTemplateRecordType.html'];urls['AdminVMRecord'] = ['types/QueryResultAdminVMRecordType.html'];urls['AdminVdcRecord'] = ['types/QueryResultAdminVdcRecordType.html'];urls['AdminVdcReference'] = ['types/ReferenceType.html'];urls['AdminVdcReferences'] = ['types/ReferencesType.html'];urls['AllEULAsAccepted'] = ['http://www.w3.org/TR/xmlschema-0/#boolean'];urls['AllocatedExternalAddressRecord'] = ['types/QueryResultAllocatedExternalAddressRecordType.html'];urls['BlockingTaskRecord'] = ['types/QueryResultBlockingTaskRecordType.html'];urls['BlockingTaskReference'] = ['types/ReferenceType.html'];urls['BlockingTaskReferences (v1.5)'] = ['types/ReferencesType.html'];urls['CaptureVAppParams'] = ['types/CaptureVAppParamsType.html'];urls['Catalog'] = ['types/CatalogType.html'];urls['CatalogItem'] = ['types/CatalogItemType.html'];urls['CatalogItemRecord'] = ['types/QueryResultCatalogItemRecordType.html'];urls['CatalogItemReference'] = ['types/ReferenceType.html'];urls['CatalogItemReferences'] = ['types/ReferencesType.html'];urls['CatalogRecord'] = ['types/QueryResultCatalogRecordType.html'];urls['CatalogReference'] = ['types/ReferenceType.html'];urls['CatalogReferences'] = ['types/ReferencesType.html'];urls['CellRecord'] = ['types/QueryResultCellRecordType.html'];urls['CloneMediaParams'] = ['types/CloneMediaParamsType.html'];urls['CloneVAppParams'] = ['types/CloneVAppParamsType.html'];urls['CloneVAppTemplateParams'] = ['types/CloneVAppTemplateParamsType.html'];urls['ComposeVAppParams'] = ['types/ComposeVAppParamsType.html'];urls['ControlAccessParams'] = ['types/ControlAccessParamsType.html'];urls['CustomizationSection'] = ['types/CustomizationSectionType.html'];urls['DatastoreProviderVdcRelationRecord'] = ['types/QueryResultDatastoreProviderVdcRelationRecordType.html'];urls['DatastoreRecord'] = ['types/QueryResultDatastoreRecordType.html'];urls['DatastoreReference'] = ['types/ReferenceType.html'];urls['DatastoreReferences (v1.5)'] = ['types/ReferencesType.html'];urls['DeployVAppParams'] = ['types/DeployVAppParamsType.html'];urls['DhcpService'] = ['types/DhcpServiceType.html'];urls['DvSwitchRecord'] = ['types/QueryResultDvSwitchRecordType.html'];urls['Entity'] = ['types/EntityType.html'];urls['Error'] = ['types/ErrorType.html'];urls['EventRecord'] = ['types/QueryResultEventRecordType.html'];urls['File'] = ['types/FileType.html'];urls['FirewallService'] = ['types/FirewallServiceType.html'];urls['GroupRecord'] = ['types/QueryResultGroupRecordType.html'];urls['GroupReference'] = ['types/ReferenceType.html'];urls['GroupReferences'] = ['types/ReferencesType.html'];urls['GuestCustomizationSection'] = ['types/GuestCustomizationSectionType.html'];urls['HostRecord'] = ['types/QueryResultHostRecordType.html'];urls['HostReference'] = ['types/ReferenceType.html'];urls['HostReferences'] = ['types/ReferencesType.html'];urls['InstantiateOvfParams'] = ['types/InstantiateOvfParamsType.html'];urls['InstantiateVAppTemplateParams'] = ['types/InstantiateVAppTemplateParamsType.html'];urls['IpsecVpnLocalPeer'] = ['types/IpsecVpnLocalPeerType.html'];urls['IpsecVpnPeer'] = ['types/IpsecVpnPeerType.html'];urls['IpsecVpnRemotePeer'] = ['types/IpsecVpnRemotePeerType.html'];urls['IpsecVpnService'] = ['types/IpsecVpnServiceType.html'];urls['IpsecVpnThirdPartyPeer'] = ['types/IpsecVpnThirdPartyPeerType.html'];urls['Item'] = ['http://schemas.dmtf.org/ovf/envelope/1'];urls['LeaseSettingsSection'] = ['types/LeaseSettingsSectionType.html'];urls['Link'] = ['types/LinkType.html'];urls['Media'] = ['types/MediaType.html'];urls['MediaInsertOrEjectParams'] = ['types/MediaInsertOrEjectParamsType.html'];urls['MediaRecord'] = ['types/QueryResultMediaRecordType.html'];urls['MediaReference'] = ['types/ReferenceType.html'];urls['MediaReferences'] = ['types/ReferencesType.html'];urls['Metadata'] = ['types/MetadataType.html'];urls['MetadataValue'] = ['types/MetadataValueType.html'];urls['NatService'] = ['types/NatServiceType.html'];urls['NetworkAssignment'] = ['types/NetworkAssignmentType.html'];urls['NetworkConfigSection'] = ['types/NetworkConfigSectionType.html'];urls['NetworkConnection'] = ['types/NetworkConnectionType.html'];urls['NetworkConnectionSection'] = ['types/NetworkConnectionSectionType.html'];urls['NetworkPoolRecord'] = ['types/QueryResultNetworkPoolRecordType.html'];urls['NetworkPoolReference'] = ['types/ReferenceType.html'];urls['NetworkPoolReferences'] = ['types/ReferencesType.html'];urls['NetworkRecord'] = ['types/QueryResultNetworkRecordType.html'];urls['NetworkReference'] = ['types/ReferenceType.html'];urls['NetworkReferences'] = ['types/ReferencesType.html'];urls['NetworkService'] = ['types/NetworkServiceType.html'];urls['Org'] = ['types/OrgType.html'];urls['OrgList'] = ['types/OrgListType.html'];urls['OrgNetworkRecord'] = ['types/QueryResultOrgNetworkRecordType.html'];urls['OrgNetworkReference'] = ['types/ReferenceType.html'];urls['OrgNetworkReferences'] = ['types/ReferencesType.html'];urls['OrgRecord'] = ['types/QueryResultOrgRecordType.html'];urls['OrgReference'] = ['types/ReferenceType.html'];urls['OrgReferences'] = ['types/ReferencesType.html'];urls['OrgVdcRecord'] = ['types/QueryResultOrgVdcRecordType.html'];urls['OrgVdcReference'] = ['types/ReferenceType.html'];urls['OrgVdcReferences'] = ['types/ReferencesType.html'];urls['OrgVdcResourcePoolRelationRecord'] = ['types/QueryResultOrgVdcResourcePoolRelationRecordType.html'];urls['Owner'] = ['types/OwnerType.html'];urls['PortgroupRecord'] = ['types/QueryResultPortgroupRecordType.html'];urls['ProductSectionList'] = ['types/ProductSectionListType.html'];urls['ProviderVdcResourcePoolRelationRecord'] = ['types/QueryResultProviderVdcResourcePoolRelationRecordType.html'];urls['PublishCatalogParams'] = ['types/PublishCatalogParamsType.html'];urls['QueryList'] = ['types/QueryListType.html'];urls['QueryResultRecords'] = ['types/QueryResultRecordsType.html'];urls['RasdItemsList'] = ['types/RasdItemsListType.html'];urls['RecomposeVAppParams'] = ['types/RecomposeVAppParamsType.html'];urls['Record'] = ['types/QueryResultRecordType.html'];urls['Reference'] = ['types/ReferenceType.html'];urls['References'] = ['types/ReferencesType.html'];urls['RelocateParams'] = ['types/RelocateParamsType.html'];urls['ResourceEntity'] = ['types/ResourceEntityType.html'];urls['ResourcePoolRecord'] = ['types/QueryResultResourcePoolRecordType.html'];urls['RightRecord'] = ['types/QueryResultRightRecordType.html'];urls['RightReference'] = ['types/ReferenceType.html'];urls['RightReferences'] = ['types/ReferencesType.html'];urls['RoleRecord'] = ['types/QueryResultRoleRecordType.html'];urls['RoleReference'] = ['types/ReferenceType.html'];urls['RoleReferences'] = ['types/ReferencesType.html'];urls['RuntimeInfoSection'] = ['types/RuntimeInfoSectionType.html'];urls['ScreenTicket'] = ['types/ScreenTicketType.html'];urls['SerialPortConfigType'] = ['types/SerialPortConfigType.html'];urls['Session'] = ['types/SessionType.html'];urls['ShadowVMReferences'] = ['types/ReferencesType.html'];urls['StaticRoutingService'] = ['types/StaticRoutingServiceType.html'];urls['StrandedUserRecord'] = ['types/QueryResultStrandedUserRecordType.html'];urls['Task'] = ['types/TaskType.html'];urls['TaskRecord'] = ['types/QueryResultTaskRecordType.html'];urls['TaskReference'] = ['types/ReferenceType.html'];urls['TaskReferences'] = ['types/ReferencesType.html'];urls['TasksList'] = ['types/TasksListType.html'];urls['UndeployVAppParams'] = ['types/UndeployVAppParamsType.html'];urls['UploadVAppTemplateParams'] = ['types/UploadVAppTemplateParamsType.html'];urls['UserRecord'] = ['types/QueryResultUserRecordType.html'];urls['UserReference'] = ['types/ReferenceType.html'];urls['UserReferences'] = ['types/ReferencesType.html'];urls['VApp'] = ['types/VAppType.html'];urls['VAppNetwork'] = ['types/VAppNetworkType.html'];urls['VAppNetworkRecord'] = ['types/QueryResultVAppNetworkRecordType.html'];urls['VAppNetworkReference'] = ['types/ReferenceType.html'];urls['VAppNetworkReferences'] = ['types/ReferencesType.html'];urls['VAppOrgNetworkRelationRecord'] = ['types/QueryResultVAppOrgNetworkRelationRecordType.html'];urls['VAppOrgNetworkRelationReference'] = ['types/ReferenceType.html'];urls['VAppOrgNetworkRelationReferences'] = ['types/ReferencesType.html'];urls['VAppRecord'] = ['types/QueryResultVAppRecordType.html'];urls['VAppReference'] = ['types/ReferenceType.html'];urls['VAppReferences'] = ['types/ReferencesType.html'];urls['VAppTemplate'] = ['types/VAppTemplateType.html'];urls['VAppTemplateRecord'] = ['types/QueryResultVAppTemplateRecordType.html'];urls['VAppTemplateReference'] = ['types/ReferenceType.html'];urls['VAppTemplateReferences'] = ['types/ReferencesType.html'];urls['VMRecord'] = ['types/QueryResultVMRecordType.html'];urls['VMReference'] = ['types/ReferenceType.html'];urls['VMReferences'] = ['types/ReferencesType.html'];urls['VMWProviderVdcRecord'] = ['types/QueryResultVMWProviderVdcRecordType.html'];urls['VMWProviderVdcReference'] = ['types/ReferenceType.html'];urls['VMWProviderVdcReferences (v1.5)'] = ['types/ReferencesType.html'];urls['Vdc'] = ['types/VdcType.html'];urls['VirtualCenterRecord'] = ['types/QueryResultVirtualCenterRecordType.html'];urls['VirtualCenterReference'] = ['types/ReferenceType.html'];urls['VirtualCenterReferences'] = ['types/ReferencesType.html'];urls['Vm'] = ['types/VmType.html'];urls['VmPendingQuestion'] = ['types/VmPendingQuestionType.html'];urls['VmQuestionAnswer'] = ['types/VmQuestionAnswerType.html'];    </script>
+    <link href="doc-style.css" type="text/css" rel="StyleSheet">
+</head>
+<body bgcolor="white">
+    <a name="navbar_top"></a>
+
+    <table class="header-footer" cellSpacing="0">
+            <tr><td>
+                    <a href="javascript:void(location.href='left-pane.html');void(parent.frames[1].location.href='right-pane.html');">Home</a>
+                </td></tr>
+            <tr><td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 10px">
+                        <a href="javascript:void(location.href='index-user_operations.html');void(parent.frames[1].location.href='landing-user_operations.html');">Operations</a>
+                        <a href="javascript:void(location.href='index-user_elements.html');void(parent.frames[1].location.href='landing-user_elements.html');">Elements</a>
+                        <a href="javascript:void(location.href='index-user_types.html');void(parent.frames[1].location.href='landing-user_types.html');">Types</a>
+                        </dd>
+            </dl>
+                </td></tr>
+            <tr><td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 10px">
+                        <a href="javascript:void(location.href='index-admin_operations.html');void(parent.frames[1].location.href='landing-admin_operations.html');">Operations</a>
+                        <a href="javascript:void(location.href='index-admin_elements.html');void(parent.frames[1].location.href='landing-admin_elements.html');">Elements</a>
+                        <a href="javascript:void(location.href='index-admin_types.html');void(parent.frames[1].location.href='landing-admin_types.html');">Types</a>
+                        </dd>
+            </dl>
+                </td></tr>
+            <tr><td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 10px">
+                        <a href="javascript:void(location.href='index-extension_operations.html');void(parent.frames[1].location.href='landing-extension_operations.html');">Operations</a>
+                        <a href="javascript:void(location.href='index-extension_elements.html');void(parent.frames[1].location.href='landing-extension_elements.html');">Elements</a>
+                        <a href="javascript:void(location.href='index-extension_types.html');void(parent.frames[1].location.href='landing-extension_types.html');">Types</a>
+                        </dd>
+            </dl>
+                </td></tr>
+            <tr><td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 10px">
+                        <a href="javascript:void(location.href='index-operations.html');void(parent.frames[1].location.href='landing-operations.html');">Operations</a>
+                        <a href="javascript:void(location.href='index-elements.html');void(parent.frames[1].location.href='landing-elements.html');">Elements</a>
+                        <a href="javascript:void(location.href='index-types.html');void(parent.frames[1].location.href='landing-types.html');">Types</a>
+                        </dd>
+            </dl>
+                </td></tr>
+    </table>
+
+    <h2 class="index">User Elements</h2>
+    <input onFocus="this.value=&quot;&quot;" value=" -- Quick Index -- " id="tb" style="font-family:verdana;width:95%;margin-bottom:10px" type="text">
+    <br>
+    <script>
+        var obj = actb(document.getElementById('tb'),picklist,urls);
+    </script>
+
+
+    <font size="-1">
+        <div style="width:100%;overflow:hidden;text-overflow:ellipsis;display:block" class="switchcontent" id="AE">
+                        <nobr>
+                <a title="AdminAllocatedExternalAddressRecord" target="classFrame" href="types/QueryResultAdminAllocatedExternalAddressRecordType.html">AdminAllocatedExternalAddressRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminCatalogItemRecord" target="classFrame" href="types/QueryResultAdminCatalogItemRecordType.html">AdminCatalogItemRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminCatalogRecord" target="classFrame" href="types/QueryResultAdminCatalogRecordType.html">AdminCatalogRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminGroupRecord" target="classFrame" href="types/QueryResultAdminGroupRecordType.html">AdminGroupRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminMediaRecord" target="classFrame" href="types/QueryResultAdminMediaRecordType.html">AdminMediaRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminOrgNetworkRecord" target="classFrame" href="types/QueryResultAdminOrgNetworkRecordType.html">AdminOrgNetworkRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminShadowVMRecord" target="classFrame" href="types/QueryResultAdminShadowVMRecordType.html">AdminShadowVMRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminTaskRecord" target="classFrame" href="types/QueryResultAdminTaskRecordType.html">AdminTaskRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminUserRecord" target="classFrame" href="types/QueryResultAdminUserRecordType.html">AdminUserRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminVAppNetworkRecord" target="classFrame" href="types/QueryResultAdminVAppNetworkRecordType.html">AdminVAppNetworkRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminVAppRecord" target="classFrame" href="types/QueryResultAdminVAppRecordType.html">AdminVAppRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminVAppTemplateRecord" target="classFrame" href="types/QueryResultAdminVAppTemplateRecordType.html">AdminVAppTemplateRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminVMRecord" target="classFrame" href="types/QueryResultAdminVMRecordType.html">AdminVMRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminVdcRecord" target="classFrame" href="types/QueryResultAdminVdcRecordType.html">AdminVdcRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminVdcReference" target="classFrame" href="types/ReferenceType.html">AdminVdcReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AdminVdcReferences" target="classFrame" href="types/ReferencesType.html">AdminVdcReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AllEULAsAccepted" target="classFrame" href="types/AllEULAsAccepted.html">AllEULAsAccepted</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AllocatedExternalAddressRecord" target="classFrame" href="types/QueryResultAllocatedExternalAddressRecordType.html">AllocatedExternalAddressRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="BlockingTaskRecord" target="classFrame" href="types/QueryResultBlockingTaskRecordType.html">BlockingTaskRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="BlockingTaskReference" target="classFrame" href="types/ReferenceType.html">BlockingTaskReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="BlockingTaskReferences (v1.5)" target="classFrame" href="types/ReferencesType.html">BlockingTaskReferences (v1.5)</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CaptureVAppParams" target="classFrame" href="types/CaptureVAppParamsType.html">CaptureVAppParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Catalog" target="classFrame" href="types/CatalogType.html">Catalog</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CatalogItem" target="classFrame" href="types/CatalogItemType.html">CatalogItem</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CatalogItemRecord" target="classFrame" href="types/QueryResultCatalogItemRecordType.html">CatalogItemRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CatalogItemReference" target="classFrame" href="types/ReferenceType.html">CatalogItemReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CatalogItemReferences" target="classFrame" href="types/ReferencesType.html">CatalogItemReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CatalogRecord" target="classFrame" href="types/QueryResultCatalogRecordType.html">CatalogRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CatalogReference" target="classFrame" href="types/ReferenceType.html">CatalogReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CatalogReferences" target="classFrame" href="types/ReferencesType.html">CatalogReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CellRecord" target="classFrame" href="types/QueryResultCellRecordType.html">CellRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CloneMediaParams" target="classFrame" href="types/CloneMediaParamsType.html">CloneMediaParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CloneVAppParams" target="classFrame" href="types/CloneVAppParamsType.html">CloneVAppParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CloneVAppTemplateParams" target="classFrame" href="types/CloneVAppTemplateParamsType.html">CloneVAppTemplateParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ComposeVAppParams" target="classFrame" href="types/ComposeVAppParamsType.html">ComposeVAppParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ControlAccessParams" target="classFrame" href="types/ControlAccessParamsType.html">ControlAccessParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="CustomizationSection" target="classFrame" href="types/CustomizationSectionType.html">CustomizationSection</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="DatastoreProviderVdcRelationRecord" target="classFrame" href="types/QueryResultDatastoreProviderVdcRelationRecordType.html">DatastoreProviderVdcRelationRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="DatastoreRecord" target="classFrame" href="types/QueryResultDatastoreRecordType.html">DatastoreRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="DatastoreReference" target="classFrame" href="types/ReferenceType.html">DatastoreReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="DatastoreReferences (v1.5)" target="classFrame" href="types/ReferencesType.html">DatastoreReferences (v1.5)</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="DeployVAppParams" target="classFrame" href="types/DeployVAppParamsType.html">DeployVAppParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="DhcpService" target="classFrame" href="types/DhcpServiceType.html">DhcpService</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="DvSwitchRecord" target="classFrame" href="types/QueryResultDvSwitchRecordType.html">DvSwitchRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Entity" target="classFrame" href="types/EntityType.html">Entity</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Error" target="classFrame" href="types/ErrorType.html">Error</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="EventRecord" target="classFrame" href="types/QueryResultEventRecordType.html">EventRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="File" target="classFrame" href="types/FileType.html">File</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="FirewallService" target="classFrame" href="types/FirewallServiceType.html">FirewallService</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="GroupRecord" target="classFrame" href="types/QueryResultGroupRecordType.html">GroupRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="GroupReference" target="classFrame" href="types/ReferenceType.html">GroupReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="GroupReferences" target="classFrame" href="types/ReferencesType.html">GroupReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="GuestCustomizationSection" target="classFrame" href="types/GuestCustomizationSectionType.html">GuestCustomizationSection</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="HostRecord" target="classFrame" href="types/QueryResultHostRecordType.html">HostRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="HostReference" target="classFrame" href="types/ReferenceType.html">HostReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="HostReferences" target="classFrame" href="types/ReferencesType.html">HostReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="InstantiateOvfParams" target="classFrame" href="types/InstantiateOvfParamsType.html">InstantiateOvfParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="InstantiateVAppTemplateParams" target="classFrame" href="types/InstantiateVAppTemplateParamsType.html">InstantiateVAppTemplateParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="IpsecVpnLocalPeer" target="classFrame" href="types/IpsecVpnLocalPeerType.html">IpsecVpnLocalPeer</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="IpsecVpnPeer" target="classFrame" href="types/IpsecVpnPeerType.html">IpsecVpnPeer</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="IpsecVpnRemotePeer" target="classFrame" href="types/IpsecVpnRemotePeerType.html">IpsecVpnRemotePeer</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="IpsecVpnService" target="classFrame" href="types/IpsecVpnServiceType.html">IpsecVpnService</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="IpsecVpnThirdPartyPeer" target="classFrame" href="types/IpsecVpnThirdPartyPeerType.html">IpsecVpnThirdPartyPeer</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Item" target="classFrame" href="types/Item.html">Item</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="LeaseSettingsSection" target="classFrame" href="types/LeaseSettingsSectionType.html">LeaseSettingsSection</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Link" target="classFrame" href="types/LinkType.html">Link</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Media" target="classFrame" href="types/MediaType.html">Media</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="MediaInsertOrEjectParams" target="classFrame" href="types/MediaInsertOrEjectParamsType.html">MediaInsertOrEjectParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="MediaRecord" target="classFrame" href="types/QueryResultMediaRecordType.html">MediaRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="MediaReference" target="classFrame" href="types/ReferenceType.html">MediaReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="MediaReferences" target="classFrame" href="types/ReferencesType.html">MediaReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Metadata" target="classFrame" href="types/MetadataType.html">Metadata</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="MetadataValue" target="classFrame" href="types/MetadataValueType.html">MetadataValue</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NatService" target="classFrame" href="types/NatServiceType.html">NatService</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkAssignment" target="classFrame" href="types/NetworkAssignmentType.html">NetworkAssignment</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkConfigSection" target="classFrame" href="types/NetworkConfigSectionType.html">NetworkConfigSection</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkConnection" target="classFrame" href="types/NetworkConnectionType.html">NetworkConnection</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkConnectionSection" target="classFrame" href="types/NetworkConnectionSectionType.html">NetworkConnectionSection</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkPoolRecord" target="classFrame" href="types/QueryResultNetworkPoolRecordType.html">NetworkPoolRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkPoolReference" target="classFrame" href="types/ReferenceType.html">NetworkPoolReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkPoolReferences" target="classFrame" href="types/ReferencesType.html">NetworkPoolReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkRecord" target="classFrame" href="types/QueryResultNetworkRecordType.html">NetworkRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkReference" target="classFrame" href="types/ReferenceType.html">NetworkReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkReferences" target="classFrame" href="types/ReferencesType.html">NetworkReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NetworkService" target="classFrame" href="types/NetworkServiceType.html">NetworkService</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Org" target="classFrame" href="types/OrgType.html">Org</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgList" target="classFrame" href="types/OrgListType.html">OrgList</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgNetworkRecord" target="classFrame" href="types/QueryResultOrgNetworkRecordType.html">OrgNetworkRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgNetworkReference" target="classFrame" href="types/ReferenceType.html">OrgNetworkReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgNetworkReferences" target="classFrame" href="types/ReferencesType.html">OrgNetworkReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgRecord" target="classFrame" href="types/QueryResultOrgRecordType.html">OrgRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgReference" target="classFrame" href="types/ReferenceType.html">OrgReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgReferences" target="classFrame" href="types/ReferencesType.html">OrgReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgVdcRecord" target="classFrame" href="types/QueryResultOrgVdcRecordType.html">OrgVdcRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgVdcReference" target="classFrame" href="types/ReferenceType.html">OrgVdcReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgVdcReferences" target="classFrame" href="types/ReferencesType.html">OrgVdcReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrgVdcResourcePoolRelationRecord" target="classFrame" href="types/QueryResultOrgVdcResourcePoolRelationRecordType.html">OrgVdcResourcePoolRelationRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Owner" target="classFrame" href="types/OwnerType.html">Owner</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="PortgroupRecord" target="classFrame" href="types/QueryResultPortgroupRecordType.html">PortgroupRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ProductSectionList" target="classFrame" href="types/ProductSectionListType.html">ProductSectionList</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ProviderVdcResourcePoolRelationRecord" target="classFrame" href="types/QueryResultProviderVdcResourcePoolRelationRecordType.html">ProviderVdcResourcePoolRelationRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="PublishCatalogParams" target="classFrame" href="types/PublishCatalogParamsType.html">PublishCatalogParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="QueryList" target="classFrame" href="types/QueryListType.html">QueryList</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="QueryResultRecords" target="classFrame" href="types/QueryResultRecordsType.html">QueryResultRecords</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RasdItemsList" target="classFrame" href="types/RasdItemsListType.html">RasdItemsList</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RecomposeVAppParams" target="classFrame" href="types/RecomposeVAppParamsType.html">RecomposeVAppParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Record" target="classFrame" href="types/QueryResultRecordType.html">Record</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Reference" target="classFrame" href="types/ReferenceType.html">Reference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="References" target="classFrame" href="types/ReferencesType.html">References</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RelocateParams" target="classFrame" href="types/RelocateParamsType.html">RelocateParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ResourceEntity" target="classFrame" href="types/ResourceEntityType.html">ResourceEntity</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ResourcePoolRecord" target="classFrame" href="types/QueryResultResourcePoolRecordType.html">ResourcePoolRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RightRecord" target="classFrame" href="types/QueryResultRightRecordType.html">RightRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RightReference" target="classFrame" href="types/ReferenceType.html">RightReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RightReferences" target="classFrame" href="types/ReferencesType.html">RightReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RoleRecord" target="classFrame" href="types/QueryResultRoleRecordType.html">RoleRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RoleReference" target="classFrame" href="types/ReferenceType.html">RoleReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RoleReferences" target="classFrame" href="types/ReferencesType.html">RoleReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RuntimeInfoSection" target="classFrame" href="types/RuntimeInfoSectionType.html">RuntimeInfoSection</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ScreenTicket" target="classFrame" href="types/ScreenTicketType.html">ScreenTicket</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="SerialPortConfigType" target="classFrame" href="types/SerialPortConfigType.html">SerialPortConfigType</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Session" target="classFrame" href="types/SessionType.html">Session</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ShadowVMReferences" target="classFrame" href="types/ReferencesType.html">ShadowVMReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="StaticRoutingService" target="classFrame" href="types/StaticRoutingServiceType.html">StaticRoutingService</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="StrandedUserRecord" target="classFrame" href="types/QueryResultStrandedUserRecordType.html">StrandedUserRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Task" target="classFrame" href="types/TaskType.html">Task</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="TaskRecord" target="classFrame" href="types/QueryResultTaskRecordType.html">TaskRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="TaskReference" target="classFrame" href="types/ReferenceType.html">TaskReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="TaskReferences" target="classFrame" href="types/ReferencesType.html">TaskReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="TasksList" target="classFrame" href="types/TasksListType.html">TasksList</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="UndeployVAppParams" target="classFrame" href="types/UndeployVAppParamsType.html">UndeployVAppParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="UploadVAppTemplateParams" target="classFrame" href="types/UploadVAppTemplateParamsType.html">UploadVAppTemplateParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="UserRecord" target="classFrame" href="types/QueryResultUserRecordType.html">UserRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="UserReference" target="classFrame" href="types/ReferenceType.html">UserReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="UserReferences" target="classFrame" href="types/ReferencesType.html">UserReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VApp" target="classFrame" href="types/VAppType.html">VApp</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppNetwork" target="classFrame" href="types/VAppNetworkType.html">VAppNetwork</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppNetworkRecord" target="classFrame" href="types/QueryResultVAppNetworkRecordType.html">VAppNetworkRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppNetworkReference" target="classFrame" href="types/ReferenceType.html">VAppNetworkReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppNetworkReferences" target="classFrame" href="types/ReferencesType.html">VAppNetworkReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppOrgNetworkRelationRecord" target="classFrame" href="types/QueryResultVAppOrgNetworkRelationRecordType.html">VAppOrgNetworkRelationRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppOrgNetworkRelationReference" target="classFrame" href="types/ReferenceType.html">VAppOrgNetworkRelationReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppOrgNetworkRelationReferences" target="classFrame" href="types/ReferencesType.html">VAppOrgNetworkRelationReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppRecord" target="classFrame" href="types/QueryResultVAppRecordType.html">VAppRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppReference" target="classFrame" href="types/ReferenceType.html">VAppReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppReferences" target="classFrame" href="types/ReferencesType.html">VAppReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppTemplate" target="classFrame" href="types/VAppTemplateType.html">VAppTemplate</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppTemplateRecord" target="classFrame" href="types/QueryResultVAppTemplateRecordType.html">VAppTemplateRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppTemplateReference" target="classFrame" href="types/ReferenceType.html">VAppTemplateReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VAppTemplateReferences" target="classFrame" href="types/ReferencesType.html">VAppTemplateReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMRecord" target="classFrame" href="types/QueryResultVMRecordType.html">VMRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMReference" target="classFrame" href="types/ReferenceType.html">VMReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMReferences" target="classFrame" href="types/ReferencesType.html">VMReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWProviderVdcRecord" target="classFrame" href="types/QueryResultVMWProviderVdcRecordType.html">VMWProviderVdcRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWProviderVdcReference" target="classFrame" href="types/ReferenceType.html">VMWProviderVdcReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWProviderVdcReferences (v1.5)" target="classFrame" href="types/ReferencesType.html">VMWProviderVdcReferences (v1.5)</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Vdc" target="classFrame" href="types/VdcType.html">Vdc</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VirtualCenterRecord" target="classFrame" href="types/QueryResultVirtualCenterRecordType.html">VirtualCenterRecord</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VirtualCenterReference" target="classFrame" href="types/ReferenceType.html">VirtualCenterReference</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VirtualCenterReferences" target="classFrame" href="types/ReferencesType.html">VirtualCenterReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Vm" target="classFrame" href="types/VmType.html">Vm</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VmPendingQuestion" target="classFrame" href="types/VmPendingQuestionType.html">VmPendingQuestion</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VmQuestionAnswer" target="classFrame" href="types/VmQuestionAnswerType.html">VmQuestionAnswer</a>
+                <br>
+            </nobr>
+                    </div>
+    </font>
+</body>
+</html>

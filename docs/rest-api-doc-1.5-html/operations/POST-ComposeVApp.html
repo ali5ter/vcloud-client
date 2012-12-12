@@ -1,0 +1,216 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>vCloud REST API - POST-ComposeVApp</title>
+    <script src="../dynamic-content.js" type="text/javascript"></script>
+    <script language="JavaScript" src="../commonRes.js"> type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="../doc-style.css">
+    <link rel="stylesheet" type="text/css" href="../xml-style.css">
+</head>
+<body>
+
+<table class="header-footer" cellSpacing="0" id="top">
+    <tr>
+    <td></td>
+                    <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td><a href="#examples">Examples</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+<br>
+
+<h1>POST /vdc/{id}/action/composeVApp</h1>
+
+<dl>
+    <dt>Operation:</dt>
+    <dd>POST /vdc/{id}/action/composeVApp</dd>
+    <dt>Description:</dt>
+    <dd>Composes a new vApp using VMs from other vApps or vApp templates.
+
+ The vCloud API supports composing a vApp from any combination of vApp templates,
+ vApps, or virtual machines. When you compose a vApp, all children of each
+ composition source become peers in the Children collection of the composed vApp.
+
+ To compose a vApp, a client makes a compose vApp request whose body is
+ a ComposeVAppParams element, includes the following information:
+ - An InstantiationParams element that applies to the composed vApp
+      itself and any vApp templates referenced in Item elements.
+ - A SourcedItem element for each virtual machine, vApp, or vAppTemplate
+      to include in the composition. Each SourcedItem can contain the following elements:
+ - A required Source element whose href attribute value is
+      a reference to a vApp template, vApp, or VM to include in the composition.
+      If the Source element references a VM, the Item must also include
+      an InstantiationParams element specific to that VM.
+ - An optional NetworkAssignment element that specifies how the network
+      connections of child VM elements are mapped to vApp networks in the parent.
+ - If any of the composition items is subject to a EULA, the ComposeVAppParams
+      element must include an AllEULAsAccepted element that has a value
+      of true, indicating that you accept the EULA. Otherwise, composition fails.
+
+ The composed vApp must be deployed and powered on before it can be used.
+
+ The status of vApp will be UNRESOLVED(0) until the compose task is finished.</dd>
+    <dt>Since:</dt>
+    <dd>0.9</dd>
+    <dt>Input parameters</dt>
+    <dd>
+                <dl>
+            <dt>Consume media type(s):</dt>
+            <dd>application/vnd.vmware.vcloud.composeVAppParams+xml<br></dd>
+            <dt>Input type:</dt>
+            <dd><a href="../types/ComposeVAppParamsType.html">ComposeVAppParamsType</a></dd>
+        </dl>
+    </dd>
+    <dt>Output parameters</dt>
+    <dd>
+                    VAppType This operation returns a task in the vApp resource, the
+         user should wait this task to finish to be able to use the vApp.<br><br>
+                <dl>
+            <dt>Produce media type(s):</dt>
+            <dd>application/vnd.vmware.vcloud.vApp+xml<br></dd>
+            <dt>Output type:</dt>
+            <dd><a href="../types/VAppType.html">VAppType</a></dd>
+        </dl>
+    </dd>
+    <dt>Examples</dt>
+    <a id="examples" name="examples"></a>
+    <dd>
+    <dl>
+        </dl>
+    </dd>
+</dl>
+
+<br>
+<table class="header-footer" cellSpacing="0">
+    <tr>
+    <td><a href="#top">Top of page</a></td>
+                    <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td><a href="#examples">Examples</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+
+<br>
+<script language="javascript">document.write(ID_Copyright);</script>
+<br>
+<script language="javascript">document.write(ID_VersionInformation);</script>
+</body>
+</html>

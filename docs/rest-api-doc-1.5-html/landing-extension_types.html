@@ -1,0 +1,581 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>vCloud REST API Extension Types</title>
+    <script language="JavaScript" src="./commonRes.js"> type="text/javascript"></script>
+    <script src="dynamic-content.js" type="text/javascript"></script>
+    <script src="actb.js" type="text/javascript" language="javascript"></script>
+    <script src="common.js" type="text/javascript" language="javascript"></script>
+    <script>
+        var picklist = new Array('AmqpSettingsTestType','AmqpSettingsType','BlockingTaskOperationParamsType','BlockingTaskSettingsType','BlockingTaskSettingsType/TimeoutInMilliseconds','BlockingTaskType','BlockingTaskUpdateProgressParamsType','BrandingSettingsType','DatastoreType','DatastoreType/ThresholdRedGb','DatastoreType/ThresholdYellowGb','EmailSettingsType','FencePoolType','GeneralSettingsType','HostType','ImportMediaParamsType','ImportVmAsVAppParamsType','ImportVmAsVAppTemplateParamsType','ImportVmIntoExistingVAppParamsType','LdapGroupAttributesType','LdapSettingsType','LdapUserAttributesType','LicenseMetricsInfoType','LicenseType','LicensingManagedServerType','LicensingReportListType','LicensingReportSampleType','LicensingReportSampleType/ManagedServerMetrics','LicensingReportSampleType/VirtualMachineMetrics','LicensingReportType','LicensingVirtualMachineType','NotificationType','NotificationsSettingsType','NumericRangeType','OrganizationResourcePoolSetType','PortGroupPoolType','PrepareHostParamsType','RegisterVimServerParamsType','ResourcePoolListType','ResourcePoolType','ServerType','ShieldManagerType','SmtpSettingsType','SystemPasswordPolicySettingsType','SystemPasswordPolicySettingsType/AccountLockoutIntervalMinutes','SystemSettingsType','UberAdminSettingsType','UpdateResourcePoolSetParamsType','VMWExtensionType','VMWExternalNetworkReferencesType','VMWExternalNetworkType','VMWHostReferencesType','VMWNetworkPoolReferencesType','VMWNetworkPoolType','VMWProviderVdcReferencesType','VMWProviderVdcResourcePoolSetType','VMWProviderVdcResourcePoolType','VMWProviderVdcType','VMWVimServerReferencesType','VimObjectRefListType','VimObjectRefType','VimObjectRefsType','VimServerType','VlanPoolType','VmObjectRefType','VmObjectRefsListType','VmVimInfoType');
+        var urls = new Array();
+        urls['AmqpSettingsTestType'] = ['types/AmqpSettingsTestType.html'];urls['AmqpSettingsType'] = ['types/AmqpSettingsType.html'];urls['BlockingTaskOperationParamsType'] = ['types/BlockingTaskOperationParamsType.html'];urls['BlockingTaskSettingsType'] = ['types/BlockingTaskSettingsType.html'];urls['BlockingTaskSettingsType/TimeoutInMilliseconds'] = ['types/BlockingTaskSettingsType_TimeoutInMilliseconds.html'];urls['BlockingTaskType'] = ['types/BlockingTaskType.html'];urls['BlockingTaskUpdateProgressParamsType'] = ['types/BlockingTaskUpdateProgressParamsType.html'];urls['BrandingSettingsType'] = ['types/BrandingSettingsType.html'];urls['DatastoreType'] = ['types/DatastoreType.html'];urls['DatastoreType/ThresholdRedGb'] = ['types/DatastoreType_ThresholdRedGb.html'];urls['DatastoreType/ThresholdYellowGb'] = ['types/DatastoreType_ThresholdYellowGb.html'];urls['EmailSettingsType'] = ['types/EmailSettingsType.html'];urls['FencePoolType'] = ['types/FencePoolType.html'];urls['GeneralSettingsType'] = ['types/GeneralSettingsType.html'];urls['HostType'] = ['types/HostType.html'];urls['ImportMediaParamsType'] = ['types/ImportMediaParamsType.html'];urls['ImportVmAsVAppParamsType'] = ['types/ImportVmAsVAppParamsType.html'];urls['ImportVmAsVAppTemplateParamsType'] = ['types/ImportVmAsVAppTemplateParamsType.html'];urls['ImportVmIntoExistingVAppParamsType'] = ['types/ImportVmIntoExistingVAppParamsType.html'];urls['LdapGroupAttributesType'] = ['types/LdapGroupAttributesType.html'];urls['LdapSettingsType'] = ['types/LdapSettingsType.html'];urls['LdapUserAttributesType'] = ['types/LdapUserAttributesType.html'];urls['LicenseMetricsInfoType'] = ['types/LicenseMetricsInfoType.html'];urls['LicenseType'] = ['types/LicenseType.html'];urls['LicensingManagedServerType'] = ['types/LicensingManagedServerType.html'];urls['LicensingReportListType'] = ['types/LicensingReportListType.html'];urls['LicensingReportSampleType'] = ['types/LicensingReportSampleType.html'];urls['LicensingReportSampleType/ManagedServerMetrics'] = ['types/LicensingReportSampleType_ManagedServerMetrics.html'];urls['LicensingReportSampleType/VirtualMachineMetrics'] = ['types/LicensingReportSampleType_VirtualMachineMetrics.html'];urls['LicensingReportType'] = ['types/LicensingReportType.html'];urls['LicensingVirtualMachineType'] = ['types/LicensingVirtualMachineType.html'];urls['NotificationType'] = ['types/NotificationType.html'];urls['NotificationsSettingsType'] = ['types/NotificationsSettingsType.html'];urls['NumericRangeType'] = ['types/NumericRangeType.html'];urls['OrganizationResourcePoolSetType'] = ['types/OrganizationResourcePoolSetType.html'];urls['PortGroupPoolType'] = ['types/PortGroupPoolType.html'];urls['PrepareHostParamsType'] = ['types/PrepareHostParamsType.html'];urls['RegisterVimServerParamsType'] = ['types/RegisterVimServerParamsType.html'];urls['ResourcePoolListType'] = ['types/ResourcePoolListType.html'];urls['ResourcePoolType'] = ['types/ResourcePoolType.html'];urls['ServerType'] = ['types/ServerType.html'];urls['ShieldManagerType'] = ['types/ShieldManagerType.html'];urls['SmtpSettingsType'] = ['types/SmtpSettingsType.html'];urls['SystemPasswordPolicySettingsType'] = ['types/SystemPasswordPolicySettingsType.html'];urls['SystemPasswordPolicySettingsType/AccountLockoutIntervalMinutes'] = ['types/SystemPasswordPolicySettingsType_AccountLockoutIntervalMinutes.html'];urls['SystemSettingsType'] = ['types/SystemSettingsType.html'];urls['UberAdminSettingsType'] = ['types/UberAdminSettingsType.html'];urls['UpdateResourcePoolSetParamsType'] = ['types/UpdateResourcePoolSetParamsType.html'];urls['VMWExtensionType'] = ['types/VMWExtensionType.html'];urls['VMWExternalNetworkReferencesType'] = ['types/VMWExternalNetworkReferencesType.html'];urls['VMWExternalNetworkType'] = ['types/VMWExternalNetworkType.html'];urls['VMWHostReferencesType'] = ['types/VMWHostReferencesType.html'];urls['VMWNetworkPoolReferencesType'] = ['types/VMWNetworkPoolReferencesType.html'];urls['VMWNetworkPoolType'] = ['types/VMWNetworkPoolType.html'];urls['VMWProviderVdcReferencesType'] = ['types/VMWProviderVdcReferencesType.html'];urls['VMWProviderVdcResourcePoolSetType'] = ['types/VMWProviderVdcResourcePoolSetType.html'];urls['VMWProviderVdcResourcePoolType'] = ['types/VMWProviderVdcResourcePoolType.html'];urls['VMWProviderVdcType'] = ['types/VMWProviderVdcType.html'];urls['VMWVimServerReferencesType'] = ['types/VMWVimServerReferencesType.html'];urls['VimObjectRefListType'] = ['types/VimObjectRefListType.html'];urls['VimObjectRefType'] = ['types/VimObjectRefType.html'];urls['VimObjectRefsType'] = ['types/VimObjectRefsType.html'];urls['VimServerType'] = ['types/VimServerType.html'];urls['VlanPoolType'] = ['types/VlanPoolType.html'];urls['VmObjectRefType'] = ['types/VmObjectRefType.html'];urls['VmObjectRefsListType'] = ['types/VmObjectRefsListType.html'];urls['VmVimInfoType'] = ['types/VmVimInfoType.html'];    </script>
+    <link rel="stylesheet" type="text/css" href="doc-style.css">
+</head>
+<body>
+
+<table class="header-footer" cellSpacing="0" id="top">
+    <tr>
+    <td></td>
+                    <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="right-pane.html">Home</a><br>
+            <a href="index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="landing-user_operations.html">Operations</a>
+                        <a href="landing-user_elements.html">Elements</a>
+                        <a href="landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="landing-admin_operations.html">Operations</a>
+                        <a href="landing-admin_elements.html">Elements</a>
+                        <a href="landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="landing-extension_operations.html">Operations</a>
+                        <a href="landing-extension_elements.html">Elements</a>
+                        <a href="landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="landing-operations.html">Operations</a>
+                        <a href="landing-elements.html">Elements</a>
+                        <a href="landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+<br>
+
+<h1>vCloud REST API Extension Types</h1>
+
+<h2 class="index">Extension Types</h2>
+<input onFocus="this.value=&quot;&quot;" value=" -- Quick Index -- " id="tb" style="font-family:verdana;width:95%;margin-bottom:10px" type="text">
+<br>
+<script>
+    var obj = actb(document.getElementById('tb'),picklist,urls);
+</script>
+
+<p class="table-title">Extension Types (67)</p>
+<table cellspacing="0">
+  <tr>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Since</th>
+  </tr>
+
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/AmqpSettingsTestType.html">AmqpSettingsTestType</a></td>
+        <td>
+                 Represents the result from AMQP settings test.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/AmqpSettingsType.html">AmqpSettingsType</a></td>
+        <td>
+                 Represents the settings for the AMQP broker.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/BlockingTaskOperationParamsType.html">BlockingTaskOperationParamsType</a></td>
+        <td>
+                Parameters to POST with a blocking task action.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/BlockingTaskSettingsType.html">BlockingTaskSettingsType</a></td>
+        <td>
+                 Represents the settings related to blocking tasks.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/BlockingTaskSettingsType_TimeoutInMilliseconds.html">BlockingTaskSettingsType/TimeoutInMilliseconds</a></td>
+        <td></td>
+        <td></td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/BlockingTaskType.html">BlockingTaskType</a></td>
+        <td>
+                Describes a blocking task request.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/BlockingTaskUpdateProgressParamsType.html">BlockingTaskUpdateProgressParamsType</a></td>
+        <td>
+                Parameters to update a blocking task with a new timeout.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/BrandingSettingsType.html">BrandingSettingsType</a></td>
+        <td>
+                BrandingSettings stores all information about how to brand the product for
+                vCloud service, like provider name, logo etc.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/DatastoreType.html">DatastoreType</a></td>
+        <td>
+                 Represents datastore object.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/DatastoreType_ThresholdRedGb.html">DatastoreType/ThresholdRedGb</a></td>
+        <td></td>
+        <td></td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/DatastoreType_ThresholdYellowGb.html">DatastoreType/ThresholdYellowGb</a></td>
+        <td></td>
+        <td></td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/EmailSettingsType.html">EmailSettingsType</a></td>
+        <td>
+                Represent all the email related settings in the system.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/FencePoolType.html">FencePoolType</a></td>
+        <td>
+                Represents a network pool backed by one or more vSphere isolated networks.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/GeneralSettingsType.html">GeneralSettingsType</a></td>
+        <td>
+                 Represents the general part of the system settings.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/HostType.html">HostType</a></td>
+        <td>
+                Read only representation of one host in a vSphere server.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/ImportMediaParamsType.html">ImportMediaParamsType</a></td>
+        <td>
+                Represents parameters to import media from vSphere.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/ImportVmAsVAppParamsType.html">ImportVmAsVAppParamsType</a></td>
+        <td>
+                Parameters to import a virtual machine as a vApp.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/ImportVmAsVAppTemplateParamsType.html">ImportVmAsVAppTemplateParamsType</a></td>
+        <td>
+                Parameters to import a virtual machine as a vApp template.</td>
+        <td>1.0</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/ImportVmIntoExistingVAppParamsType.html">ImportVmIntoExistingVAppParamsType</a></td>
+        <td>
+                Parameters to import a virtual machine into an existing VApp.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/LdapGroupAttributesType.html">LdapGroupAttributesType</a></td>
+        <td>
+                Defines how a group is imported from LDAP.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/LdapSettingsType.html">LdapSettingsType</a></td>
+        <td>
+                Defines the hostname and connection details for system
+                LDAP service.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/LdapUserAttributesType.html">LdapUserAttributesType</a></td>
+        <td>
+                Defines how LDAP attributes are used when importing a user.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/LicenseMetricsInfoType.html">LicenseMetricsInfoType</a></td>
+        <td>
+                 Report of License usage metrics.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/LicenseType.html">LicenseType</a></td>
+        <td>
+                 This is used by the API to update and retrieve site license specific information.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/LicensingManagedServerType.html">LicensingManagedServerType</a></td>
+        <td>
+                Captures a single set of metrics for a managed server for a given sample.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/LicensingReportListType.html">LicensingReportListType</a></td>
+        <td>
+                Represents a list of licensing reports.</td>
+        <td>1.0</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/LicensingReportSampleType.html">LicensingReportSampleType</a></td>
+        <td>
+                Represents a single licensing data collection point.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/LicensingReportSampleType_ManagedServerMetrics.html">LicensingReportSampleType/ManagedServerMetrics</a></td>
+        <td></td>
+        <td></td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/LicensingReportSampleType_VirtualMachineMetrics.html">LicensingReportSampleType/VirtualMachineMetrics</a></td>
+        <td></td>
+        <td></td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/LicensingReportType.html">LicensingReportType</a></td>
+        <td>
+                Represents a read-only licensing metric report.</td>
+        <td>1.0</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/LicensingVirtualMachineType.html">LicensingVirtualMachineType</a></td>
+        <td>
+                Represents a single set of virtual machine metrics.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/NotificationType.html">NotificationType</a></td>
+        <td></td>
+        <td></td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/NotificationsSettingsType.html">NotificationsSettingsType</a></td>
+        <td>
+                 Represents the settings related to Notifications.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/NumericRangeType.html">NumericRangeType</a></td>
+        <td>
+                Range of integers.</td>
+        <td>0.9</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/OrganizationResourcePoolSetType.html">OrganizationResourcePoolSetType</a></td>
+        <td>
+                Represents a set of resource pools that back an organization
+                vDC.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/PortGroupPoolType.html">PortGroupPoolType</a></td>
+        <td>
+                Represents a network pool backed by one or more vSphere port groups.</td>
+        <td>1.0</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/PrepareHostParamsType.html">PrepareHostParamsType</a></td>
+        <td>
+                Parameters for preparing an ESX/ESXi host.</td>
+        <td>0.9</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/RegisterVimServerParamsType.html">RegisterVimServerParamsType</a></td>
+        <td>
+                Represents parameters to register a vCenter server.</td>
+        <td>0.9</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/ResourcePoolListType.html">ResourcePoolListType</a></td>
+        <td>
+                Represents a list of available resource pools that have not been
+                assigned to any vDCs (provider or org).</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/ResourcePoolType.html">ResourcePoolType</a></td>
+        <td>
+                vSphere resource pool information.</td>
+        <td>0.9</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/ServerType.html">ServerType</a></td>
+        <td>
+                Information needed to connect to a vSphere or a vShield manager
+                server.</td>
+        <td>0.9</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/ShieldManagerType.html">ShieldManagerType</a></td>
+        <td>
+                Represents credentials to a vShield Manager server.</td>
+        <td>0.9</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/SmtpSettingsType.html">SmtpSettingsType</a></td>
+        <td>
+                 The SMTP server for email notifications and alerts.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/SystemPasswordPolicySettingsType.html">SystemPasswordPolicySettingsType</a></td>
+        <td>
+                 Represents the settings related to Password Policy.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/SystemPasswordPolicySettingsType_AccountLockoutIntervalMinutes.html">SystemPasswordPolicySettingsType/AccountLockoutIntervalMinutes</a></td>
+        <td></td>
+        <td></td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/SystemSettingsType.html">SystemSettingsType</a></td>
+        <td>
+                 Represents the settings of the system.</td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/UberAdminSettingsType.html">UberAdminSettingsType</a></td>
+        <td>
+                Internal use only.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/UpdateResourcePoolSetParamsType.html">UpdateResourcePoolSetParamsType</a></td>
+        <td>
+                   Represents update parameters for resource pools backing provider vdc
+               </td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/VMWExtensionType.html">VMWExtensionType</a></td>
+        <td>
+                List links to extension operations and entities.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/VMWExternalNetworkReferencesType.html">VMWExternalNetworkReferencesType</a></td>
+        <td>
+                Represents a list of available external networks.</td>
+        <td>1.0</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/VMWExternalNetworkType.html">VMWExternalNetworkType</a></td>
+        <td>
+                External network type.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/VMWHostReferencesType.html">VMWHostReferencesType</a></td>
+        <td>
+                Represents a list of available hosts.</td>
+        <td>1.0</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/VMWNetworkPoolReferencesType.html">VMWNetworkPoolReferencesType</a></td>
+        <td>
+                Represents a list of available network pools.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/VMWNetworkPoolType.html">VMWNetworkPoolType</a></td>
+        <td>
+                Base extension network pool type.</td>
+        <td>1.0</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/VMWProviderVdcReferencesType.html">VMWProviderVdcReferencesType</a></td>
+        <td>
+                Represents a list of available provider vDCs.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/VMWProviderVdcResourcePoolSetType.html">VMWProviderVdcResourcePoolSetType</a></td>
+        <td>
+                   Represents backing resource pool set
+            </td>
+        <td>1.5</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/VMWProviderVdcResourcePoolType.html">VMWProviderVdcResourcePoolType</a></td>
+        <td>
+                   Represents backing resource pool for provider vDC.</td>
+        <td>1.5</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/VMWProviderVdcType.html">VMWProviderVdcType</a></td>
+        <td>
+                Extension representation of provider vDC type.</td>
+        <td>1.0</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/VMWVimServerReferencesType.html">VMWVimServerReferencesType</a></td>
+        <td>
+                List of references to vCenter servers registered to vCloud
+                Director.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/VimObjectRefListType.html">VimObjectRefListType</a></td>
+        <td></td>
+        <td></td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/VimObjectRefType.html">VimObjectRefType</a></td>
+        <td>
+                Represents the moref and the type of a vSphere object.</td>
+        <td>0.9</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/VimObjectRefsType.html">VimObjectRefsType</a></td>
+        <td>
+                List of VimObjectRef elements.</td>
+        <td>0.9</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/VimServerType.html">VimServerType</a></td>
+        <td>
+                Represents vCenter server information.</td>
+        <td>0.9</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/VlanPoolType.html">VlanPoolType</a></td>
+        <td>
+                Represents a network pool backed by one or more vSphere VLANs.</td>
+        <td>1.0</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/VmObjectRefType.html">VmObjectRefType</a></td>
+        <td>
+                A reference to a virtual machine in vCenter inventory.</td>
+        <td>1.0</td>
+    </tr>
+              <tr class="r0" >
+        <td nowrap="1"><a href="types/VmObjectRefsListType.html">VmObjectRefsListType</a></td>
+        <td>
+                A list of references to virtual machines in vCenter inventory.</td>
+        <td>1.0</td>
+    </tr>
+          <tr class="r1" >
+        <td nowrap="1"><a href="types/VmVimInfoType.html">VmVimInfoType</a></td>
+        <td>
+                Represents a vSphere VM information.</td>
+        <td>1.5</td>
+    </tr>
+  </table>
+
+<br>
+<table class="header-footer" cellSpacing="0">
+    <tr>
+    <td><a href="#top">Top of page</a></td>
+                    <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="right-pane.html">Home</a><br>
+            <a href="index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="landing-user_operations.html">Operations</a>
+                        <a href="landing-user_elements.html">Elements</a>
+                        <a href="landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="landing-admin_operations.html">Operations</a>
+                        <a href="landing-admin_elements.html">Elements</a>
+                        <a href="landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="landing-extension_operations.html">Operations</a>
+                        <a href="landing-extension_elements.html">Elements</a>
+                        <a href="landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="landing-operations.html">Operations</a>
+                        <a href="landing-elements.html">Elements</a>
+                        <a href="landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+
+<br>
+<script language="javascript">document.write(ID_Copyright);</script>
+<br>
+<script language="javascript">document.write(ID_VersionInformation);</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>vCloud REST API Extension Elements</title>
+    <script language="JavaScript" src="./commonRes.js"> type="text/javascript"></script>
+    <script src="dynamic-content.js" type="text/javascript"></script>
+    <script src="actb.js" type="text/javascript" language="javascript"></script>
+    <script src="common.js" type="text/javascript" language="javascript"></script>
+    <script>
+        var picklist = new Array('AmqpSettings','AmqpSettingsTest','BlockingTask','BlockingTaskOperationParams','BlockingTaskOperations','BlockingTaskReferences (extension/v1.5)','BlockingTaskSettings','BlockingTaskUpdateProgressParams','BrandingSettings','Datastore','DatastoreReferences (extension/v1.5)','EmailSettings','GeneralSettings','Host','ImportMediaParams','ImportVmAsVAppParams','ImportVmAsVAppTemplateParams','ImportVmIntoExistingVAppParams','LdapSettings','License','LicensingReport','LicensingReports','ManagedServer','Notification','NotificationsSettings','OrganizationResourcePoolSet','PrepareHostParams','RegisterVimServerParams','ResourcePoolList','Sample','ShieldManager','SystemPasswordPolicySettings','SystemSettings','UberAdminSettings','UpdateResourcePoolSetParams','VMWExtension','VMWExternalNetwork','VMWExternalNetworkReferences','VMWHostReferences','VMWNetworkPool','VMWNetworkPoolReferences','VMWProviderVdc','VMWProviderVdcReferences (extension/v1.5)','VMWProviderVdcResourcePoolSet','VMWVimServerReferences','VimObjectRef','VimObjectRefList','VimServer','VirtualMachine','VmObjectRefsList','VmVimInfo');
+        var urls = new Array();
+        urls['AmqpSettings'] = ['types/AmqpSettingsType.html'];urls['AmqpSettingsTest'] = ['types/AmqpSettingsTestType.html'];urls['BlockingTask'] = ['types/BlockingTaskType.html'];urls['BlockingTaskOperationParams'] = ['types/BlockingTaskOperationParamsType.html'];urls['BlockingTaskOperations'] = ['types/TaskOperationListType.html'];urls['BlockingTaskReferences (extension/v1.5)'] = ['types/ReferencesType.html'];urls['BlockingTaskSettings'] = ['types/BlockingTaskSettingsType.html'];urls['BlockingTaskUpdateProgressParams'] = ['types/BlockingTaskUpdateProgressParamsType.html'];urls['BrandingSettings'] = ['types/BrandingSettingsType.html'];urls['Datastore'] = ['types/DatastoreType.html'];urls['DatastoreReferences (extension/v1.5)'] = ['types/ReferencesType.html'];urls['EmailSettings'] = ['types/EmailSettingsType.html'];urls['GeneralSettings'] = ['types/GeneralSettingsType.html'];urls['Host'] = ['types/HostType.html'];urls['ImportMediaParams'] = ['types/ImportMediaParamsType.html'];urls['ImportVmAsVAppParams'] = ['types/ImportVmAsVAppParamsType.html'];urls['ImportVmAsVAppTemplateParams'] = ['types/ImportVmAsVAppTemplateParamsType.html'];urls['ImportVmIntoExistingVAppParams'] = ['types/ImportVmIntoExistingVAppParamsType.html'];urls['LdapSettings'] = ['types/LdapSettingsType.html'];urls['License'] = ['types/LicenseType.html'];urls['LicensingReport'] = ['types/LicensingReportType.html'];urls['LicensingReports'] = ['types/LicensingReportListType.html'];urls['ManagedServer'] = ['types/LicensingManagedServerType.html'];urls['Notification'] = ['types/NotificationType.html'];urls['NotificationsSettings'] = ['types/NotificationsSettingsType.html'];urls['OrganizationResourcePoolSet'] = ['types/OrganizationResourcePoolSetType.html'];urls['PrepareHostParams'] = ['types/PrepareHostParamsType.html'];urls['RegisterVimServerParams'] = ['types/RegisterVimServerParamsType.html'];urls['ResourcePoolList'] = ['types/ResourcePoolListType.html'];urls['Sample'] = ['types/LicensingReportSampleType.html'];urls['ShieldManager'] = ['types/ShieldManagerType.html'];urls['SystemPasswordPolicySettings'] = ['types/SystemPasswordPolicySettingsType.html'];urls['SystemSettings'] = ['types/SystemSettingsType.html'];urls['UberAdminSettings'] = ['types/UberAdminSettingsType.html'];urls['UpdateResourcePoolSetParams'] = ['types/UpdateResourcePoolSetParamsType.html'];urls['VMWExtension'] = ['types/VMWExtensionType.html'];urls['VMWExternalNetwork'] = ['types/VMWExternalNetworkType.html'];urls['VMWExternalNetworkReferences'] = ['types/VMWExternalNetworkReferencesType.html'];urls['VMWHostReferences'] = ['types/VMWHostReferencesType.html'];urls['VMWNetworkPool'] = ['types/VMWNetworkPoolType.html'];urls['VMWNetworkPoolReferences'] = ['types/VMWNetworkPoolReferencesType.html'];urls['VMWProviderVdc'] = ['types/VMWProviderVdcType.html'];urls['VMWProviderVdcReferences (extension/v1.5)'] = ['types/VMWProviderVdcReferencesType.html'];urls['VMWProviderVdcResourcePoolSet'] = ['types/VMWProviderVdcResourcePoolSetType.html'];urls['VMWVimServerReferences'] = ['types/VMWVimServerReferencesType.html'];urls['VimObjectRef'] = ['types/VimObjectRefType.html'];urls['VimObjectRefList'] = ['types/VimObjectRefListType.html'];urls['VimServer'] = ['types/VimServerType.html'];urls['VirtualMachine'] = ['types/LicensingVirtualMachineType.html'];urls['VmObjectRefsList'] = ['types/VmObjectRefsListType.html'];urls['VmVimInfo'] = ['types/VmVimInfoType.html'];    </script>
+    <link href="doc-style.css" type="text/css" rel="StyleSheet">
+</head>
+<body bgcolor="white">
+    <a name="navbar_top"></a>
+
+    <table class="header-footer" cellSpacing="0">
+            <tr><td>
+                    <a href="javascript:void(location.href='left-pane.html');void(parent.frames[1].location.href='right-pane.html');">Home</a>
+                </td></tr>
+            <tr><td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 10px">
+                        <a href="javascript:void(location.href='index-user_operations.html');void(parent.frames[1].location.href='landing-user_operations.html');">Operations</a>
+                        <a href="javascript:void(location.href='index-user_elements.html');void(parent.frames[1].location.href='landing-user_elements.html');">Elements</a>
+                        <a href="javascript:void(location.href='index-user_types.html');void(parent.frames[1].location.href='landing-user_types.html');">Types</a>
+                        </dd>
+            </dl>
+                </td></tr>
+            <tr><td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 10px">
+                        <a href="javascript:void(location.href='index-admin_operations.html');void(parent.frames[1].location.href='landing-admin_operations.html');">Operations</a>
+                        <a href="javascript:void(location.href='index-admin_elements.html');void(parent.frames[1].location.href='landing-admin_elements.html');">Elements</a>
+                        <a href="javascript:void(location.href='index-admin_types.html');void(parent.frames[1].location.href='landing-admin_types.html');">Types</a>
+                        </dd>
+            </dl>
+                </td></tr>
+            <tr><td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 10px">
+                        <a href="javascript:void(location.href='index-extension_operations.html');void(parent.frames[1].location.href='landing-extension_operations.html');">Operations</a>
+                        <a href="javascript:void(location.href='index-extension_elements.html');void(parent.frames[1].location.href='landing-extension_elements.html');">Elements</a>
+                        <a href="javascript:void(location.href='index-extension_types.html');void(parent.frames[1].location.href='landing-extension_types.html');">Types</a>
+                        </dd>
+            </dl>
+                </td></tr>
+            <tr><td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 10px">
+                        <a href="javascript:void(location.href='index-operations.html');void(parent.frames[1].location.href='landing-operations.html');">Operations</a>
+                        <a href="javascript:void(location.href='index-elements.html');void(parent.frames[1].location.href='landing-elements.html');">Elements</a>
+                        <a href="javascript:void(location.href='index-types.html');void(parent.frames[1].location.href='landing-types.html');">Types</a>
+                        </dd>
+            </dl>
+                </td></tr>
+    </table>
+
+    <h2 class="index">Extension Elements</h2>
+    <input onFocus="this.value=&quot;&quot;" value=" -- Quick Index -- " id="tb" style="font-family:verdana;width:95%;margin-bottom:10px" type="text">
+    <br>
+    <script>
+        var obj = actb(document.getElementById('tb'),picklist,urls);
+    </script>
+
+
+    <font size="-1">
+        <div style="width:100%;overflow:hidden;text-overflow:ellipsis;display:block" class="switchcontent" id="AE">
+                        <nobr>
+                <a title="AmqpSettings" target="classFrame" href="types/AmqpSettingsType.html">AmqpSettings</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="AmqpSettingsTest" target="classFrame" href="types/AmqpSettingsTestType.html">AmqpSettingsTest</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="BlockingTask" target="classFrame" href="types/BlockingTaskType.html">BlockingTask</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="BlockingTaskOperationParams" target="classFrame" href="types/BlockingTaskOperationParamsType.html">BlockingTaskOperationParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="BlockingTaskOperations" target="classFrame" href="types/TaskOperationListType.html">BlockingTaskOperations</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="BlockingTaskReferences (extension/v1.5)" target="classFrame" href="types/ReferencesType.html">BlockingTaskReferences (extension/v1.5)</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="BlockingTaskSettings" target="classFrame" href="types/BlockingTaskSettingsType.html">BlockingTaskSettings</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="BlockingTaskUpdateProgressParams" target="classFrame" href="types/BlockingTaskUpdateProgressParamsType.html">BlockingTaskUpdateProgressParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="BrandingSettings" target="classFrame" href="types/BrandingSettingsType.html">BrandingSettings</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Datastore" target="classFrame" href="types/DatastoreType.html">Datastore</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="DatastoreReferences (extension/v1.5)" target="classFrame" href="types/ReferencesType.html">DatastoreReferences (extension/v1.5)</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="EmailSettings" target="classFrame" href="types/EmailSettingsType.html">EmailSettings</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="GeneralSettings" target="classFrame" href="types/GeneralSettingsType.html">GeneralSettings</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Host" target="classFrame" href="types/HostType.html">Host</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ImportMediaParams" target="classFrame" href="types/ImportMediaParamsType.html">ImportMediaParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ImportVmAsVAppParams" target="classFrame" href="types/ImportVmAsVAppParamsType.html">ImportVmAsVAppParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ImportVmAsVAppTemplateParams" target="classFrame" href="types/ImportVmAsVAppTemplateParamsType.html">ImportVmAsVAppTemplateParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ImportVmIntoExistingVAppParams" target="classFrame" href="types/ImportVmIntoExistingVAppParamsType.html">ImportVmIntoExistingVAppParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="LdapSettings" target="classFrame" href="types/LdapSettingsType.html">LdapSettings</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="License" target="classFrame" href="types/LicenseType.html">License</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="LicensingReport" target="classFrame" href="types/LicensingReportType.html">LicensingReport</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="LicensingReports" target="classFrame" href="types/LicensingReportListType.html">LicensingReports</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ManagedServer" target="classFrame" href="types/LicensingManagedServerType.html">ManagedServer</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Notification" target="classFrame" href="types/NotificationType.html">Notification</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="NotificationsSettings" target="classFrame" href="types/NotificationsSettingsType.html">NotificationsSettings</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="OrganizationResourcePoolSet" target="classFrame" href="types/OrganizationResourcePoolSetType.html">OrganizationResourcePoolSet</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="PrepareHostParams" target="classFrame" href="types/PrepareHostParamsType.html">PrepareHostParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="RegisterVimServerParams" target="classFrame" href="types/RegisterVimServerParamsType.html">RegisterVimServerParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ResourcePoolList" target="classFrame" href="types/ResourcePoolListType.html">ResourcePoolList</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="Sample" target="classFrame" href="types/LicensingReportSampleType.html">Sample</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="ShieldManager" target="classFrame" href="types/ShieldManagerType.html">ShieldManager</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="SystemPasswordPolicySettings" target="classFrame" href="types/SystemPasswordPolicySettingsType.html">SystemPasswordPolicySettings</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="SystemSettings" target="classFrame" href="types/SystemSettingsType.html">SystemSettings</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="UberAdminSettings" target="classFrame" href="types/UberAdminSettingsType.html">UberAdminSettings</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="UpdateResourcePoolSetParams" target="classFrame" href="types/UpdateResourcePoolSetParamsType.html">UpdateResourcePoolSetParams</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWExtension" target="classFrame" href="types/VMWExtensionType.html">VMWExtension</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWExternalNetwork" target="classFrame" href="types/VMWExternalNetworkType.html">VMWExternalNetwork</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWExternalNetworkReferences" target="classFrame" href="types/VMWExternalNetworkReferencesType.html">VMWExternalNetworkReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWHostReferences" target="classFrame" href="types/VMWHostReferencesType.html">VMWHostReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWNetworkPool" target="classFrame" href="types/VMWNetworkPoolType.html">VMWNetworkPool</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWNetworkPoolReferences" target="classFrame" href="types/VMWNetworkPoolReferencesType.html">VMWNetworkPoolReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWProviderVdc" target="classFrame" href="types/VMWProviderVdcType.html">VMWProviderVdc</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWProviderVdcReferences (extension/v1.5)" target="classFrame" href="types/VMWProviderVdcReferencesType.html">VMWProviderVdcReferences (extension/v1.5)</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWProviderVdcResourcePoolSet" target="classFrame" href="types/VMWProviderVdcResourcePoolSetType.html">VMWProviderVdcResourcePoolSet</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VMWVimServerReferences" target="classFrame" href="types/VMWVimServerReferencesType.html">VMWVimServerReferences</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VimObjectRef" target="classFrame" href="types/VimObjectRefType.html">VimObjectRef</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VimObjectRefList" target="classFrame" href="types/VimObjectRefListType.html">VimObjectRefList</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VimServer" target="classFrame" href="types/VimServerType.html">VimServer</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VirtualMachine" target="classFrame" href="types/LicensingVirtualMachineType.html">VirtualMachine</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VmObjectRefsList" target="classFrame" href="types/VmObjectRefsListType.html">VmObjectRefsList</a>
+                <br>
+            </nobr>
+                        <nobr>
+                <a title="VmVimInfo" target="classFrame" href="types/VmVimInfoType.html">VmVimInfo</a>
+                <br>
+            </nobr>
+                    </div>
+    </font>
+</body>
+</html>

@@ -1,0 +1,1051 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>vCloud REST API - Task</title>
+    <script src="../dynamic-content.js" type="text/javascript"></script>
+    <script language="JavaScript" src="../commonRes.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="../doc-style.css">
+    <link rel="stylesheet" type="text/css" href="../xml-style.css">
+</head>
+<body>
+
+<table class="header-footer" cellSpacing="0" id="top">
+    <tr>
+    <td></td>
+                    <td><a href="#attributes">Attributes</a></td>
+                            <td><a href="#elements">Elements</a></td>
+                            <td>&nbsp;</td>
+                            <td><a href="#operations">Operations</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+<br>
+
+<h1>Task</h1>
+
+<dl>
+        <dt>Element:</dt>
+    <dd>Task</dd>
+        <dt>Type:</dt>
+    <dd>TaskType</dd>
+    <dt>Namespace:</dt>
+    <dd><a href="http://www.vmware.com/vcloud/v1.5">http://www.vmware.com/vcloud/v1.5</a></dd>
+    <dt>Description:</dt>
+    <dd>
+                Represents an asynchronous or long-running task in the vCloud environment.
+            </dd>
+    <dt>Since:</dt>
+    <dd>0.9</dd>
+    <dt>Schema:</dt>
+    <dd><a href="../etc/1.5/schemas/vcloud/task.xsd">task.xsd</a></dd>
+    <dt>Media type(s):</dt>
+    <dd>application/vnd.vmware.vcloud.task+xml<br></dd>
+    <dt>Extends:</dt>
+    <dd><a href="../types/EntityType.html">EntityType</a></dd>
+
+    <dt>XML Representation:</dt>
+    <dd><span class="xml_plain"></span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Task</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name">xmlns</span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value">http://www.vmware.com/vcloud/v1.5</span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ResourceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/EntityType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/EntityType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#status" target="classFrame" title="status">status</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#operation" target="classFrame" title="operation">operation</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#operationName" target="classFrame" title="operationName">operationName</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#startTime" target="classFrame" title="startTime">startTime</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#dateTime" target="classFrame" title="xs:dateTime">xs:dateTime</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#endTime" target="classFrame" title="endTime">endTime</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#dateTime" target="classFrame" title="xs:dateTime">xs:dateTime</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/TaskType.html#expiryTime" target="classFrame" title="expiryTime">expiryTime</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#dateTime" target="classFrame" title="xs:dateTime">xs:dateTime</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/LinkType.html" target="classFrame" title="Link">Link</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/LinkType.html#rel" target="classFrame" title="rel">rel</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Description</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Description</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/TasksInProgressType.html" target="classFrame" title="Tasks">Tasks</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Task</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="../types/TaskType.html" target="classFrame" title="TaskType">TaskType</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Task</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name"><a href="../types/TasksInProgressType.html" target="classFrame" title="Tasks">Tasks</a></span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ReferenceType.html" target="classFrame" title="Owner">Owner</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ErrorType.html" target="classFrame" title="Error">Error</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ErrorType.html#message" target="classFrame" title="message">message</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ErrorType.html#majorErrorCode" target="classFrame" title="majorErrorCode">majorErrorCode</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ErrorType.html#minorErrorCode" target="classFrame" title="minorErrorCode">minorErrorCode</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ErrorType.html#vendorSpecificErrorCode" target="classFrame" title="vendorSpecificErrorCode">vendorSpecificErrorCode</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_attribute_name"><a href="../types/ErrorType.html#stackTrace" target="classFrame" title="stackTrace">stackTrace</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ReferenceType.html" target="classFrame" title="User">User</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name"><a href="../types/ReferenceType.html" target="classFrame" title="Organization">Organization</a></span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#href" target="classFrame" title="href">href</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#anyURI" target="classFrame" title="xs:anyURI">xs:anyURI</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#id" target="classFrame" title="id">id</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#type" target="classFrame" title="type">type</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_plain">&nbsp;</span><span class="xml_attribute_name"><a href="../types/ReferenceType.html#name" target="classFrame" title="name">name</a></span><span class="xml_tag_symbols">=</span><span class="xml_attribute_value">&quot;</span><span class="xml_attribute_value"><a href="http://www.w3.org/TR/xmlschema-0/#string" target="classFrame" title="xs:string">xs:string</a></span><span class="xml_attribute_value">&quot;</span><span class="xml_tag_symbols">/&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Progress</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain"><a href="http://www.w3.org/TR/xmlschema-0/#int" target="classFrame" title="xs:int">xs:int</a></span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Progress</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="xml_tag_symbols">&lt;</span><span class="xml_tag_name">Params</span><span class="xml_tag_symbols">&gt;</span><span class="xml_plain">&nbsp;</span><span class="xml_plain">...</span><span class="xml_plain">&nbsp;</span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Params</span><span class="xml_tag_symbols">&gt;</span><br/>
+<span class="xml_plain"></span><span class="xml_tag_symbols">&lt;/</span><span class="xml_tag_name">Task</span><span class="xml_tag_symbols">&gt;</span><br/>
+</dd>
+
+        <a id="attributes" name="attributes"></a>
+    <dt><p class="table-title">Attributes</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>Attribute</th>
+        <th>Type</th>
+        <th>Required</th>
+        <th>Modifiable</th>
+        <th>Since</th>
+        <th>Description</th>
+      </tr>
+                      <a name="href"></a>
+        <tr class="r1" >
+            <td>href</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#anyURI">anyURI</a></td>
+            <td>No</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                            Contains the URI to the entity.
+                        </td>
+        </tr>
+                              <a name="type"></a>
+        <tr class="r0" >
+            <td>type</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>No</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                            Contains the type of the entity.
+                        </td>
+        </tr>
+                      <a name="name"></a>
+        <tr class="r1" >
+            <td>name</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>Yes</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                            The name of the entity.
+                        </td>
+        </tr>
+                              <a name="id"></a>
+        <tr class="r0" >
+            <td>id</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>No</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                            The entity identifier, expressed in URN format.
+                            The value of this attribute uniquely identifies
+                            the entity, persists for the life of the entity,
+                            and is never reused.
+                        </td>
+        </tr>
+                      <a name="status"></a>
+        <tr class="r1" >
+            <td>status</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>Yes</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                            The execution status of the task. One of:
+                            queued (The task has been queued for execution.),
+                            preRunning (The task is awaiting preprocessing or,
+                            if it is a blocking task, administrative action.),
+                            running (The task is runnning.),
+                            success (The task completed with a status of
+                            success.),
+                            error (The task encountered an error while
+                            running.),
+                            canceled (The task was canceled by the owner or an
+                            administrator.),
+                            aborted (The task was aborted by an administrative
+                            action.)
+                        </td>
+        </tr>
+                              <a name="operation"></a>
+        <tr class="r0" >
+            <td>operation</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>No</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                            The display name of the operation that is tracked
+                            by this task.
+                        </td>
+        </tr>
+                      <a name="operationName"></a>
+        <tr class="r1" >
+            <td>operationName</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>No</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                            The name of the operation that is tracked by this task.
+                        </td>
+        </tr>
+                              <a name="startTime"></a>
+        <tr class="r0" >
+            <td>startTime</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#dateTime">dateTime</a></td>
+            <td>No</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                            The date and time the system started executing the task. May
+                            not be present if the task hasn't been executed yet.
+                        </td>
+        </tr>
+                      <a name="endTime"></a>
+        <tr class="r1" >
+            <td>endTime</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#dateTime">dateTime</a></td>
+            <td>No</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                            The date and time that processing of the task was completed.
+                            May not be present if the task is still being executed.
+                        </td>
+        </tr>
+                              <a name="expiryTime"></a>
+        <tr class="r0" >
+            <td>expiryTime</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#dateTime">dateTime</a></td>
+            <td>No</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                            The date and time at which the task resource will be destroyed
+                            and no longer available for retrieval. May not be present if
+                            the task has not been executed or is still being executed.
+                        </td>
+        </tr>
+          </table>
+    </dd>
+    
+        <a id="elements" name="elements"></a>
+    <dt><p class="table-title">Elements</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>Element</th>
+        <th>Type</th>
+        <th>Occurrence</th>
+        <th>Modifiable</th>
+        <th>Since</th>
+        <th>Description</th>
+      </tr>
+                      <a name="VCloudExtension"></a>
+        <tr class="r1" >
+            <td>VCloudExtension</td>
+            <td><a href="../types/VCloudExtensionType.html">VCloudExtensionType</a></td>
+            <td>0..*</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                        An optional extension element that can contain an
+                        arbitrary number of elements and attributes.
+                    </td>
+        </tr>
+                              <a name="Link"></a>
+        <tr class="r0" >
+            <td>Link</td>
+            <td><a href="../types/LinkType.html">LinkType</a></td>
+            <td>0..*</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                                Optional link to an entity or operation associated
+                                with this object.
+                            </td>
+        </tr>
+                      <a name="Description"></a>
+        <tr class="r1" >
+            <td>Description</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#string">string</a></td>
+            <td>0..1</td>
+            <td>always</td>
+            <td>0.9</td>
+            <td>
+                                Optional description.
+                            </td>
+        </tr>
+                              <a name="Tasks"></a>
+        <tr class="r0" >
+            <td>Tasks</td>
+            <td><a href="../types/TasksInProgressType.html">TasksInProgressType</a></td>
+            <td>0..1</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                                A list of queued, running, or recently
+                                completed tasks associated with this entity.
+                            </td>
+        </tr>
+                      <a name="Owner"></a>
+        <tr class="r1" >
+            <td>Owner</td>
+            <td><a href="../types/ReferenceType.html">ReferenceType</a></td>
+            <td>0..1</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                                Reference to the owner of the task.
+                            </td>
+        </tr>
+                              <a name="Error"></a>
+        <tr class="r0" >
+            <td>Error</td>
+            <td><a href="../types/ErrorType.html">ErrorType</a></td>
+            <td>0..1</td>
+            <td>none</td>
+            <td>0.9</td>
+            <td>
+                                Represents an error information if the task failed.
+                            </td>
+        </tr>
+                      <a name="User"></a>
+        <tr class="r1" >
+            <td>User</td>
+            <td><a href="../types/ReferenceType.html">ReferenceType</a></td>
+            <td>0..1</td>
+            <td>none</td>
+            <td>1.5</td>
+            <td>
+                                The user who started the task.
+                            </td>
+        </tr>
+                              <a name="Organization"></a>
+        <tr class="r0" >
+            <td>Organization</td>
+            <td><a href="../types/ReferenceType.html">ReferenceType</a></td>
+            <td>0..1</td>
+            <td>none</td>
+            <td>1.5</td>
+            <td>
+                                The organization that started the task.
+                            </td>
+        </tr>
+                      <a name="Progress"></a>
+        <tr class="r1" >
+            <td>Progress</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#int">int</a></td>
+            <td>0..1</td>
+            <td>none</td>
+            <td>1.5</td>
+            <td>
+                                The progress of a long running asynchronous task. The value is between 0 - 100.
+                                Not all tasks have progress, the value is not present for task which progress is not available.
+                            </td>
+        </tr>
+                              <a name="Params"></a>
+        <tr class="r0" >
+            <td>Params</td>
+            <td><a href="http://www.w3.org/TR/xmlschema-0/#anyType">anyType</a></td>
+            <td>0..1</td>
+            <td>none</td>
+            <td>1.5</td>
+            <td>
+                                The parameters with which this task has been run.
+                            </td>
+        </tr>
+          </table>
+    </dd>
+    
+    
+        <a id="operations" name="operations"></a>
+    <dt><p class="table-title">Operations</p></dt>
+    <dd>
+    <table cellspacing="0">
+      <tr>
+        <th>CRUD</th>
+        <th>Operation</th>
+        <th>Description</th>
+        <th>Since</th>
+      </tr>
+
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpdateCatalogMetadata.html">POST /admin/catalog/{id}/metadata</a></td>
+                        <td>Merges the metadata for a catalog with the information provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-DisableHost.html">POST /admin/extension/host/{id}/action/disable</a></td>
+                        <td>Disables a host.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-EnableHost.html">POST /admin/extension/host/{id}/action/enable</a></td>
+                        <td>Enables a host.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-PrepareHost.html">POST /admin/extension/host/{id}/action/prepare</a></td>
+                        <td>Prepares a host.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-RepairHost.html">POST /admin/extension/host/{id}/action/repair</a></td>
+                        <td>Repairs a host.</td>
+            <td>1.0</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UnprepareHost.html">POST /admin/extension/host/{id}/action/unprepare</a></td>
+                        <td>Unprepares a host.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpgradeHostAgent.html">POST /admin/extension/host/{id}/action/upgrade</a></td>
+                        <td>Upgrades the host agent.</td>
+            <td>1.0</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpdatePvdcResourcePools.html">POST /admin/extension/providervdc/{id}/action/updateResourcePools</a></td>
+                        <td>Update backing resource pools for provider vdc</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-ForceVimServerReconnect.html">POST /admin/extension/vimServer/{id}/action/forcevimserverreconnect</a></td>
+                        <td>Forces a vSphere server to reconnect.</td>
+            <td>1.0</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UnregisterVimServer.html">POST /admin/extension/vimServer/{id}/action/unregister</a></td>
+                        <td>Unregisters a vSphere server.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-ImportVmIntoExistingVapp.html">POST /admin/extension/vimServer/{id}/importVmIntoExistingVApp</a></td>
+                        <td>Imports a vSphere server VM into an existing vApp.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-ResetNetwork.html">POST /admin/network/{id}/action/reset</a></td>
+                        <td>Reset(undeploy & redeploy) networking services on a logical network.</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-SyncSyslogSettingsOfNetwork.html">POST /admin/network/{id}/action/syncSyslogServerSettings</a></td>
+                        <td>Synchronize syslog server settings of a logical network with system defaults
+
+ Synchronize operation can be performed on: - routed organization network - routed/fenced vApp
+ networks</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpdateNetworkMetadata.html">POST /admin/network/{id}/metadata</a></td>
+                        <td>Merges the metadata for a network with the information provided.</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpdateOrganizationMetadata.html">POST /admin/org/{id}/metadata</a></td>
+                        <td>Merges the metadata for a organization with the information provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpdateProviderVdcMetadata.html">POST /admin/providervdc/{id}/metadata</a></td>
+                        <td>Merges the metadata for a provider vDC with the information provided.</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpdateVdcMetadata.html">POST /admin/vdc/{id}/metadata</a></td>
+                        <td>Merges the metadata for a vDC with the information provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpdateCatalogItemMetadata.html">POST /catalogItem/{id}/metadata</a></td>
+                        <td>Merges the metadata for a catalog item with the information provided.</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpdateMediaMetadata.html">POST /media/{id}/metadata</a></td>
+                        <td>Merges the metadata for a media with the information provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-ConsolidateVm-vApp.html">POST /vApp/{id}/action/consolidate</a></td>
+                        <td>Consolidates a vm.</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-DeployVApp.html">POST /vApp/{id}/action/deploy</a></td>
+                        <td>Deploys a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-DiscardVAppState.html">POST /vApp/{id}/action/discardSuspendedState</a></td>
+                        <td>Discard suspended state of a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-InstallVMwareTools.html">POST /vApp/{id}/action/installVMwareTools</a></td>
+                        <td>Installs VMware tools to the virtual machine.</td>
+            <td>v1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-RecomposeVApp.html">POST /vApp/{id}/action/recomposeVApp</a></td>
+                        <td>Recompose a vApp by removing its own VMs and/or adding new ones from other
+ vApps or vApp templates.</td>
+            <td>1.0</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-RelocateVm-vApp.html">POST /vApp/{id}/action/relocate</a></td>
+                        <td>Relocates a vm.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UndeployVApp.html">POST /vApp/{id}/action/undeploy</a></td>
+                        <td>Undeploy a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpgradeHwVersion.html">POST /vApp/{id}/action/upgradeHardwareVersion</a></td>
+                        <td>Upgrade virtual hardware version of a VM to the highest supported virtual
+ hardware version of provider vDC where the VM locates</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-EjectCdRom.html">POST /vApp/{id}/media/action/ejectMedia</a></td>
+                        <td>Ejects a media from a VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-InsertCdRom.html">POST /vApp/{id}/media/action/insertMedia</a></td>
+                        <td>Inserts a media into a VM.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpdateVAppMetadata.html">POST /vApp/{id}/metadata</a></td>
+                        <td>Merges the metadata for a vApp/vm with the information provided.</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-PowerOffVApp.html">POST /vApp/{id}/power/action/powerOff</a></td>
+                        <td>Powers off a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-PowerOnVApp.html">POST /vApp/{id}/power/action/powerOn</a></td>
+                        <td>Powers on a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-RebootVApp.html">POST /vApp/{id}/power/action/reboot</a></td>
+                        <td>Reboots a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-ResetVApp.html">POST /vApp/{id}/power/action/reset</a></td>
+                        <td>Resets a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-ShutdownVApp.html">POST /vApp/{id}/power/action/shutdown</a></td>
+                        <td>Shutdowns a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-SuspendVApp.html">POST /vApp/{id}/power/action/suspend</a></td>
+                        <td>Suspends a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-ConsolidateVm-vAppTemplate.html">POST /vAppTemplate/{id}/action/consolidate</a></td>
+                        <td>Consolidates a vm.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-EnableVAppTemplateDownload.html">POST /vAppTemplate/{id}/action/enableDownload</a></td>
+                        <td>Enables downloading of the ovf of a vApp template.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-RelocateVm-vAppTemplate.html">POST /vAppTemplate/{id}/action/relocate</a></td>
+                        <td>Relocates a vm.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">create</td>
+            <td nowrap="1"><a href="../operations/POST-UpdateVAppTemplateMetadata.html">POST /vAppTemplate/{id}/metadata</a></td>
+                        <td>Merges the metadata for a vApp Template with the information provided.</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">read</td>
+            <td nowrap="1"><a href="../operations/GET-Task.html">GET /task/{id}</a></td>
+                        <td>Retrieves a task.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">action</td>
+            <td nowrap="1"><a href="../operations/POST-CancelTask.html">POST /task/{id}/action/cancel</a></td>
+                        <td>Cancel a task.</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-CatalogMetadataItem.html">PUT /admin/catalog/{id}/metadata/{key}</a></td>
+                        <td>Sets the metadata for the particular key for the catalog to the value provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-CatalogMetadataItem.html">DELETE /admin/catalog/{id}/metadata/{key}</a></td>
+                        <td>Deletes the metadata for the particular key for the catalog</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-ExternalNetwork.html">DELETE /admin/extension/externalnet/{id}</a></td>
+                        <td>Deletes an external network.</td>
+            <td>1.0</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-NetworkPool.html">DELETE /admin/extension/networkPool/{id}</a></td>
+                        <td>Deletes a network pool.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-ProviderVdc.html">DELETE /admin/extension/providervdc/{id}</a></td>
+                        <td>Deletes a provider vDC.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-VirtualCenter.html">PUT /admin/extension/vimServer/{id}</a></td>
+                        <td>Modifies a vSphere server.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-OrgNetwork.html">PUT /admin/network/{id}</a></td>
+                        <td>Modifies an org network.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-Network.html">DELETE /admin/network/{id}</a></td>
+                        <td>Deletes a network.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-NetworkMetadataItem.html">PUT /admin/network/{id}/metadata/{key}</a></td>
+                        <td>Sets the metadata for the particular key for the network to the value provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-NetworkMetadataItem.html">DELETE /admin/network/{id}/metadata/{key}</a></td>
+                        <td>Deletes the metadata for the particular key for the network</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-OrganizationMetadataItem.html">PUT /admin/org/{id}/metadata/{key}</a></td>
+                        <td>Sets the metadata for the particular key for the organization to the value provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-OrganizationMetadataItem.html">DELETE /admin/org/{id}/metadata/{key}</a></td>
+                        <td>Deletes the metadata for the particular key for the organization</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-ProviderVdcMetadataItem.html">PUT /admin/providervdc/{id}/metadata/{key}</a></td>
+                        <td>Sets the metadata for the particular key for the provider vDC to the value provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-ProviderVdcMetadataItem.html">DELETE /admin/providervdc/{id}/metadata/{key}</a></td>
+                        <td>Deletes the metadata for the particular key for the provider vDC</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-Vdc.html">PUT /admin/vdc/{id}</a></td>
+                        <td>Modifies a Virtual Data Center.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-Vdc.html">DELETE /admin/vdc/{id}</a></td>
+                        <td>Deletes a Virtual Data Center.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-VdcMetadataItem.html">DELETE /admin/vdc/{id}/metadata/{key}</a></td>
+                        <td>Deletes the metadata for the particular key for the vDC</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-VdcMetadataItem.html">PUT /admin/vdc/{id}/metadata/{key}</a></td>
+                        <td>Sets the metadata for the particular key for the vDC to the value provided.</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-CatalogItemMetadataItem.html">DELETE /catalogItem/{id}/metadata/{key}</a></td>
+                        <td>Deletes the metadata for the particular key for the catalog item</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-CatalogItemMetadataItem.html">PUT /catalogItem/{id}/metadata/{key}</a></td>
+                        <td>Sets the metadata for the particular key for the catalog item to the value provided.</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-Media.html">DELETE /media/{id}</a></td>
+                        <td>Deletes a media.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-MediaNameAndDescription.html">PUT /media/{id}</a></td>
+                        <td>Updates the name/description of a media.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-MediaMetadataItem.html">PUT /media/{id}/metadata/{key}</a></td>
+                        <td>Sets the metadata for the particular key for the media to the value provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-MediaMetadataItem.html">DELETE /media/{id}/metadata/{key}</a></td>
+                        <td>Deletes the metadata for the particular key for the media</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-Vm.html">PUT /vApp/{id}</a></td>
+                        <td>Modifies the name/description of a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-VApp.html">DELETE /vApp/{id}</a></td>
+                        <td>Deletes a vApp/VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-GuestCustomizationSection-vApp.html">PUT /vApp/{id}/guestCustomizationSection</a></td>
+                        <td>Modifies the guest customization options of a VM.</td>
+            <td>1.0</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-LeaseSettingsSection-vApp.html">PUT /vApp/{id}/leaseSettingsSection</a></td>
+                        <td>Modifies the lease settings section of a vApp or vApp template.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-VAppMetadataItem.html">PUT /vApp/{id}/metadata/{key}</a></td>
+                        <td>Sets the metadata for the particular key for the vApp/vm to the value provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-VAppMetadataItem.html">DELETE /vApp/{id}/metadata/{key}</a></td>
+                        <td>Deletes the metadata for the particular key for the vApp/vm</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-NetworkConfigSection-vApp.html">PUT /vApp/{id}/networkConfigSection</a></td>
+                        <td>Modifies the network config section of a vApp.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-NetworkConnectionSystemSection-vApp.html">PUT /vApp/{id}/networkConnectionSection</a></td>
+                        <td>Modifies the network connection section of a VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-OperatingSystemSection.html">PUT /vApp/{id}/operatingSystemSection</a></td>
+                        <td>Modifies the operating system section of a VM.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-ProductSections-vApp.html">PUT /vApp/{id}/productSections</a></td>
+                        <td>Modifies the product section information of a vApp/VM</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-StartupSection.html">PUT /vApp/{id}/startupSection</a></td>
+                        <td>Modifies the startup section of a vApp.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-VirtualHardwareSection.html">PUT /vApp/{id}/virtualHardwareSection</a></td>
+                        <td>Modifies the virtual hardware section of a VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-Cpu.html">PUT /vApp/{id}/virtualHardwareSection/cpu</a></td>
+                        <td>Modifies the CPU properties in virtual hardware section of a VM.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-Disks.html">PUT /vApp/{id}/virtualHardwareSection/disks</a></td>
+                        <td>Modifies the disks list in virtual hardware section of a VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-Memory.html">PUT /vApp/{id}/virtualHardwareSection/memory</a></td>
+                        <td>Modifies the memory properties in virtual hardware section of a VM</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-NetworkCards.html">PUT /vApp/{id}/virtualHardwareSection/networkCards</a></td>
+                        <td>Modifies the network cards list in virtual hardware section of a VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-SerialPorts.html">PUT /vApp/{id}/virtualHardwareSection/serialPorts</a></td>
+                        <td>Modifies the serial ports list in virtual hardware section of a VM.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-VAppTemplate.html">DELETE /vAppTemplate/{id}</a></td>
+                        <td>Deletes a vApp template.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-VAppTemplateNameAndDescription.html">PUT /vAppTemplate/{id}</a></td>
+                        <td>Modifies only the name/description of a vApp template.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-VAppTemplateCustomizationSection.html">PUT /vAppTemplate/{id}/customizationSection</a></td>
+                        <td>Modifies the vApp template customization information.</td>
+            <td>1.0</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-GuestCustomizationSection-vAppTemplate.html">PUT /vAppTemplate/{id}/guestCustomizationSection</a></td>
+                        <td>Modifies the guest customization options of a VM.</td>
+            <td>1.0</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-LeaseSettingsSection-vAppTemplate.html">PUT /vAppTemplate/{id}/leaseSettingsSection</a></td>
+                        <td>Modifies the lease settings section of a vApp or vApp template.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-VAppTemplateMetadataItem.html">PUT /vAppTemplate/{id}/metadata/{key}</a></td>
+                        <td>Sets the metadata for the particular key for the vApp Template to the value provided.</td>
+            <td>1.5</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/DELETE-VAppTemplateMetadataItem.html">DELETE /vAppTemplate/{id}/metadata/{key}</a></td>
+                        <td>Deletes the metadata for the particular key for the vApp Template</td>
+            <td>1.5</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-NetworkConfigSection-vAppTemplate.html">PUT /vAppTemplate/{id}/networkConfigSection</a></td>
+                        <td>Modifies the network config section of a vApp.</td>
+            <td>0.9</td>
+        </tr>
+                              <tr class="r0" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-NetworkConnectionSystemSection-vAppTemplate.html">PUT /vAppTemplate/{id}/networkConnectionSection</a></td>
+                        <td>Modifies the network connection section of a VM.</td>
+            <td>0.9</td>
+        </tr>
+                      <tr class="r1" >
+            <td nowrap="1">as output</td>
+            <td nowrap="1"><a href="../operations/PUT-ProductSections-vAppTemplate.html">PUT /vAppTemplate/{id}/productSections</a></td>
+                        <td>Modifies the product section information of a vApp/VM</td>
+            <td>1.5</td>
+        </tr>
+          </table>
+    </dd>
+    
+</dl>
+
+<br>
+<table class="header-footer" cellSpacing="0">
+    <tr>
+    <td><a href="#top">Top of page</a></td>
+                    <td><a href="#attributes">Attributes</a></td>
+                            <td><a href="#elements">Elements</a></td>
+                            <td>&nbsp;</td>
+                            <td><a href="#operations">Operations</a></td>
+                </tr>
+    <tr>
+            <td>
+                    <a href="../right-pane.html">Home</a><br>
+            <a href="../index.html">Frames</a>
+                </td>
+            <td>
+                    <dl>
+            <dt>User</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-user_operations.html">Operations</a>
+                        <a href="../landing-user_elements.html">Elements</a>
+                        <a href="../landing-user_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Admin</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-admin_operations.html">Operations</a>
+                        <a href="../landing-admin_elements.html">Elements</a>
+                        <a href="../landing-admin_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>Extension</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-extension_operations.html">Operations</a>
+                        <a href="../landing-extension_elements.html">Elements</a>
+                        <a href="../landing-extension_types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+            <td>
+                    <dl>
+            <dt>All</dt>
+            <dd style="margin-left: 0px">
+                        <a href="../landing-operations.html">Operations</a>
+                        <a href="../landing-elements.html">Elements</a>
+                        <a href="../landing-types.html">Types</a>
+                        </dd>
+            </dl>
+                </td>
+        </tr>
+</table>
+
+<br>
+<script language="javascript">document.write(ID_Copyright);</script>
+<br>
+<script language="javascript">document.write(ID_VersionInformation);</script>
+</body>
+</html>

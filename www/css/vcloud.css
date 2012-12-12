@@ -1,6 +1,6 @@
 /*
  * @file vcloud.css
- * Testing the VMware vcloud-js-sdk.js
+ * Playing with the VMware vcloud-js-sdk.js
  * @author Alister Lewis-Bowen <alister@different.com>
  */
 
@@ -9,10 +9,18 @@ body {
     padding-bottom: 40px;
     background-color: #f5f5f5;
 }
+
+/*
+ * = Initial state of UI on login
+ */
 #navbar, #login,
 #workspace, #spinner {
     display: none;
 }
+
+/*
+ * = login form
+ */
 .form-login {
     max-width: 300px;
     padding: 19px 29px 29px;
@@ -37,6 +45,10 @@ body {
     margin-bottom: 15px;
     padding: 7px 9px;
 }
+
+/*
+ * = nav bar
+ */
 .nav-user {
     display: block;
     font-size: 12px;
@@ -53,12 +65,20 @@ body {
     margin-top: 13px;
     width: 30px;
 }
-.clear {
+#navbar .clear {
     position: absolute;
     left: -9999px;
 }
-.brand {
+#navbar .brand {
     color: white !important;
+}
+
+/*
+ * = view styles
+ */
+
+.view {
+    margin-top: 2em;
 }
 caption { display: none; }
 table td.name { width: 10em; }
