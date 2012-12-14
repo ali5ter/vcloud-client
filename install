@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# @file make
-# ☆  Script for building and installing this test
-# @author Alister Lewis-Bowen <alister@vmware.com>
+# @file install
+# ☆  Install for assembling and installing this test
+# @author Alister Lewis-Bowen <alister@different.com>
 #
 
 #

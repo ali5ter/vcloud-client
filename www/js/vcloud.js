@@ -8,8 +8,14 @@
 
     'use strict';
 
-    var vcd = {},    // vCloud JS SDK obejct
-        user = {};   // Authenticated User details
+    var vcd = {},       // vCloud JS SDK obejct
+        user = {},      // Authenticated User details
+        vapps = [],     // vApp objects
+        templates = {}, // Template objects
+        tasks = [],     // Task history
+        metrics = [],   // Org stats
+        networks = [],  // Available network names
+        vdcs = [];      // Available VDC names
 
     /**
      * @method: init
@@ -36,7 +42,7 @@
 
         // Handle successful bootstrap - just once :)
         vcd.once(vmware.events.cloud.INITIALIZATION_COMPLETE, function() {
-            console.info('SDK init complete');
+            console.info('SDK ready');
             $('#login').show();
             $('#spinner').hide();
             if (localStorage.loggedin == '1') vcd.confirmLoggedIn();
@@ -57,13 +63,9 @@
         // Handler for SDK errors
         vcd.register(vmware.events.cloud.ERROR, function(e) { console.error('SDK error: '+ e.eventData); });
 
-        // Register callback to initiate login
+        // Handlers for UI icons and buttons
         $('#login').submit(login);
-
-        // Register callback on logout link
         $('#nav-logout').click(logout);
-
-        // Register callback on refresh link
         $('#nav-refresh').click(refresh);
     }
 
@@ -125,9 +127,11 @@
 
     /**
      * @method: initWorkspace
-     * Initialise the authrnticated UI
+     * Initialize the UI
      */
     function initWorkspace () {
+        if (localStorage.loggedin === '0') return; // not authenticated
+
         $('.nav-user span.org').text(vcd.getUserOrg());
         $('.nav-user span.user').text(vcd.getUserName());
         $('#nav-views a').click(function() { showView($(this).attr('href')); });
@@ -136,24 +140,50 @@
         showView('#machines');
         $('#workspace').show();
 
-        // Restore vcd data model so we have some data to work with
-        // while SDK is refreshing it
+        // Once the User is authentcated, the SDK calls the vcd.begin() method
+        // to asynchronously make vCD API calls to populate the data model
+        // with information about the available vApps, VMs, VDCs, Networks
+        // and Org tasks and metrics.
+        // So we're not blocked on waiting for the completion of these API
+        // calls, we can quickly restore the data model from the browser local
+        // browser storage, if available, and continue to render the UI...
         if (localStorage.vcdData) {
             vcd.loadCache(localStorage.vcdData);
             updateWorkspace();
         }
 
-        fetchUserDetail(); //Example using the SDK make a vCD API query
-        fetchUserRole(); // Example using SDK to make vCD API admin calls
+        fetchMetadata();
+
+        // There's nothing to stop us getting extra information from vCD once
+        // we have an authenticated session. This could also be saved and
+        // restored from browser local storage if need be. Here are some
+        // examples of using the SDK to make vCD API query and admin calls...
+        fetchUserDetail();
+        fetchUserRole();
+    }
+
+    /**
+     * @method: fetchMetadata
+     * Fetch specific metadata
+     */
+    function fetchMetadata () {
+        // Use SDK metadata method to query 'favorite' (vApp metadata Number
+        // type with key 'featured' and value 1 or more) vApps...
+        vcd.metadata.register(vcd.metadata.filterVApps('favorite'), function(o) {
+            console.dir(o);
+        });
     }
 
     /**
      * @method: fetchUserDetail
      * Example using the SDK make a vCD API query
+     * @see http://www.vmware.com/pdf/vcd_15_api_guide.pdf
+     *
+     * Steps to retrieving the authenticated User details:
+     * 1. GET /api/query?type=user&format=records&filter=name==[user_name]
+     * 2. Populate user object with attributes of the returned UserRecord
      */
     function fetchUserDetail () {
-        // @see http://www.vmware.com/pdf/vcd_15_api_guide.pdf
-
         var url = vcd.base  // SDK stored end-point URL
                 + 'query?type=user&format=records&filter=name=='
                 + vcd.getUserName(),
@@ -173,16 +203,16 @@
     /**
      * @method: fetchUserRole
      * Example using the SDK to make vCD API admin calls
+     * @see http://www.vmware.com/pdf/vcd_15_api_guide.pdf
+     *
+     * Steps to retrieving the Users role
+     * 1. Extract the Org Id from the Org URL
+     * 2. GET /api/admin/org/{id} to get Organization object
+     * 3. Extract the User URL to make the following call...
+     * 4. GET /api/admin/user/{id} to get User object
+     * 5. Extract the role name
      */
     function fetchUserRole () {
-        // @see http://www.vmware.com/pdf/vcd_15_api_guide.pdf
-        // Steps to retrieving the Users role
-        // 1. Extract the Org Id from the Org URL
-        // 2. GET /api/admin/org/{id} to get Organization object
-        // 3. Extract the User URL to make the following call...
-        // 4. GET /api/admin/user/{id} to get User object
-        // 5. Extract the role name
-
         var adminUrl = vcd.getAdminUrl();
 
         if (adminUrl !== undefined) { // check if user had admin rights
@@ -200,8 +230,8 @@
                 console.info('Custom vCD call: '+ url);
 
                 vcd.fetchURL(url, 'GET', '', function (xml) {
-                    user2['roleName'] = $(xml).find('Role').attr('name');
-                    $('#navbar span.nav-user').append(' ('+user2['roleName'] +')');
+                    user2.roleName = $(xml).find('Role').attr('name');
+                    $('#navbar span.nav-user').append(' ('+user2.roleName +')');
                 });
             });
         }
@@ -233,9 +263,10 @@
      * Tell the SDK to refresh the data model
      */
     function refresh () {
-        $('#nav-progress').addClass('clear');
+        $('#nav-progress').removeClass('clear');
         vcd.updateModels();
         vcd.getAllTemplates();
+        fetchMetadata();
     }
 
     /**
@@ -243,7 +274,7 @@
      * Store the data model and refresh data in the UI
      */
     function onRefresh () {
-        $('#nav-progress').removeClass('clear');
+        $('#nav-progress').addClass('clear');
         console.info('SDK refreshed data model');
 
         // Save this updated data model so we can restore it and not block
@@ -258,12 +289,12 @@
      * Update the data in the UI
      */
     function updateWorkspace () {
-        var vapps = vcd.getVApps(vcd.SORTBY.DATE),
-            templates = vcd.getCatalog(),
-            tasks = vcd.taskHistory().slice(0, 10),
-            metrics = vcd.metrics(),
-            networks = vcd.getNetworks(),
-            vdcs = vcd.getVdcList();
+        vapps = vcd.getVApps(vcd.SORTBY.DATE),
+        templates = vcd.getCatalog(),
+        tasks = vcd.taskHistory().slice(0, 10),
+        metrics = vcd.metrics(),
+        networks = vcd.getNetworks(),
+        vdcs = vcd.getVdcList();
 
         // Show what what we're not rendering to the UI...
         console.debug('User...'); console.dir(user);
@@ -272,9 +303,52 @@
         if (vdcs.length !== 0) {  console.debug('VDCs...'); console.dir(vdcs); }
         if (networks.length !==0) {  console.debug('Networks...'); console.dir(networks); }
 
-        updateMachines(vapps);
-        updateLibrary(templates);
+        updateMachines();
+        updateLibrary();
 
+    }
+
+    /**
+     * @method toggleFavorite
+     * Toggle the favorite metadata attribute on the selected vApp
+     */
+    function toggleFavorite (e) {
+        var icon = $(this).children('i'),
+            obj = getObject($(this).parents('tr').attr('id')),
+            fav = 1;
+
+        if (!obj.isVM()) {  // check this is a vApp
+
+            if (obj.favorite() === 1) fav = 0;
+            $('#nav-progress').removeClass('clear');
+
+            vcd.metadata.register(
+                vcd.metadata.set(obj, 'favorite', fav),
+                function () {
+                    $('#nav-progress').addClass('clear');
+                    obj.favorite(fav);
+                    if (fav === 1) {
+                        icon.removeClass('icon-star-empty');
+                        icon.addClass('icon-star');
+                    }
+                    else {
+                        icon.removeClass('icon-star');
+                        icon.addClass('icon-star-empty');
+                    }
+
+                }
+            );
+        }
+    }
+
+    /*
+     * @method getObject
+     * Return vApp, VM object based on given ID
+     */
+    function getObject (id) {
+        for (var i=0; i<vapps.length; i++) {
+            if (vapps[i].getID() === id) return vapps[i];
+        }
     }
 
     /**
@@ -283,16 +357,17 @@
      * TODO: Might be nice to use a MVC/MVVM pattern like that provided by
      *       knockout.js
      */
-    function updateMachines (vapps) {
+    function updateMachines () {
         var vapp, vms, vm;
 
         $('#machines table tbody').empty();
 
         for (var i=0; i<vapps.length; i++) {
             vapp = vapps[i];
-            $('<tr rowspan="'+ vapp.getNumberOfVMs()
+            $('<tr id="'+ vapp.getID() +'" rowspan="'+ vapp.getNumberOfVMs()
                 +'"><td class="name">'+ vapp.getName()
                 +'</td><td class="name">&ndash;</td>'
+                +'</td><td class="ops"><a class="op-fav btn btn-mini" href="#"><i class="icon-star-empty"></i> Favorite</a></td>'
                 +'</td><td class="status">'+ vapp.getStatusMessage()
                 +'</td><td class="desc">'+ vapp.getDescription()
                 +'</td><td class="ip">&ndash;'
@@ -301,13 +376,24 @@
             vms = vapp.getChildren();
             for (var j=0; j<vms.length; j++) {
                 vm = vms[j];
-                $('<tr><td class="name">&ndash;'
+                $('<tr id="'+ vm.getID() +'"><td class="name">&ndash;'
                     +'</td><td class="name">'+ vm.getName()
+                    +'</td><td class="ops"><span class="btn-toolbar btn-group">'
+                    +'<a class="op-play btn btn-mini disabled" href="#"><i class="icon-play"></i></a>'
+                    +'<a class="op-pause btn btn-mini disabled" href="#"><i class="icon-pause"></i></a>'
+                    +'<a class="op-stop btn btn-mini disabled" href="#"><i class="icon-stop"></i></a>'
+                    +'</span></td>'
                     +'</td><td class="status">'+ vm.getStatusMessage()
                     +'</td><td class="desc">'+ vm.getDescription()
                     +'</td><td class="ip">'+ vm.getIP()
                     +'</td></tr>').appendTo('#machines table tbody');
             }
+
+            // TODO: Test if click event already bound to these objects
+            $('.op-fav').click(toggleFavorite);
+            //$('.op-play').click(playVM);
+            //$('.op-pause').click(suspendVM);
+            //$('.op-stop').click(stopVM);
         }
     }
 
@@ -317,7 +403,7 @@
      * TODO: Might be nice to use a MVC/MVVM pattern like that provided by
      *       knockout.js
      */
-    function updateLibrary (templates) {
+    function updateLibrary () {
         var tmpl, vms;
 
         $('#library table tbody').empty();
