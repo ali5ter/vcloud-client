@@ -152,26 +152,12 @@
             updateWorkspace();
         }
 
-        fetchMetadata();
-
         // There's nothing to stop us getting extra information from vCD once
         // we have an authenticated session. This could also be saved and
         // restored from browser local storage if need be. Here are some
         // examples of using the SDK to make vCD API query and admin calls...
         fetchUserDetail();
         fetchUserRole();
-    }
-
-    /**
-     * @method: fetchMetadata
-     * Fetch specific metadata
-     */
-    function fetchMetadata () {
-        // Use SDK metadata method to query 'favorite' (vApp metadata Number
-        // type with key 'featured' and value 1 or more) vApps...
-        vcd.metadata.register(vcd.metadata.filterVApps('favorite'), function(o) {
-            console.dir(o);
-        });
     }
 
     /**
@@ -266,7 +252,6 @@
         $('#nav-progress').removeClass('clear');
         vcd.updateModels();
         vcd.getAllTemplates();
-        fetchMetadata();
     }
 
     /**
@@ -367,7 +352,7 @@
             $('<tr id="'+ vapp.getID() +'" rowspan="'+ vapp.getNumberOfVMs()
                 +'"><td class="name">'+ vapp.getName()
                 +'</td><td class="name">&ndash;</td>'
-                +'</td><td class="ops"><a class="op-fav btn btn-mini" href="#"><i class="icon-star-empty"></i> Favorite</a></td>'
+                +'</td><td class="ops">'+ favBtn(vapp)
                 +'</td><td class="status">'+ vapp.getStatusMessage()
                 +'</td><td class="desc">'+ vapp.getDescription()
                 +'</td><td class="ip">&ndash;'
@@ -379,9 +364,7 @@
                 $('<tr id="'+ vm.getID() +'"><td class="name">&ndash;'
                     +'</td><td class="name">'+ vm.getName()
                     +'</td><td class="ops"><span class="btn-toolbar btn-group">'
-                    +'<a class="op-play btn btn-mini disabled" href="#"><i class="icon-play"></i></a>'
-                    +'<a class="op-pause btn btn-mini disabled" href="#"><i class="icon-pause"></i></a>'
-                    +'<a class="op-stop btn btn-mini disabled" href="#"><i class="icon-stop"></i></a>'
+                    + playBtn(vm) + pauseBtn(vm) + stopBtn(vm)
                     +'</span></td>'
                     +'</td><td class="status">'+ vm.getStatusMessage()
                     +'</td><td class="desc">'+ vm.getDescription()
@@ -397,6 +380,53 @@
         }
     }
 
+    /**
+     * @method: favBtn
+     * Return the favorite button for the given vApp object
+     * @param vapp vcd.vApp
+     */
+    function favBtn (vapp) {
+        var fav = vapp.favorite(),
+            icon = '<i class="'+ (fav === 1 ? 'icon-star' : 'icon-star-empty') + '">',
+            btn  = '<a class="op-fav btn btn-mini" href="#">'+ icon +'</a>';
+        return btn;
+    }
+
+    /**
+     * @method: playBtn
+     * Return the play button for the given VM object
+     * @param vm vcd.VM
+     */
+    function playBtn (vm) {
+        var enabled = (vm.canPowerOn() ? '' : ' disabled'),
+            icon = '<i class="icon-play"></i>',
+            btn = '<a class="op-play btn btn-mini'+ enabled +'" href="#">'+ icon + '</a>';
+        return btn;
+    }
+
+    /**
+     * @method: pauseBtn
+     * Return the pause button for the given VM object
+     * @param vm vcd.VM
+     */
+    function pauseBtn (vm) {
+        var enabled = (vm.canSuspend() ? '' : ' disabled'),
+            icon = '<i class="icon-pause"></i>',
+            btn = '<a class="op-pause btn btn-mini'+ enabled +'" href="#">'+ icon + '</a>';
+        return btn;
+    }
+
+    /**
+     * @method: stopBtn
+     * Return the stop button for the given VM object
+     * @param vm vcd.VM
+     */
+    function stopBtn (vm) {
+        var enabled = (vm.canPowerOff() ? '' : ' disabled'),
+            icon = '<i class="icon-stop"></i>',
+            btn = '<a class="op-stop btn btn-mini'+ enabled +'" href="#">'+ icon + '</a>';
+        return btn;
+    }
     /**
      * @method: updateLibrary
      * Update the library table
