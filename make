@@ -44,16 +44,6 @@ function _mkdir {
     mkdir -p $1 2>/dev/null
 }
 
-function _refreshSdk {
-    echo -n 'Retrieving vCloud JS SDK... '
-    git clone git://gitorious.eng.vmware.com/vcloud-js-sdk/vcloud-js-sdk.git \
-vcloud-js-sdk &>/dev/null
-    mv vcloud-js-sdk/vcloud-js-sdk*.js $SRC/js/lib/
-    rm -fR vcloud-js-sdk
-    echo 'done'
-    echo
-}
-
 function _setSdkSrcDir {
     echo -n "Where is your vcloud-js-sdk src tree? [$SDK_SRC] "
     read srcDir
@@ -78,30 +68,41 @@ function _setVcdSrcDir {
 
 function _installIntoP4Source {
     echo -n 'Installing into your src tree... '
-    ST_TARGET=$ST_BASE/$ST_TARGET
-    [ ! -d $ST_TARGET ] && _failWith "Unable to find a src tree directory at $ST_TARGET"
-    local dir=$ST_TARGET/vcloud-js-sdk-test
+    local target=$ST_BASE/$ST_TARGET
+    [ ! -d $target ] && _failWith "Unable to find a src tree directory at $target"
+    local dir=$target/vcloud-js-sdk-test
     _mkdir $dir
     cp -r $SRC/* $dir/
     echo 'done'
     echo
 }
 
+function _watchAndInstall {
+    echo 'Watching for any changes. Quit using [cntl-C].'
+    local changes=''
+    while true; do
+        changes=$(find $SRC -mtime 1s)
+        [[ ! -z "$changes" ]] && {
+            echo 'These things changed:'
+            echo $changes
+            _installIntoP4Source
+        }
+        sleep 1;
+    done
+}
+
 function _help {
     local helpText="
-Internal make script for vCloud SDK test
+Make script for vCloud SDK test
 
 With no option this script will install this test into the vCD src tree
 sync'ed from perforce.
 
 Usage: make <option>
--rs, --refresh-sdk     fetch the SDK lib from git and place into current
-                       SilverLining doc root
 -cs, --copy-sdk        copy the SDK lib from a local vCloud JS SDK src tree
-                       and place into current SilverLining doc root
--id, --install-dev     install current SilverLining doc root into a a vCD src tree
-
-For further information, refer to https://wiki.eng.vmware.com/CloudDirector/Projects/SilverLining
+                       and place into current doc root
+-i, --install          install current doc root into a a vCD src tree
+-w, --watch            install when anything in the current doc root changes
 "
     echo "$helpText"
 }
@@ -111,12 +112,6 @@ case "$1" in
         _help
         ;;
     #
-    # Fetch SDK lib from git and place them into this src tree
-    #
-    --refresh-sdk|-rs)
-        _refreshSdk
-        ;;
-    #
     # Copy SDK lib from local SDK src tree and place them into this src tree
     #
     --copy-sdk|-cs)
@@ -124,12 +119,19 @@ case "$1" in
         _copySdk
         ;;
     #
+    # Watch doc root and install on any change
+    #
+    --watch|-w)
+        _setVcdSrcDir
+        _watchAndInstall
+        ;;
+    #
     # Copy current SilverLining doc root into correct position in vCD src tree
     #
-    --install-dev|-id|*)
+    --install|-i|*)
         _setVcdSrcDir
         _installIntoP4Source
-        echo "Test  was installed successfully at $ST_TARGET"
+        echo "Test was installed successfully at $ST_TARGET"
         echo 'Go to http://[your_cell_host_and_port]/cloud/vcloud-js-sdk-test/index.html'
         echo
         ;;
