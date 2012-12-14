@@ -6,10 +6,6 @@
 #
 
 #
-# A timestamp
-#
-TIMESTAMP=$(date +"%F-%H%M%S")
-#
 # Document root
 #
 SRC=www
@@ -33,6 +29,10 @@ ST_BASE=${VCLOUD_SRC_ROOT:-'.'}
 # Default vCloud JS SDK src directory
 #
 SDK_SRC=${VCLOUD_JS_SDK_ROOT:-'../vcloud-js-sdk'};
+#
+# Watch poll time (seconds)
+#
+WATCH_POLL=1
 
 function _failWith {
     echo 'failed'; echo $1; echo
@@ -79,15 +79,16 @@ function _installIntoP4Source {
 
 function _watchAndInstall {
     echo 'Watching for any changes. Quit using [cntl-C].'
+    echo
     local changes=''
     while true; do
-        changes=$(find $SRC -mtime 1s)
+        changes=$(find $SRC -mtime ${WATCH_POLL}s)
         [[ ! -z "$changes" ]] && {
-            echo 'These things changed:'
-            echo $changes
+            echo '['$(date +"%F-%H%M%S")"] These following things changed:"
+            echo "$changes"
             _installIntoP4Source
         }
-        sleep 1;
+        sleep $WATCH_POLL;
     done
 }
 

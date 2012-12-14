@@ -281,7 +281,8 @@
         networks = vcd.getNetworks(),
         vdcs = vcd.getVdcList();
 
-        // Show what what we're not rendering to the UI...
+        fetchMetadata();
+
         console.debug('User...'); console.dir(user);
         console.debug('Tasks...'); console.dir(tasks);
         console.debug('Metrics...'); console.dir(metrics);
@@ -294,36 +295,55 @@
     }
 
     /**
-     * @method toggleFavorite
-     * Toggle the favorite metadata attribute on the selected vApp
+     * @method fetchMetadata
+     * Fetch the metadata for each vApp
      */
-    function toggleFavorite (e) {
-        var icon = $(this).children('i'),
-            obj = getObject($(this).parents('tr').attr('id')),
-            fav = 1;
+    function fetchMetadata () {
+        var vapp;
 
-        if (!obj.isVM()) {  // check this is a vApp
+        for (var i=0; i<vapps.length; i++) {
 
-            if (obj.favorite() === 1) fav = 0;
-            $('#nav-progress').removeClass('clear');
+            vapp = vapps[i]
 
             vcd.metadata.register(
-                vcd.metadata.set(obj, 'favorite', fav),
-                function () {
-                    $('#nav-progress').addClass('clear');
-                    obj.favorite(fav);
-                    if (fav === 1) {
-                        icon.removeClass('icon-star-empty');
-                        icon.addClass('icon-star');
+                vcd.metadata.get(vapp),
+                function (data) {
+                    if (data.favorite !== undefined) {
+                        vapp.favorite(data.favorite);
                     }
-                    else {
-                        icon.removeClass('icon-star');
-                        icon.addClass('icon-star-empty');
-                    }
-
                 }
             );
         }
+    }
+
+    /**
+     * @method onClickFavBtn
+     * Handle the click event for the vApp favorite button
+     */
+    function onClickFavBtn () {
+        var obj = getObject($(this).parents('tr').attr('id'));
+        if (!obj.isVM()) toggleFav(obj);
+    }
+
+    /**
+     * @method toggleFav
+     * Toggle the favorite metadata attribute on the selected vApp
+     * @param vapp vcd.vApp
+     */
+    function toggleFav (vapp) {
+        var fav = 1;
+
+        if (vapp.favorite() === 1) fav = 0;
+        $('#nav-progress').removeClass('clear');
+
+        vcd.metadata.register(
+            vcd.metadata.set(vapp, 'favorite', fav),
+            function () {
+                $('#nav-progress').addClass('clear');
+                vapp.favorite(fav);
+                updateMachines();
+            }
+        );
     }
 
     /*
@@ -373,7 +393,7 @@
             }
 
             // TODO: Test if click event already bound to these objects
-            $('.op-fav').click(toggleFavorite);
+            $('.op-fav').click(onClickFavBtn);
             //$('.op-play').click(playVM);
             //$('.op-pause').click(suspendVM);
             //$('.op-stop').click(stopVM);
