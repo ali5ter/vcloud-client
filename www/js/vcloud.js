@@ -8,11 +8,18 @@
 
     'use strict';
 
+    // JSHint global overrides...
+    /*global window*/
+    /*global localStorage */
+    /*global console */
+    /*global vmware */
+
     var vcd = {},       // vCloud JS SDK obejct
         user = {},      // Authenticated User details
-        vapps = [],     // vApp objects
+        vapps = [],     // vApp objects - includes VM objects
         templates = {}, // Template objects
         tasks = [],     // Task history
+        running = [],   // Running tasks
         metrics = [],   // Org stats
         networks = [],  // Available network names
         vdcs = [];      // Available VDC names
@@ -57,8 +64,9 @@
         vcd.register(vmware.events.cloud.TEMPLATE_REFRESH, onRefresh);
 
         // Handler for SDK task start and completion
-        vcd.register(vmware.events.cloud.TASK_START, function() { console.info('SDK task started'); });
-        vcd.register(vmware.events.cloud.TASK_COMPLETE, function() { console.info('SDK task complete'); });
+        vcd.register(vmware.events.cloud.TASK_START, function() { console.info('SDK task started'); refresh(); });
+        // TODO: Task complete doesn't seems to be emitted
+        vcd.register(vmware.events.cloud.TASK_COMPLETE, function() { console.info('SDK task complete'); refresh(); });
 
         // Handler for SDK errors
         vcd.register(vmware.events.cloud.ERROR, function(e) { console.error('SDK error: '+ e.eventData); });
@@ -138,6 +146,10 @@
         $('#navbar').show();
         $('#nav-progress').addClass('clear');
         showView('#machines');
+        $('#machines').delegate('.op-fav', 'click', function () { onBtnClick(this, 'fav'); });
+        $('#machines').delegate('.op-play', 'click', function () { onBtnClick(this, 'play'); });
+        $('#machines').delegate('.op-pause', 'click', function () { onBtnClick(this, 'pause'); });
+        $('#machines').delegate('.op-stop', 'click', function () { onBtnClick(this, 'stop'); });
         $('#workspace').show();
 
         // Once the User is authentcated, the SDK calls the vcd.begin() method
@@ -277,14 +289,15 @@
         vapps = vcd.getVApps(vcd.SORTBY.DATE),
         templates = vcd.getCatalog(),
         tasks = vcd.taskHistory().slice(0, 10),
+        running = runningTasks(),
         metrics = vcd.metrics(),
         networks = vcd.getNetworks(),
         vdcs = vcd.getVdcList();
-
         fetchMetadata();
 
         console.debug('User...'); console.dir(user);
-        console.debug('Tasks...'); console.dir(tasks);
+        console.debug('Task history...'); console.dir(tasks);
+        console.debug('Running tasks...'); console.dir(running);
         console.debug('Metrics...'); console.dir(metrics);
         if (vdcs.length !== 0) {  console.debug('VDCs...'); console.dir(vdcs); }
         if (networks.length !==0) {  console.debug('Networks...'); console.dir(networks); }
@@ -295,34 +308,71 @@
     }
 
     /**
+     * @method runningTasks
+     * Return an array of running tasks
+     * TODO: Used until taskManager.inProgress() works
+     */
+    function runningTasks () {
+        var running = [];
+
+        if (vcd.taskManager.numberOfTasks() !== 0) {
+
+            var _tasks = vcd.taskManager.taskLog();
+
+            for (var i=0; i<_tasks.length; i++) {
+                // The log record in the task log contains the following fields:
+                // owner, description, timestamp, status, task_url
+                if (_tasks[i][3] === 'running') {
+                    running.push(vcd.taskManager.details(_tasks[i][4]));
+                }
+            }
+        }
+
+        return running;
+    }
+
+    /**
      * @method fetchMetadata
      * Fetch the metadata for each vApp
      */
     function fetchMetadata () {
         var vapp;
-
         for (var i=0; i<vapps.length; i++) {
-
-            vapp = vapps[i]
-
+            vapp = vapps[i];
             vcd.metadata.register(
-                vcd.metadata.get(vapp),
-                function (data) {
+                vcd.metadata.get(vapp), function (data) {
+                    // set vapp favorite if defined in metadata
                     if (data.favorite !== undefined) {
                         vapp.favorite(data.favorite);
                     }
-                }
-            );
+             });
         }
     }
 
     /**
-     * @method onClickFavBtn
-     * Handle the click event for the vApp favorite button
+     * @method onBtnClick
+     * Handle the click event for a vApp/VM button
+     * @param obj DOMObject
+     * @param op 'fav'|'play'|'stop'|'pause'
      */
-    function onClickFavBtn () {
-        var obj = getObject($(this).parents('tr').attr('id'));
-        if (!obj.isVM()) toggleFav(obj);
+    function onBtnClick (obj, op) {
+        var _obj = getObject($(obj).parents('tr').attr('id'));
+        if (_obj.isVM()) {
+            switch(op) {
+                case 'play':
+                    if (_obj.canPowerOn()) _obj.powerOn();
+                    break;
+                case 'stop':
+                    if (_obj.canPowerOff()) _obj.powerOff();
+                    break;
+                case 'pause':
+                    if (_obj.canSuspend()) _obj.suspend();
+                    break;
+            }
+        }
+        else { // vApp operations
+            if (op === 'fav') toggleFav(_obj);
+        }
     }
 
     /**
@@ -348,19 +398,27 @@
 
     /*
      * @method getObject
-     * Return vApp, VM object based on given ID
+     * Return vApp/VM object based on given ID
+     * @param id urn
      */
     function getObject (id) {
+        // TODO: Be nice if the SDK stored an index of object ids to
+        //       avoid having to iterate through all vapps to get at VMs
+        var vms;
         for (var i=0; i<vapps.length; i++) {
             if (vapps[i].getID() === id) return vapps[i];
+            vms = vapps[i].getChildren();
+            for (var j=0; j<vms.length; j++) {
+                if (vms[j].getID() === id) return vms[j];
+            }
         }
     }
 
     /**
      * @method: updateWorkspace
      * Update the machines table
-     * TODO: Might be nice to use a MVC/MVVM pattern like that provided by
-     *       knockout.js
+     * TODO: Nicer to use an MVC/MVVM pattern like that provided by knockout,
+     *       ember or angular.
      */
     function updateMachines () {
         var vapp, vms, vm;
@@ -391,12 +449,6 @@
                     +'</td><td class="ip">'+ vm.getIP()
                     +'</td></tr>').appendTo('#machines table tbody');
             }
-
-            // TODO: Test if click event already bound to these objects
-            $('.op-fav').click(onClickFavBtn);
-            //$('.op-play').click(playVM);
-            //$('.op-pause').click(suspendVM);
-            //$('.op-stop').click(stopVM);
         }
     }
 
