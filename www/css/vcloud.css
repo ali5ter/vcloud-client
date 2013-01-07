@@ -81,6 +81,8 @@ body {
     margin-top: 2em;
 }
 caption { display: none; }
+table tr.busy { background-color: #FCF8E3; }
+table tr.vapp { border-top: 3px solid #222; }
 table td.name { width: 10em; }
 table td.status { width: 6em; }
 table td.ip { width: 5em; }

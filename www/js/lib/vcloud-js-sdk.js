@@ -580,7 +580,7 @@ vmware.cloud = function(base, version) {
      */
     that.fleshOutTemplate = function(templ) {
         if (templ.getAttr("childNames") == null) that.fetchURL(templ.getHref(), "GET", null, callbackTemplate(templ));
-        else cloud.trigger(vmware.events.cloud.TEMPLATE_FILLED + templ.getHref(), templ);
+        else that.trigger(vmware.events.cloud.TEMPLATE_FILLED + templ.getHref(), templ);
     };
 
     /*
@@ -592,12 +592,12 @@ vmware.cloud = function(base, version) {
         var prog = 0;
         var incProg = function() {
             prog++;
-            if (prog == donepoint) cloud.trigger(vmware.events.cloud.TEMPLATE_FILLED);
+            if (prog == donepoint) that.trigger(vmware.events.cloud.TEMPLATE_FILLED);
         };
 
         for (var i = 0; i < donepoint; i++) {
             templ = arrayOfTempl[i];
-            cloud.once(vmware.events.cloud.TEMPLATE_FILLED + templ.getHref(), function() {
+            that.once(vmware.events.cloud.TEMPLATE_FILLED + templ.getHref(), function() {
                 incProg();
             });
             that.fetchURL(templ.getHref(), "GET", null, callbackTemplate(templ));
@@ -622,7 +622,7 @@ vmware.cloud = function(base, version) {
                 templ.setAttr("childNames", templ.getAttr("childNames").concat(xmlDoc.getElementsByTagName("Vm")[i].getAttribute("name")));
             }
 
-            cloud.trigger(vmware.events.cloud.TEMPLATE_FILLED + templ.getHref(), templ);
+            that.trigger(vmware.events.cloud.TEMPLATE_FILLED + templ.getHref(), templ);
         };
     };
 
@@ -1074,7 +1074,7 @@ vmware.cloud = function(base, version) {
      * NOTE: THIS IS A WORK IN PROGRESS
      */
     that.displayConsole = function(where, vm) {
-        cloud.once(vmware.events.cloud.NEW_TICKET, function(res) {
+        that.once(vmware.events.cloud.NEW_TICKET, function(res) {
             // TODO: var url = 'wss://' + ticket.host + ':' + ticket.cpport + '/' + ticket.ticket;
             // TODO: wmksHandle = $("#" + where).wmks();
             // TODO: $("#" + where).wmks('connect', url, ticket.vmx);
@@ -1606,66 +1606,11 @@ function vM(cloud) {
      *
      * The API call doesn't always
      * provide an image we retun a black image if no image data has been found.
+     *
+     * TODO: Complete retrieval logic
      */
     this.updateConsoleThumbnail = function() {
-        var self = this;
-        var link = this.links['screen:thumbnail'];
-        if (link == 'undefined') return;
-
-        var renderImage = function(xhr) {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var binStr = xhr.responseText;
-                // Image data not always returned from API call. If nothing
-                // returned, respond with black image
-                if (binStr != 0) {
-                    // TODO: Any processing on the binary data?
-                    //for (var i = 0, len = binStr.length; i < len; ++i) {
-                    //    var c = binStr.charCodeAt(i);
-                    //    //String.fromCharCode(c & 0xff);
-                    //    var b = c & 0xff;  // byte at offset i
-            // data:image/png;base64,...
-            /*
-                        encodeImageBase64: (img) -> # use canvas to get a base64 encoded string of the image
-                       canvas = document.createElement('canvas') # create a temporary canvas element
-                       canvas.width = img.width # set width and..
-                       canvas.height = img.height # ..height of the canvas to fit the complete image
-                       context = canvas.getContext('2d') # get the context for the canvas element
-                       context.drawImage img, 0, 0 # draw the image into the context
-                       canvas.toDataURL 'image/jpg' 
-            var thumnbail = new Image();
-            thumbnail.src = "resources/img/black.png";
-            */
-                    self.thumbnail = binStr;
-                }
-            }
-        }
-
-        vmware.rest.removeAllHeaders();
-        vmware.rest.addHeader("Accept", "application/*+xml;version=5.1");
-        vmware.rest.get(link)
-            .fail(function(xhr, textStatus) { renderImage(xhr); });
-
-        /*
-        BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder || window.BlobBuilder;
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', this.links['screen:thumbnail'], true);
-        xhr.responseType = 'arraybuffer';
-
-        xhr.onload = function(e) {
-            if (this.status == 200) {
-                var bb = new BlobBuilder();
-                bb.append(this.response); // Note: not xhr.responseText
-                var blob = bb.getBlob('image/png');
-            }
-            else {
-                return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAwCAIAAAAuKetIAAAAH0lEQVRoge3BAQEAAACCIP+vbkhAAQAAAAAAAAAALwYkMAABjuvAZwAAAABJRU5ErkJggg==";
-            }
-
-        };
-
-        xhr.send();
-        */
+        return this.consoleThumbnail;
     };
 
     /**
@@ -1678,6 +1623,8 @@ function vM(cloud) {
      *
      * Until this is all handled by the vCD console proxy, this object provides
      * a shim for that functionality.
+     *
+     * TODO: Complete ticket handshake logic
      */
     this.getConsoleTicket = function() {
         // this is the vCD rest url to fetch a vCD ticket for this vm
@@ -1983,8 +1930,16 @@ function TaskManager(c) {
 
         if (that.autoRefresh) that.autoRefresh(that.loadTasks);
 
-        if (somethingThere) refresh = setTimeout('cloud.taskManager.update();', CHECK_INTERVAL);
-        else refresh = setTimeout('cloud.taskManager.update();', PASSIVE_INTERVAL);
+        if (somethingThere)  {
+            refresh = setTimeout(function () {
+                    that.update();
+                }, CHECK_INTERVAL);
+        }
+        else {
+            refresh = setTimeout(function () {
+                    that.update();
+                }, PASSIVE_INTERVAL);
+        }
     };
 
     that.loadTasks = function(xmlDoc) {

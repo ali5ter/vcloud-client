@@ -8,11 +8,14 @@
 
     'use strict';
 
-    // JSHint global overrides...
     /*global window*/
     /*global localStorage */
     /*global console */
     /*global vmware */
+    /*global sprintf */
+    /*global vApp */
+    /*global vM */
+    /*global Template */
 
     var vcd = {},       // vCloud JS SDK obejct
         user = {},      // Authenticated User details
@@ -65,16 +68,12 @@
 
         // Handler for SDK task start and completion
         vcd.register(vmware.events.cloud.TASK_START, function() { console.info('SDK task started'); refresh(); });
-        // TODO: Task complete doesn't seems to be emitted
         vcd.register(vmware.events.cloud.TASK_COMPLETE, function() { console.info('SDK task complete'); refresh(); });
 
         // Handler for SDK errors
         vcd.register(vmware.events.cloud.ERROR, function(e) { console.error('SDK error: '+ e.eventData); });
 
-        // Handlers for UI icons and buttons
         $('#login').submit(login);
-        $('#nav-logout').click(logout);
-        $('#nav-refresh').click(refresh);
     }
 
     /**
@@ -99,7 +98,8 @@
     function onLogin (e) {
         if (e.eventData.success) {
             if (!e.eventData.confirm) {
-                console.info('Logged into '+ vcd.getUserOrg() +' as '+ vcd.getUserName());
+                console.info(sprintf('Logged into %s as %s',
+                            vcd.getUserOrg(), vcd.getUserName()));
                 localStorage.loggedin = '1';
             }
             else {
@@ -143,14 +143,17 @@
         $('.nav-user span.org').text(vcd.getUserOrg());
         $('.nav-user span.user').text(vcd.getUserName());
         $('#nav-views a').click(function() { showView($(this).attr('href')); });
-        $('#navbar').show();
         $('#nav-progress').addClass('clear');
-        showView('#machines');
+        $('#nav-logout').click(logout);
+        $('#nav-refresh').click(refresh);
         $('#machines').delegate('.op-fav', 'click', function () { onBtnClick(this, 'fav'); });
         $('#machines').delegate('.op-play', 'click', function () { onBtnClick(this, 'play'); });
         $('#machines').delegate('.op-pause', 'click', function () { onBtnClick(this, 'pause'); });
         $('#machines').delegate('.op-stop', 'click', function () { onBtnClick(this, 'stop'); });
+        $('#library').delegate('.op-instantiate', 'click', function () { onBtnClick(this, 'instantiate'); });
+        $('#navbar').show();
         $('#workspace').show();
+        showView('#machines');
 
         // Once the User is authentcated, the SDK calls the vcd.begin() method
         // to asynchronously make vCD API calls to populate the data model
@@ -182,9 +185,8 @@
      * 2. Populate user object with attributes of the returned UserRecord
      */
     function fetchUserDetail () {
-        var url = vcd.base  // SDK stored end-point URL
-                + 'query?type=user&format=records&filter=name=='
-                + vcd.getUserName(),
+        var url = sprintf('%squery?type=user&format=records&filter=name==%s',
+                vcd.base, vcd.getUserName()),
             user1 = user;
         console.info('Custom vCD query: '+ url);
 
@@ -217,15 +219,15 @@
 
             var orgUrl = vcd.getUserOrgUrl(),
                 orgId = orgUrl.substring(orgUrl.indexOf('/api/org/')+9, orgUrl.length),
-                url = adminUrl +'org/'+ orgId,
+                url = sprintf('%sorg/%s', adminUrl, orgId),
                 user1 = user;
-            console.info('Custom vCD call: '+ url);
+            console.info(sprintf('Custom vCD call: %s', url));
 
             vcd.fetchURL(url, 'GET', '', function (xml) {
 
-                var url = $(xml).find('UserReference[name='+ vcd.getUserName() +']').attr('href'),
+                var url = $(xml).find(sprintf('UserReference[name=%s]', vcd.getUserName())).attr('href'),
                     user2 = user1;
-                console.info('Custom vCD call: '+ url);
+                console.info(sprintf('Custom vCD call: %s', url));
 
                 vcd.fetchURL(url, 'GET', '', function (xml) {
                     user2.roleName = $(xml).find('Role').attr('name');
@@ -243,14 +245,17 @@
      * Show the given view and hide other views
      */
     function showView (viewName) {
-        var views = ['#machines', '#library', '#prefs'];
+        var views = ['#machines', '#library', '#prefs'],
+            link;
+
         for (var i=0; i<views.length;i++) {
+            link = $(sprintf('#nav-views a[href="%s"]', views[i])).parent();
             if (viewName === views[i]) {
-                $('#nav-views a[href="'+ views[i] +'"]').parent().addClass('active');
+                link.addClass('active');
                 $(views[i]).show();
             }
             else {
-                $('#nav-views a[href="'+ views[i] +'"]').parent().removeClass('active');
+                link.removeClass('active');
                 $(views[i]).hide();
             }
         }
@@ -264,6 +269,7 @@
         $('#nav-progress').removeClass('clear');
         vcd.updateModels();
         vcd.getAllTemplates();
+        vcd.taskManager.update();
     }
 
     /**
@@ -310,21 +316,16 @@
     /**
      * @method runningTasks
      * Return an array of running tasks
-     * TODO: Used until taskManager.inProgress() works
      */
     function runningTasks () {
         var running = [];
+        var tasks = vcd.taskManager.taskLog();
 
-        if (vcd.taskManager.numberOfTasks() !== 0) {
-
-            var _tasks = vcd.taskManager.taskLog();
-
-            for (var i=0; i<_tasks.length; i++) {
-                // The log record in the task log contains the following fields:
-                // owner, description, timestamp, status, task_url
-                if (_tasks[i][3] === 'running') {
-                    running.push(vcd.taskManager.details(_tasks[i][4]));
-                }
+        for (var i=0; i<tasks.length; i++) {
+            // The log record in the task log contains the following array
+            // elements: owner, description, timestamp, status, task_url
+            if (tasks[i][3] === 'running') {
+                running.push(vcd.taskManager.details(tasks[i][4]));
             }
         }
 
@@ -357,21 +358,26 @@
      */
     function onBtnClick (obj, op) {
         var _obj = getObject($(obj).parents('tr').attr('id'));
-        if (_obj.isVM()) {
-            switch(op) {
-                case 'play':
-                    if (_obj.canPowerOn()) _obj.powerOn();
-                    break;
-                case 'stop':
-                    if (_obj.canPowerOff()) _obj.powerOff();
-                    break;
-                case 'pause':
-                    if (_obj.canSuspend()) _obj.suspend();
-                    break;
-            }
-        }
-        else { // vApp operations
-            if (op === 'fav') toggleFav(_obj);
+        switch(_obj.constructor) {
+            case vApp:
+                if (op === 'fav') toggleFav(_obj);
+                break;
+            case vM:
+                switch(op) {
+                    case 'play':
+                        if (_obj.canPowerOn()) _obj.powerOn();
+                        break;
+                    case 'stop':
+                        if (_obj.canPowerOff()) _obj.powerOff();
+                        break;
+                    case 'pause':
+                        if (_obj.canSuspend()) _obj.suspend();
+                        break;
+                }
+                break;
+            case Template:
+                if (op === 'instantiate') createVapp(_obj);
+                break;
         }
     }
 
@@ -398,18 +404,25 @@
 
     /*
      * @method getObject
-     * Return vApp/VM object based on given ID
+     * Return vApp/VM/Template object based on given ID
      * @param id urn
+     * @returns array
      */
     function getObject (id) {
-        // TODO: Be nice if the SDK stored an index of object ids to
-        //       avoid having to iterate through all vapps to get at VMs
-        var vms;
-        for (var i=0; i<vapps.length; i++) {
-            if (vapps[i].getID() === id) return vapps[i];
-            vms = vapps[i].getChildren();
-            for (var j=0; j<vms.length; j++) {
-                if (vms[j].getID() === id) return vms[j];
+        var vms, i;
+
+        if (id.match('vAppTemplate')) {
+            for (i=0; i<templates.length; i++) {
+                if (templates[i].getHref() === id) return templates[i];
+            }
+        }
+        else {
+            for (i=0; i<vapps.length; i++) {
+                if (vapps[i].getID() === id) return vapps[i];
+                vms = vapps[i].getChildren();
+                for (var j=0; j<vms.length; j++) {
+                    if (vms[j].getID() === id) return vms[j];
+                }
             }
         }
     }
@@ -421,35 +434,35 @@
      *       ember or angular.
      */
     function updateMachines () {
-        var vapp, vms, vm;
-
+        var vapp, vms;
         $('#machines table tbody').empty();
-
         for (var i=0; i<vapps.length; i++) {
             vapp = vapps[i];
-            $('<tr id="'+ vapp.getID() +'" rowspan="'+ vapp.getNumberOfVMs()
-                +'"><td class="name">'+ vapp.getName()
-                +'</td><td class="name">&ndash;</td>'
-                +'</td><td class="ops">'+ favBtn(vapp)
-                +'</td><td class="status">'+ vapp.getStatusMessage()
-                +'</td><td class="desc">'+ vapp.getDescription()
-                +'</td><td class="ip">&ndash;'
-                +'</td></tr>').appendTo('#machines table tbody');
-
+            $(vAppRow(vapp)).appendTo('#machines table tbody');
             vms = vapp.getChildren();
             for (var j=0; j<vms.length; j++) {
-                vm = vms[j];
-                $('<tr id="'+ vm.getID() +'"><td class="name">&ndash;'
-                    +'</td><td class="name">'+ vm.getName()
-                    +'</td><td class="ops"><span class="btn-toolbar btn-group">'
-                    + playBtn(vm) + pauseBtn(vm) + stopBtn(vm)
-                    +'</span></td>'
-                    +'</td><td class="status">'+ vm.getStatusMessage()
-                    +'</td><td class="desc">'+ vm.getDescription()
-                    +'</td><td class="ip">'+ vm.getIP()
-                    +'</td></tr>').appendTo('#machines table tbody');
+                $(vmRow(vms[j])).appendTo('#machines table tbody');
             }
         }
+    }
+
+    /**
+     * @method: vAppRow
+     * Return representation of a vApp table row
+     * @param vapp vcd.vApp
+     */
+    function vAppRow (vapp) {
+        var html = [];
+        html.push(sprintf('<tr id="%s" class="vapp%s" rowspan="%s">',
+            vapp.getID(), (hasTask(vapp.getID()) ? ' busy' : ''), vapp.getNumberOfVMs()));
+        html.push(sprintf('<td class="name">%s</td>', vapp.getName()));
+        html.push('<td class="name">&ndash;</td>');
+        html.push(sprintf('<td class="ops">%s</td>', favBtn(vapp)));
+        html.push(sprintf('<td class="status">%s</td>', vapp.getStatusMessage()));
+        html.push(sprintf('<td class="desc">%s</td>', vapp.getDescription() || ''));
+        html.push('<td class="ip">&ndash;</td>');
+        html.push('</tr>');
+        return html.join('');
     }
 
     /**
@@ -459,9 +472,44 @@
      */
     function favBtn (vapp) {
         var fav = vapp.favorite(),
-            icon = '<i class="'+ (fav === 1 ? 'icon-star' : 'icon-star-empty') + '">',
-            btn  = '<a class="op-fav btn btn-mini" href="#">'+ icon +'</a>';
+            icon = sprintf('<i class="%s">', (fav === 1 ? 'icon-star' : 'icon-star-empty')),
+            btn  = sprintf('<a class="op-fav btn btn-mini" href="#">%s</a>', icon);
         return btn;
+    }
+
+    /**
+     * @method: vmRow
+     * Return representation of a VM table row
+     * @param vm vcd.vM
+     */
+    function vmRow (vm) {
+        var html = [];
+        html.push(sprintf('<tr id="%s" class="vm%s">', vm.getID(), (hasTask(vm.getID()) ? ' busy' : '')));
+        html.push('<td class="name">&ndash;</td>');
+        html.push(sprintf('<td class="name">%s</td>', vm.getName()));
+        html.push('<td class="ops"><span class="btn-toolbar btn-group">');
+        html.push(playBtn(vm));
+        html.push(pauseBtn(vm));
+        html.push(stopBtn(vm));
+        html.push('</span></td>');
+        html.push(sprintf('<td class="status">%s</td>', vm.getStatusMessage()));
+        html.push(sprintf('<td class="desc">%s</td>', vm.getDescription() || ''));
+        html.push(sprintf('<td class="ip">%s</td>', vm.getIP()));
+        html.push('</tr>');
+        return html.join('');
+    }
+
+    /**
+     * @method hasTask
+     * Return true if given object id has a running task associated with it
+     * @param id|href
+     */
+    function hasTask (id) {
+        var ids = vcd.taskManager.inProgress();
+        for (var i=0; i<ids.length; i++) {
+            if (id.match(ids[i])) return true;
+        }
+        return false;
     }
 
     /**
@@ -472,7 +520,7 @@
     function playBtn (vm) {
         var enabled = (vm.canPowerOn() ? '' : ' disabled'),
             icon = '<i class="icon-play"></i>',
-            btn = '<a class="op-play btn btn-mini'+ enabled +'" href="#">'+ icon + '</a>';
+            btn = sprintf('<a class="op-play btn btn-mini%s" href="#">%s</a>', enabled, icon);
         return btn;
     }
 
@@ -484,7 +532,7 @@
     function pauseBtn (vm) {
         var enabled = (vm.canSuspend() ? '' : ' disabled'),
             icon = '<i class="icon-pause"></i>',
-            btn = '<a class="op-pause btn btn-mini'+ enabled +'" href="#">'+ icon + '</a>';
+            btn = sprintf('<a class="op-pause btn btn-mini%s" href="#">%s</a>', enabled, icon);
         return btn;
     }
 
@@ -496,29 +544,75 @@
     function stopBtn (vm) {
         var enabled = (vm.canPowerOff() ? '' : ' disabled'),
             icon = '<i class="icon-stop"></i>',
-            btn = '<a class="op-stop btn btn-mini'+ enabled +'" href="#">'+ icon + '</a>';
+            btn = sprintf('<a class="op-stop btn btn-mini%s" href="#">%s</a>', enabled, icon);
         return btn;
     }
+
     /**
      * @method: updateLibrary
      * Update the library table
-     * TODO: Might be nice to use a MVC/MVVM pattern like that provided by
-     *       knockout.js
+     * TODO: Nicer to use an MVC/MVVM pattern like that provided by knockout,
+     *       ember or angular.
      */
     function updateLibrary () {
-        var tmpl, vms;
-
         $('#library table tbody').empty();
-
         for (var i=0; i<templates.length; i++) {
-            tmpl = templates[i];
-            $('<tr><td class="name">'+ tmpl.getName()
-                +'</td><td class="desc">'+ tmpl.getDescription()
-                +'</td><td class="featured"></td>'
-                +'</td><td class="downloads">'+ tmpl.getDownloads()
-                +'</td></tr>').appendTo('#library table tbody');
-            }
+            $(templateRow(templates[i])).appendTo('#library table tbody');
         }
+    }
+
+    /**
+     * @method: templateRow
+     * Return representation of a template table row
+     * @param tmpl vcd.Template
+     */
+    function templateRow (tmpl) {
+        var html = [];
+        html.push(sprintf('<tr id="%s" class="%s">', tmpl.getHref(), (hasTask(tmpl.getHref()) ? 'busy' : '')));
+        html.push(sprintf('<td class="name">%s</td>', tmpl.getName()));
+        html.push(sprintf('<td class="desc">%s</td>', tmpl.getDescription() || ''));
+        html.push(sprintf('<td class="vms">%s</td>', tmpl.getAttr('numberOfVMs')));
+        html.push(sprintf('<td class="cpu">%s</td>', tmpl.getCPUMhz()));
+        html.push(sprintf('<td class="memory">%s</td>', tmpl.getMemoryMB()));
+        html.push(sprintf('<td class="storage">%s</td>',
+            Math.floor(tmpl.getStorageKB()/1024).toFixed(0)));
+        html.push(sprintf('<td class="ops">%s</td>', createVappBtn(tmpl)));
+        html.push('</tr>');
+        return html.join('');
+    }
+
+    /**
+     * @method: createVappBtn
+     * Return the instantiate button for the given Template object
+     * @param tmpl vcd.Template
+     */
+    function createVappBtn (tmpl) {
+        var icon = '<i class="icon-plus"></i>',
+            btn = sprintf('<a class="op-instantiate btn btn-mini" href="#">%s</a>', icon);
+        return btn;
+    }
+
+    /**
+     * @method: createVApp
+     * Instantiate a Template to create a vApp
+     */
+    function createVapp (tmpl) {
+        // TODO: Allow edit of these parameters
+        var timestamp = Math.round(new Date().getTime() / 1000),
+            name = sprintf('%s-%s', tmpl.getName(), timestamp),
+            desc = tmpl.getDescription() || sprintf('Created: %s', timestamp),
+            vdc = vdcs[0],          // take the first VDC available
+            network = networks[0],  // take the first Network available
+            template = tmpl.getHref(),
+            powerOn = true;         // power on after instantiate
+
+        if (vcd.instantiateVApp(name, desc, vdc, network, template, powerOn)) {
+            console.debug(sprintf('SDK is instantiating vApp: %s', name));
+        }
+        else {
+            console.debug(sprintf('SDK could not instantiate template: %s', tmpl.getName()));
+        }
+    }
 
     init();
 
