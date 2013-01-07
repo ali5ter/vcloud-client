@@ -1,7 +1,7 @@
 vcloud-client
 =============
 
-Very simple web client using the VMware vCloud Javascript SDK.
+Very simple web client used to exercise the VMware vCloud Javascript SDK.
 
 Installation
 ------------
