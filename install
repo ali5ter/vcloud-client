@@ -170,6 +170,7 @@ case "$1" in
         _installIntoOfficialBuild
         echo "Installed successfully. Please restart the cell to complete the \
 installation, e.g. 'service vmware-vcd restart'."
+        echo 'Then go to http://[your_cell_host_and_port]/cloud/vcloud-js-sdk-test/index.html'
         echo
         echo "NOTE: To back-out this change, just move $OB_TARGET/../$BACKUP \
 into $OB_TARGET/$WAR and restart the cell."
