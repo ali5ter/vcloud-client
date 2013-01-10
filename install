@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @file install
-# ☆  Install for assembling and installing this test
+# ☆  Install for assembling and installing vcloud-client
 # @author Alister Lewis-Bowen <alister@different.com>
 #
 
@@ -10,7 +10,15 @@
 #
 SRC=www
 #
-# Official Build war file name
+# A timestamp
+#
+TIMESTAMP=$(date +"%F-%H%M%S")
+#
+# Cell target directory
+#
+OB_TARGET=/opt/vmware/vcloud-director/system/com/vmware/vcloud/ui-vcloud-webapp/1.0.0
+#
+# Cell war file name
 #
 WAR=ui-vcloud-webapp-1.0.0.war
 #
@@ -18,7 +26,7 @@ WAR=ui-vcloud-webapp-1.0.0.war
 #
 BACKUP=${WAR}.$TIMESTAMP.bak
 #
-# Source Tree Build target directory
+# Source Tree target directory
 #
 ST_TARGET=ui/ssui/ui-vcloud-webapp/target/ui-vcloud-webapp-1.0.0
 #
@@ -59,6 +67,25 @@ function _copySdk {
     echo
 }
 
+function _installIntoOfficialBuild {
+    echo -n 'Installing SilverLining into your vCD cell...'
+    [ ! -d $OB_TARGET ] && _failWith "Unable to find the war file in $OB_TARGET"
+    cd $OB_TARGET
+    cp $WAR ../$BACKUP
+    unzip $WAR &>/dev/null
+    rm -f $WAR
+    echo -n '...'
+    cp -r $SRC .
+    echo -n '...'
+    zip -urg ../$WAR * &>/dev/null
+    echo -n '...'
+    rm -fR ./*
+    mv ../$WAR .
+    cd - >/dev/null
+    echo ' done'
+    echo
+}
+
 function _setVcdSrcDir {
     echo -n "Where is your vCD src tree? [$ST_BASE] "
     read srcDir
@@ -94,16 +121,16 @@ function _watchAndInstall {
 
 function _help {
     local helpText="
-Make script for vCloud SDK test
+Install script for vcloud-client.
 
-With no option this script will install this test into the vCD src tree
-sync'ed from perforce.
+With no option this script will install into a vCD cell.
 
 Usage: make <option>
 -cs, --copy-sdk        copy the SDK lib from a local vCloud JS SDK src tree
-                       and place into current doc root
--i, --install          install current doc root into a a vCD src tree
--w, --watch            install when anything in the current doc root changes
+                       and place into doc root
+-id, --install-dev     install doc root into a vCD src tree
+-ic, --install-cell    install doc root into a vCD cell (default)
+-w, --watch            install when anything in the doc root changes
 "
     echo "$helpText"
 }
@@ -127,13 +154,25 @@ case "$1" in
         _watchAndInstall
         ;;
     #
-    # Copy current SilverLining doc root into correct position in vCD src tree
+    # Copy doc root into correct position in vCD src tree
     #
-    --install|-i|*)
+    --install-dev|-id)
         _setVcdSrcDir
         _installIntoP4Source
-        echo "Test was installed successfully at $ST_TARGET"
+        echo "Installed successfully at $ST_TARGET"
         echo 'Go to http://[your_cell_host_and_port]/cloud/vcloud-js-sdk-test/index.html'
         echo
+        ;;
+    #
+    # Copy doc root into correct position of a running vCD cell
+    #
+    --install-cell|-ic|*)
+        _installIntoOfficialBuild
+        echo "Installed successfully. Please restart the cell to complete the \
+installation, e.g. 'service vmware-vcd restart'."
+        echo
+        echo "NOTE: To back-out this change, just move $OB_TARGET/../$BACKUP \
+into $OB_TARGET/$WAR and restart the cell."
+echo
         ;;
 esac
