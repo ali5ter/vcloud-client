@@ -771,12 +771,10 @@ vmware.cloud = function(base, version) {
                             <vcloud:Description>' + (desc || that.getVApp(vappID).getDescription()) + '</vcloud:Description>\
                     </vcloud:VApp>';
         vmware.rest.addHeader("Content-Type", "application/vnd.vmware.vcloud.vApp+xml");
-        vmware.rest.put(that.getVApp(vappID).getHref(), xml).done(
-
-        function(xhr) {
-            that.taskManager.newTask($.parseXML((xhr.xml ? xhr.xml : (new XMLSerializer())
-                .serializeToString(xhr))));
-        });
+        vmware.rest.put(that.getVApp(vappID).getHref(), xml)
+            .done(function (xhr) {
+                that.taskManager.newTask($.parseXML((xhr.xml ? xhr.xml : (new XMLSerializer()).serializeToString(xhr))));
+            })
     };
 
     /*
@@ -795,13 +793,14 @@ vmware.cloud = function(base, version) {
             parentNetwork = networks[parentNetwork] ? parentNetwork : networks[0];
             var xml = instantTempParams(name, desc, networkName, networks[parentNetwork], templateHref, power);
             vmware.rest.addHeader("Content-Type", "application/vnd.vmware.vcloud.instantiateVAppTemplateParams+xml");
-            vmware.rest.post(vdcList[vdc] + "/action/instantiateVAppTemplate", xml).done(
-
-            function(xhr) {
-                that.once(vmware.events.cloud.TASK_START, that.updateModels);
-                that.taskManager.newTask($.parseXML((xhr.xml ? xhr.xml : (new XMLSerializer())
-                    .serializeToString(xhr))));
-            });
+            vmware.rest.post(vdcList[vdc] + "/action/instantiateVAppTemplate", xml)
+                .done(function (xhr) {
+                    that.once(vmware.events.cloud.TASK_START, that.updateModels);
+                    that.taskManager.newTask($.parseXML((xhr.xml ? xhr.xml : (new XMLSerializer()).serializeToString(xhr))));
+                })
+                .fail(function (xhr) {
+                    that.trigger(vmware.events.cloud.ERROR, $(xhr.responseXML).find('Error').attr('message'));
+                });
         });
 
         that.fleshOutTemplate(templateObj);
@@ -1930,16 +1929,8 @@ function TaskManager(c) {
 
         if (that.autoRefresh) that.autoRefresh(that.loadTasks);
 
-        if (somethingThere)  {
-            refresh = setTimeout(function () {
-                    that.update();
-                }, CHECK_INTERVAL);
-        }
-        else {
-            refresh = setTimeout(function () {
-                    that.update();
-                }, PASSIVE_INTERVAL);
-        }
+        if (somethingThere) refresh = setTimeout(function () { that.update(); }, CHECK_INTERVAL);
+        else refresh = setTimeout(function () { that.update(); }, PASSIVE_INTERVAL);
     };
 
     that.loadTasks = function(xmlDoc) {

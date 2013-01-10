@@ -33,7 +33,6 @@
      */
     function init () {
         $('#navbar').hide();
-        $('#nav-progress').removeClass('clear');
         $('#workspace').hide();
         $('#login').hide();
         $('#spinner').show().center();
@@ -67,11 +66,21 @@
         vcd.register(vmware.events.cloud.TEMPLATE_REFRESH, onRefresh);
 
         // Handler for SDK task start and completion
-        vcd.register(vmware.events.cloud.TASK_START, function() { console.info('SDK task started'); refresh(); });
-        vcd.register(vmware.events.cloud.TASK_COMPLETE, function() { console.info('SDK task complete'); refresh(); });
+        vcd.register(vmware.events.cloud.TASK_START, function () {
+            console.info('SDK task started'); refresh();
+        });
+        vcd.register(vmware.events.cloud.TASK_COMPLETE, function () { console.info('SDK task complete'); refresh(); });
+
+        // Handler for SDK template search completion
+        vcd.register(vmware.events.cloud.SEARCH_COMPLETE, function (results) {
+            console.info('SDK template search complete...'); console.dir(results);
+        });
 
         // Handler for SDK errors
-        vcd.register(vmware.events.cloud.ERROR, function(e) { console.error('SDK error: '+ e.eventData); });
+        vcd.register(vmware.events.cloud.ERROR, function (e) {
+            console.error('SDK error: '+ e.eventData);
+            showAlert(e.eventData, 'error');
+        });
 
         $('#login').submit(login);
     }
@@ -143,10 +152,12 @@
         $('.nav-user span.org').text(vcd.getUserOrg());
         $('.nav-user span.user').text(vcd.getUserName());
         $('#nav-views a').click(function() { showView($(this).attr('href')); });
-        $('#nav-progress').addClass('clear');
+        $('#search').submit(onSearch);
         $('#nav-logout').click(logout);
         $('#nav-refresh').click(refresh);
         $('#machines').delegate('.op-fav', 'click', function () { onBtnClick(this, 'fav'); });
+        $('#machines').delegate('.op-edit', 'click', function () { onBtnClick(this, 'edit'); });
+        $('#machines').delegate('.op-del', 'click', function () { onBtnClick(this, 'del'); });
         $('#machines').delegate('.op-play', 'click', function () { onBtnClick(this, 'play'); });
         $('#machines').delegate('.op-pause', 'click', function () { onBtnClick(this, 'pause'); });
         $('#machines').delegate('.op-stop', 'click', function () { onBtnClick(this, 'stop'); });
@@ -188,10 +199,13 @@
         var url = sprintf('%squery?type=user&format=records&filter=name==%s',
                 vcd.base, vcd.getUserName()),
             user1 = user;
+
         console.info('Custom vCD query: '+ url);
+        $('#nav-progress').show();
 
         vcd.fetchURL(url, 'GET', '', function (xml) {
             $(xml).find('UserRecord').each(function () {
+                $('#nav-progress').hide();
                 $.each(this.attributes, function (i, attrib){
                     user1[attrib.name] = attrib.value;
                     // TODO: Be nice if this record contained the role name
@@ -221,15 +235,19 @@
                 orgId = orgUrl.substring(orgUrl.indexOf('/api/org/')+9, orgUrl.length),
                 url = sprintf('%sorg/%s', adminUrl, orgId),
                 user1 = user;
+
             console.info(sprintf('Custom vCD call: %s', url));
+            $('#nav-progress').show();
 
             vcd.fetchURL(url, 'GET', '', function (xml) {
 
                 var url = $(xml).find(sprintf('UserReference[name=%s]', vcd.getUserName())).attr('href'),
                     user2 = user1;
+
                 console.info(sprintf('Custom vCD call: %s', url));
 
                 vcd.fetchURL(url, 'GET', '', function (xml) {
+                    $('#nav-progress').hide();
                     user2.roleName = $(xml).find('Role').attr('name');
                     $('#navbar span.nav-user').append(' ('+user2.roleName +')');
                 });
@@ -252,10 +270,12 @@
             link = $(sprintf('#nav-views a[href="%s"]', views[i])).parent();
             if (viewName === views[i]) {
                 link.addClass('active');
+                $('body').addClass(views[i]);
                 $(views[i]).show();
             }
             else {
                 link.removeClass('active');
+                $('body').removeClass(views[i]);
                 $(views[i]).hide();
             }
         }
@@ -266,7 +286,7 @@
      * Tell the SDK to refresh the data model
      */
     function refresh () {
-        $('#nav-progress').removeClass('clear');
+        $('#nav-progress').show();
         vcd.updateModels();
         vcd.getAllTemplates();
         vcd.taskManager.update();
@@ -277,7 +297,7 @@
      * Store the data model and refresh data in the UI
      */
     function onRefresh () {
-        $('#nav-progress').addClass('clear');
+        $('#nav-progress').hide();
         console.info('SDK refreshed data model');
 
         // Save this updated data model so we can restore it and not block
@@ -338,10 +358,16 @@
      */
     function fetchMetadata () {
         var vapp;
+
+        $('#nav-progress').show();
+
         for (var i=0; i<vapps.length; i++) {
+
             vapp = vapps[i];
+
             vcd.metadata.register(
                 vcd.metadata.get(vapp), function (data) {
+                    $('#nav-progress').hide();
                     // set vapp favorite if defined in metadata
                     if (data.favorite !== undefined) {
                         vapp.favorite(data.favorite);
@@ -354,14 +380,28 @@
      * @method onBtnClick
      * Handle the click event for a vApp/VM button
      * @param obj DOMObject
-     * @param op 'fav'|'play'|'stop'|'pause'
+     * @param op String fav|edit|del|play|stop|pause
      */
     function onBtnClick (obj, op) {
-        var _obj = getObject($(obj).parents('tr').attr('id'));
+        var _obj = getObject($(obj).parents('tr').attr('id')),
+            timestamp = Math.round(new Date().getTime() / 1000),
+            name = sprintf('VAPP-%s', timestamp),
+            desc = sprintf('Updated: %s', timestamp);
+
         switch(_obj.constructor) {
             case vApp:
-                if (op === 'fav') toggleFav(_obj);
-                break;
+                switch(op) {
+                    case 'fav':
+                        toggleFav(_obj);
+                        break;
+                    case 'edit':
+                        // TODO: Allow these values to be edited :)
+                        _obj.edit(name,desc);
+                        break;
+                    case 'del':
+                        if (_obj.canDelete()) _obj.deleteVApp();
+                        break;
+                }
             case vM:
                 switch(op) {
                     case 'play':
@@ -390,12 +430,12 @@
         var fav = 1;
 
         if (vapp.favorite() === 1) fav = 0;
-        $('#nav-progress').removeClass('clear');
+        $('#nav-progress').show();
 
         vcd.metadata.register(
             vcd.metadata.set(vapp, 'favorite', fav),
             function () {
-                $('#nav-progress').addClass('clear');
+                $('#nav-progress').hide();
                 vapp.favorite(fav);
                 updateMachines();
             }
@@ -428,6 +468,31 @@
     }
 
     /**
+     * @method: showAlert
+     * Render a notification
+     * @see http://twitter.github.com/bootstrap/components.html#alerts
+     * @param msg String
+     * @param type success(default)|info|warning|error
+     */
+    function showAlert (msg, type) {
+        var type = type || 'success',
+            title = {
+                'success': 'Success!',
+                'info': 'Information',
+                'block': 'Warning!',
+                'error': 'Error!'
+            },
+            html = [];
+
+        if (type === 'warning') type = 'block';
+
+        html.push(sprintf('<div class="alert alert-%s">', type));
+        html.push('<button type="button" class="close" data-dismiss="alert">&times;</button>');
+        html.push(sprintf('<h4>%s</h4>%s</div>', title[type], msg));
+        $(html.join('')).prependTo('#workspace');
+    }
+
+    /**
      * @method: updateWorkspace
      * Update the machines table
      * TODO: Nicer to use an MVC/MVVM pattern like that provided by knockout,
@@ -455,9 +520,13 @@
         var html = [];
         html.push(sprintf('<tr id="%s" class="vapp%s" rowspan="%s">',
             vapp.getID(), (hasTask(vapp.getID()) ? ' busy' : ''), vapp.getNumberOfVMs()));
-        html.push(sprintf('<td class="name">%s</td>', vapp.getName()));
-        html.push('<td class="name">&ndash;</td>');
-        html.push(sprintf('<td class="ops">%s</td>', favBtn(vapp)));
+        html.push(sprintf('<td class="vapp name">%s</td>', vapp.getName()));
+        html.push('<td class="vm name">&ndash;</td>');
+        html.push('<td class="ops"><span class="btn-toolbar btn-group">');
+        html.push(favBtn(vapp));
+        html.push(editBtn(vapp));
+        html.push(delBtn(vapp));
+        html.push('</span></td>');
         html.push(sprintf('<td class="status">%s</td>', vapp.getStatusMessage()));
         html.push(sprintf('<td class="desc">%s</td>', vapp.getDescription() || ''));
         html.push('<td class="ip">&ndash;</td>');
@@ -472,8 +541,31 @@
      */
     function favBtn (vapp) {
         var fav = vapp.favorite(),
-            icon = sprintf('<i class="%s">', (fav === 1 ? 'icon-star' : 'icon-star-empty')),
+            icon = sprintf('<i class="%s"></i>', (fav ? 'icon-star' : 'icon-star-empty')),
             btn  = sprintf('<a class="op-fav btn btn-mini" href="#">%s</a>', icon);
+        return btn;
+    }
+
+    /**
+     * @method: delBtn
+     * Return the delete button for the given vApp object
+     * @param vapp vcd.vApp
+     */
+    function delBtn (vapp) {
+        var enabled = (vapp.canDelete() ? '' : ' disabled'),
+            icon = '<i class="icon-trash"></i>',
+            btn = sprintf('<a class="op-del btn btn-mini%s" href="#">%s</a>', enabled, icon);
+        return btn;
+    }
+
+    /**
+     * @method: editBtn
+     * Return the edit button for the given vApp object
+     * @param vapp vcd.vApp
+     */
+    function editBtn (vapp) {
+       var  icon = '<i class="icon-edit"></i>',
+            btn = sprintf('<a class="op-edit btn btn-mini" href="#">%s</a>', icon);
         return btn;
     }
 
@@ -485,8 +577,8 @@
     function vmRow (vm) {
         var html = [];
         html.push(sprintf('<tr id="%s" class="vm%s">', vm.getID(), (hasTask(vm.getID()) ? ' busy' : '')));
-        html.push('<td class="name">&ndash;</td>');
-        html.push(sprintf('<td class="name">%s</td>', vm.getName()));
+        html.push('<td class="vapp name">&ndash;</td>');
+        html.push(sprintf('<td class="vm name">%s</td>', vm.getName()));
         html.push('<td class="ops"><span class="btn-toolbar btn-group">');
         html.push(playBtn(vm));
         html.push(pauseBtn(vm));
@@ -606,12 +698,61 @@
             template = tmpl.getHref(),
             powerOn = true;         // power on after instantiate
 
+        $('#nav-progress').show();
+
+        /**
+         * The SDKs instantiation method is currently very limited, e.g.
+         * instantiation will fail if the template needs any EULA approvals.
+         * The SDK would have to provide some way to know if one was present
+         * and provide a mechanism to show and approve it.
+         */
         if (vcd.instantiateVApp(name, desc, vdc, network, template, powerOn)) {
             console.debug(sprintf('SDK is instantiating vApp: %s', name));
         }
         else {
             console.debug(sprintf('SDK could not instantiate template: %s', tmpl.getName()));
+            $('#nav-progress').hide();
         }
+    }
+
+    /**
+     * @method: onSearch
+     * Search vApps or Templates
+     */
+    function onSearch () {
+        var isMachineView = ($('body').attr('class').indexOf('machines') !== -1 ? true : false),
+            searchTerm = $('#search input').val().toLowerCase();
+
+        if (isMachineView) {
+            $('#machines table tbody tr').hide();
+            $('#machines table tbody td').each(function () {
+                if ($(this).text().indexOf(searchTerm) !== -1) {
+                    $(this).parents('tr').show();
+                }
+            });
+        }
+        else { // Library View
+            $('#library table tbody tr').hide();
+            $('#library table tbody td').each(function () {
+                if ($(this).text().indexOf(searchTerm) !== -1) {
+                    $(this).parents('tr').show();
+                }
+            });
+
+            // Examples of using SDK to return a set of Template objects 
+            // based on a search term or set of facets...
+            vcd.searchCatalog(searchTerm);
+            vcd.searchCatalogFaceted({
+                'name': '',      // template name
+                'owner': '',     // template owner username
+                'catalog': '',   // catalog name
+                'cpu': '0-2',    // cpu Mhz range, '-'=any, e.g. '0-2', '3-4', '4-'
+                'memory': '-',   // memory MB range, '-'=any, e.g. '0-127', '128-256', '256-1024', '1024-'
+                'storage': '-',  // storage KB range, '-'=any, e.g. '0-199999', '200000-399999', '4000000-'
+                'searchTerm': '' // general search term which is not a facet
+            });
+        }
+        return false; // prevent screen refresh
     }
 
     init();
