@@ -4,9 +4,9 @@ vcloud-client
 Very simple web client used to play the VMware vCloud Javascript SDK that comes
 with the [SilverLining fling](http://labs.vmware.com/flings) in [VMware Labs](http://labs.vmware.com/flings).
 
-![log-in](https://github.com/ali5ter/vcloud-client/tree/master/docs/screenshots/vcloud-client-login.png)
-![machines](https://github.com/ali5ter/vcloud-client/tree/master/docs/screenshots/vcloud-client-machines.png)
-![library](https://github.com/ali5ter/vcloud-client/tree/master/docs/screenshots/vcloud-client-library.png)
+![log-in](https://github.com/ali5ter/vcloud-client/blob/master/docs/screenshots/vcloud-client-login.png)
+![machines](https://github.com/ali5ter/vcloud-client/blob/master/docs/screenshots/vcloud-client-machine.png)
+![library](https://github.com/ali5ter/vcloud-client/blob/master/docs/screenshots/vcloud-client-library.png)
 
 Installation
 ------------
