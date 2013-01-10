@@ -68,7 +68,7 @@ function _copySdk {
 }
 
 function _installIntoOfficialBuild {
-    echo -n 'Installing SilverLining into your vCD cell...'
+    echo -n 'Installing into your vCD cell...'
     [ ! -d $OB_TARGET ] && _failWith "Unable to find the war file in $OB_TARGET"
     cd $OB_TARGET
     cp $WAR ../$BACKUP
