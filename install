@@ -10,6 +10,10 @@
 #
 SRC=www
 #
+# Installed target dir
+#
+TARGET=vcloud-js-sdk-test
+#
 # A timestamp
 #
 TIMESTAMP=$(date +"%F-%H%M%S")
@@ -75,7 +79,7 @@ function _installIntoOfficialBuild {
     unzip $WAR &>/dev/null
     rm -f $WAR
     echo -n '...'
-    cp -r $SRC .
+    cp -r $SRC $TARGET
     echo -n '...'
     zip -urg ../$WAR * &>/dev/null
     echo -n '...'
@@ -97,7 +101,7 @@ function _installIntoP4Source {
     echo -n 'Installing into your src tree... '
     local target=$ST_BASE/$ST_TARGET
     [ ! -d $target ] && _failWith "Unable to find a src tree directory at $target"
-    local dir=$target/vcloud-js-sdk-test
+    local dir=$target/$TARGET
     _mkdir $dir
     cp -r $SRC/* $dir/
     echo 'done'
@@ -105,15 +109,20 @@ function _installIntoP4Source {
 }
 
 function _watchAndInstall {
+    local changes=''
+    local target=${1:-'cell'}
     echo 'Watching for any changes. Quit using [cntl-C].'
     echo
-    local changes=''
     while true; do
         changes=$(find $SRC -mtime ${WATCH_POLL}s)
         [[ ! -z "$changes" ]] && {
             echo '['$(date +"%F-%H%M%S")"] These following things changed:"
             echo "$changes"
-            _installIntoP4Source
+            if [ "$target" == "cell" ]; then
+                _installIntoOfficialBuild
+            else
+                _installIntoP4Source
+            fi
         }
         sleep $WATCH_POLL;
     done
@@ -123,14 +132,15 @@ function _help {
     local helpText="
 Install script for vcloud-client.
 
-With no option this script will install into a vCD cell.
+By default, this script will install into a vCD cell.
 
 Usage: make <option>
 -cs, --copy-sdk        copy the SDK lib from a local vCloud JS SDK src tree
                        and place into doc root
 -id, --install-dev     install doc root into a vCD src tree
 -ic, --install-cell    install doc root into a vCD cell (default)
--w, --watch            install when anything in the doc root changes
+-wd, --watch-dev       install to vCD src tree when anything in the doc root changes
+-w, --watch            install to vCD cell when anything in the doc root changes
 "
     echo "$helpText"
 }
@@ -147,11 +157,11 @@ case "$1" in
         _copySdk
         ;;
     #
-    # Watch doc root and install on any change
+    # Watch doc root and install any changes into vCD src tree
     #
-    --watch|-w)
+    --watch-dev|-wd)
         _setVcdSrcDir
-        _watchAndInstall
+        _watchAndInstall 'dev'
         ;;
     #
     # Copy doc root into correct position in vCD src tree
@@ -160,8 +170,14 @@ case "$1" in
         _setVcdSrcDir
         _installIntoP4Source
         echo "Installed successfully at $ST_TARGET"
-        echo 'Go to http://[your_cell_host_and_port]/cloud/vcloud-js-sdk-test/index.html'
+        echo "Go to http://[your_cell_host_and_port]/cloud/$TARGET/index.html"
         echo
+        ;;
+    #
+    # Watch doc root and install on any changes into vCD cell
+    #
+    --watch|-w)
+        _watchAndInstall 'cell'
         ;;
     #
     # Copy doc root into correct position of a running vCD cell
@@ -170,7 +186,7 @@ case "$1" in
         _installIntoOfficialBuild
         echo "Installed successfully. Please restart the cell to complete the \
 installation, e.g. 'service vmware-vcd restart'."
-        echo 'Then go to http://[your_cell_host_and_port]/cloud/vcloud-js-sdk-test/index.html'
+        echo "Then go to http://[your_cell_host_and_port]/cloud/$TARGET/index.html"
         echo
         echo "NOTE: To back-out this change, just move $OB_TARGET/../$BACKUP \
 into $OB_TARGET/$WAR and restart the cell."
