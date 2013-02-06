@@ -2,7 +2,6 @@
 #
 # @file install
 # ☆  Install for assembling and installing vcloud-client
-# @author Alister Lewis-Bowen <alister@different.com>
 #
 
 #
@@ -73,18 +72,25 @@ function _copySdk {
 
 function _installIntoOfficialBuild {
     echo -n 'Installing into your vCD cell...'
+    type -P unzip >/dev/null 2>&1 || _failWith "Unable to find the unzip utility."
+    type -P zip >/dev/null 2>&1 || _failWith "Unable to find the zip utility."
     [ ! -d $OB_TARGET ] && _failWith "Unable to find the war file in $OB_TARGET"
     cd $OB_TARGET
+    local fusr=$(ls -l $WAR | awk '{ print $3 }')
+    local fgrp=$(ls -l $WAR | awk '{ print $4 }')
     cp $WAR ../$BACKUP
-    unzip $WAR &>/dev/null
+    chown ${fusr}:${fgrp} ../$BACKUP
+    unzip $WAR >/dev/null 2>&1
     rm -f $WAR
     echo -n '...'
-    cp -r $SRC $TARGET
+    cp -r $SL_SRC .
     echo -n '...'
-    zip -urg ../$WAR * &>/dev/null
+    zip -urg ../$WAR * >/dev/null 2>&1
     echo -n '...'
     rm -fR ./*
     mv ../$WAR .
+    chmod 640 $WAR
+    chown ${fusr}:${fgrp} $WAR
     cd - >/dev/null
     echo ' done'
     echo
