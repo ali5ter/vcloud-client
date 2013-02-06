@@ -31,3 +31,4 @@ References
 * [VMware Technical Journal article about SilverLining](http://labs.vmware.com/publications/cloud-vmtj-winter2012).
 * [VMware vCloud Director docs](https://www.vmware.com/support/pubs/vcd_pubs.html).
 * [VMware vCloud Director API](http://www.vmware.com/go/vcloudapi).
+* [VMware vCloud Director Evaluation](https://my.vmware.com/web/vmware/evalcenter?p=vcloud-director15&lp=default:).
