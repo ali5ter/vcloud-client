@@ -194,8 +194,9 @@ case "$1" in
 installation, e.g. 'service vmware-vcd restart'."
         echo "Then go to http://[your_cell_host_and_port]/cloud/$TARGET/index.html"
         echo
-        echo "NOTE: To back-out this change, just move $OB_TARGET/../$BACKUP \
-into $OB_TARGET/$WAR and restart the cell."
-echo
+        echo "NOTE: To back-out this change, run the following command:"
+        echo "    mv ${OB_TARGET%/*}/$BACKUP $OB_TARGET/$WAR"
+        echo "and restart the cell."
+        echo
         ;;
 esac
