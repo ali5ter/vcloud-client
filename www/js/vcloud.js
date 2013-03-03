@@ -528,7 +528,7 @@
         html.push(delBtn(vapp));
         html.push('</span></td>');
         html.push(sprintf('<td class="status">%s</td>', vapp.getStatusMessage()));
-        html.push(sprintf('<td class="desc">%s</td>', vapp.getDescription() || ''));
+        html.push(sprintf('<td class="desc hidden-phone">%s</td>', vapp.getDescription() || ''));
         html.push('<td class="ip">&ndash;</td>');
         html.push('</tr>');
         return html.join('');
@@ -585,7 +585,7 @@
         html.push(stopBtn(vm));
         html.push('</span></td>');
         html.push(sprintf('<td class="status">%s</td>', vm.getStatusMessage()));
-        html.push(sprintf('<td class="desc">%s</td>', vm.getDescription() || ''));
+        html.push(sprintf('<td class="desc hidden-phone">%s</td>', vm.getDescription() || ''));
         html.push(sprintf('<td class="ip">%s</td>', vm.getIP()));
         html.push('</tr>');
         return html.join('');
@@ -663,10 +663,10 @@
         html.push(sprintf('<tr id="%s" class="%s">', tmpl.getHref(), (hasTask(tmpl.getHref()) ? 'busy' : '')));
         html.push(sprintf('<td class="name">%s</td>', tmpl.getName()));
         html.push(sprintf('<td class="desc">%s</td>', tmpl.getDescription() || ''));
-        html.push(sprintf('<td class="vms">%s</td>', tmpl.getAttr('numberOfVMs')));
-        html.push(sprintf('<td class="cpu">%s</td>', tmpl.getCPUMhz()));
-        html.push(sprintf('<td class="memory">%s</td>', tmpl.getMemoryMB()));
-        html.push(sprintf('<td class="storage">%s</td>',
+        html.push(sprintf('<td class="vms hidden-phone">%s</td>', tmpl.getAttr('numberOfVMs')));
+        html.push(sprintf('<td class="cpu hidden-phone">%s</td>', tmpl.getCPUMhz()));
+        html.push(sprintf('<td class="memory hidden-phone">%s</td>', tmpl.getMemoryMB()));
+        html.push(sprintf('<td class="storage hidden-phone">%s</td>',
             Math.floor(tmpl.getStorageKB()/1024).toFixed(0)));
         html.push(sprintf('<td class="ops">%s</td>', createVappBtn(tmpl)));
         html.push('</tr>');

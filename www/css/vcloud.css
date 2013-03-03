@@ -5,7 +5,6 @@
  */
 
 body {
-    padding-top: 40px;
     padding-bottom: 40px;
     background-color: #f5f5f5;
 }
@@ -77,9 +76,8 @@ body {
  * = view styles
  */
 
-.view {
-    margin-top: 2em;
-}
+.view { margin-top: 2em; }
+
 caption { display: none; }
 table tr.busy { background-color: #FCF8E3; }
 table tr.vapp { border-top: 3px solid #222; }
