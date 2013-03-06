@@ -59,6 +59,18 @@
         });
 
         // Handler for SDK login method
+        // Is it there that i should put this code from "silver lining" permitting to deal with 
+        // a proxy (to solve the cross domain issue)
+        //$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+        //    options.url = "proxy/" + encodeURIComponent(options.url);
+        //});
+        // but i bet i should have something like this also, right ?
+        
+        //$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+        //    jqXHR.setRequestHeader('x-vcloud-authorization', jqXHR.getResponseHeader('x-vcloud-authorization'));
+        //});
+        // as you see, i'm not at all fluent in js. :-)
+        
         vcd.register(vmware.events.cloud.LOGIN, onLogin);
 
         // Handlers for SDK refresh of data model
