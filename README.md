@@ -9,7 +9,7 @@ in [VMware Labs](http://labs.vmware.com/flings).
 <img src="https://github.com/ali5ter/vcloud-client/blob/master/docs/screenshots/vcloud-client-machines.png?raw=true" width="32%"/>&nbsp;
 <img src="https://github.com/ali5ter/vcloud-client/blob/master/docs/screenshots/vcloud-client-library.png?raw=true" width="32%"/>
 
-Documentation about how to use the SDK is supplied with the SilverLining fling at vcloud-js-sdk/vCloudDirectorJSSDK.pdf.
+Documentation about how to use the SDK is supplied with the SilverLining fling distribution. Once downloaded and unpacked, it can be found under vcloud-js-sdk/vCloudDirectorJSSDK.pdf.
 
 Installation
 ------------
