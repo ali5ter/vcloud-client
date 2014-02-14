@@ -5,6 +5,7 @@ Trivial web client used to play the VMware vCloud Javascript SDK  that comes
 with the [SilverLining fling](http://labs.vmware.com/flings/silverlining)
 in [VMware Labs](http://labs.vmware.com/flings).
 
+![Login](ali5ter.github.io/repository/images/vcloud-client-login.png)
 <img src="https://github.com/ali5ter/vcloud-client/blob/master/docs/screenshots/vcloud-client-login.png?raw=true" width="32%"/>&nbsp;
 <img src="https://github.com/ali5ter/vcloud-client/blob/master/docs/screenshots/vcloud-client-machines.png?raw=true" width="32%"/>&nbsp;
 <img src="https://github.com/ali5ter/vcloud-client/blob/master/docs/screenshots/vcloud-client-library.png?raw=true" width="32%"/>
