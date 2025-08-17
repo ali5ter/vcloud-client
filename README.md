@@ -1,7 +1,5 @@
 > **⚠️ Archived 2025-08-16. No longer maintained.**
 
-> **⚠️ This project is archived and no longer maintained.**
-
 vcloud-client
 =============
 
